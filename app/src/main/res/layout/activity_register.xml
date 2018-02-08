@@ -14,6 +14,56 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
         />
+    <EditText
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textColorHint="#111"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signup_icon"
+        android:layout_marginTop="50dp"
+        android:hint="Name"
+        android:id="@+id/signup_username"
+        />
 
+    <EditText
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textColorHint="#111"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signup_username"
+        android:layout_marginTop="20dp"
+        android:hint="Email"
+        android:id="@+id/signup_email"
+        />
 
+    <EditText
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textColorHint="#111"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signup_email"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
+        android:id="@+id/signup_password"
+        />
+    <Button
+        android:fontFamily="sans-serif-medium"
+        android:textSize="17.6sp"
+        android:letterSpacing="0.01"
+        android:textStyle="normal"
+        android:textColor="#ffffff"
+        android:text="sign up"
+        android:background="@drawable/login_buttons"
+        android:layout_width="161.5dp"
+        android:layout_height="45.5dp"
+        android:layout_below="@id/signup_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
 </RelativeLayout>
