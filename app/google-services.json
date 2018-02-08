@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "786882547964",
+    "firebase_url": "https://keepingmeontrack-42b84.firebaseio.com",
+    "project_id": "keepingmeontrack-42b84",
+    "storage_bucket": "keepingmeontrack-42b84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786882547964:android:c1612b2de33891e8",
+        "android_client_info": {
+          "package_name": "com.example.user.keepingmeontrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786882547964-brn6fj7edf04ej18q0tt5t050deu35k7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.keepingmeontrack",
+            "certificate_hash": "16c3e7204508879c0196173edc4e240b26c53563"
+          }
+        },
+        {
+          "client_id": "786882547964-jhq0afrin1qv2hkrrohvl5k6hl6nmc28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz29nkbzdlgMavdD8sKrC260E17u7zkT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786882547964-jhq0afrin1qv2hkrrohvl5k6hl6nmc28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
