@@ -6,6 +6,7 @@
     android:background="@drawable/fitnes"
     android:adjustViewBounds="true"
     android:scaleType="centerCrop"
+
     tools:context="com.example.user.keepingmeontrack.Swape_Tab"
     android:layout_height="match_parent">
     <ImageView
