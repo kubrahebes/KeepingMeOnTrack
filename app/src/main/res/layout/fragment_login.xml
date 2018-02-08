@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon"
+        android:background="@drawable/ic_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"/>
+   <EditText
+       android:layout_width="250dp"
+       android:layout_height="50dp"
+       android:textColorHint="#111"
+       android:layout_centerHorizontal="true"
+       android:layout_below="@+id/icon"
+       android:layout_marginTop="50dp"
+       android:hint="User Name"
+       android:id="@+id/user_name_edt"
+
+       />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColorHint="#111"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/user_name_edt"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
+        android:id="@+id/password_edt"
+
+        />
+    <LinearLayout
+        android:layout_below="@+id/password_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/sing_in_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Sing In"/>
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:text="Register"/>
+    </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
