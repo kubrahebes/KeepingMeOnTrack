@@ -6,7 +6,11 @@
     android:background="@drawable/fitness"
     android:adjustViewBounds="true"
     android:scaleType="centerCrop"
+
     tools:context="com.example.user.keepingmeontrack.SwipeActivity"
+
+
+    
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="191dp"
