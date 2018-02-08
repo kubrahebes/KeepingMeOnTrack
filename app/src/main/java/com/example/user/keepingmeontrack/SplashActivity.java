@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, Swape_Tab.class));
+                startActivity(new Intent(SplashActivity.this, SwipeActivity.class));
             }
         },3000);
     }
