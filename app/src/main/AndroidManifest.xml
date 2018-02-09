@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme" />
     </application>
 
 </manifest>
