@@ -23,10 +23,12 @@
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/SplashTheme" />
+
         <activity
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
             android:theme="@style/AppTheme"></activity>
+
     </application>
 
 </manifest>

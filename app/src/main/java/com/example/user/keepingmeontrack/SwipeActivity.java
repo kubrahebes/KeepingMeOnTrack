@@ -1,11 +1,13 @@
 package com.example.user.keepingmeontrack;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.user.keepingmeontrack.fragments.FinancialFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessFragment;
@@ -26,13 +28,9 @@ public class SwipeActivity extends AppCompatActivity {
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
     }
-
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -46,14 +44,12 @@ public class SwipeActivity extends AppCompatActivity {
                 case 0:
                     FitnessFragment fitness_fragment = new FitnessFragment();
                     return fitness_fragment;
-
                 case 1:
                     FinancialFragment financial_fragment = new FinancialFragment();
                     return financial_fragment;
                 case 2:
-                    LoginFragment login_fragment = new LoginFragment();
-                    return login_fragment;
-
+                    LoginFragment loginFragment = new LoginFragment();
+                    return loginFragment;
                 default:
                     return null;
 
