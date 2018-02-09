@@ -16,7 +16,7 @@ import com.example.user.keepingmeontrack.fragments.Fitness_fragment;
 import com.example.user.keepingmeontrack.fragments.Login_fragment;
 
 
-public class Swape_Tab extends AppCompatActivity {
+public class SwipeTab extends AppCompatActivity {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;

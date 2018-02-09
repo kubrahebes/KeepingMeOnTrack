@@ -17,12 +17,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Swape_Tab"
+            android:name=".SwipeTab"
             android:label="@string/title_activity_swape__tab"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme">
+
+        </activity>
     </application>
 
 </manifest>

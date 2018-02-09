@@ -7,7 +7,7 @@
     android:adjustViewBounds="true"
     android:scaleType="centerCrop"
 
-    tools:context="com.example.user.keepingmeontrack.Swape_Tab"
+    tools:context="com.example.user.keepingmeontrack.SwipeTab"
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="191dp"
