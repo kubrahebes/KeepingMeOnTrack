@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.R;
@@ -37,7 +38,7 @@ public class LoginFragment extends Fragment {
         sinUInPassword = rootView.findViewById(R.id.password_edt);
         //final EditText singInEmail = rootView.findViewById(R.id.signup_email);
         Button sinInBtn = rootView.findViewById(R.id.sing_in_btn);
-        Button singUpBtn = rootView.findViewById(R.id.register_btn);
+        TextView singUpBtn = rootView.findViewById(R.id.register_btn);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("users");
