@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/forgot_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logo_notext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+
+
+
+    <TextView
+        android:layout_marginTop="0dp"
+        android:id="@+id/forgot_text"
+        android:layout_below="@id/forgot_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Forgot your password?"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#99ff0004"
+        />
+    <TextView
+        android:text="Enter your email below to retrive your account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/forgot_text"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <EditText
+        android:id="@+id/forgot_username"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/forgot_text"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Please enter your email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:layout_marginTop="40dp"
+        />
+
+     <Button
+    android:id="@+id/forgot_button"
+    android:fontFamily="sans-serif-medium"
+    android:textSize="17.6sp"
+    android:letterSpacing="0.01"
+    android:textStyle="normal"
+    android:textColor="#ffffff"
+    android:text="send"
+    android:background="@drawable/login_buttons"
+    android:layout_width="161.5dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/forgot_username"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+android:layout_marginBottom="35dp"
+
+    />
+</RelativeLayout>

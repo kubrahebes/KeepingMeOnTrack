@@ -23,10 +23,9 @@
         android:layout_below="@+id/signup_icon"
         android:layout_marginTop="50dp"
         android:background="@drawable/rounded_edittext"
-        android:hint="Nameeeeee"
+        android:hint="Your Name"
         android:padding="10dp"
         />
-
     <EditText
         android:padding="10dp"
         android:background="@drawable/rounded_edittext"
@@ -48,6 +47,7 @@
         android:layout_below="@+id/signup_email"
         android:layout_marginTop="20dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:id="@+id/signup_password"
         />
     <Button

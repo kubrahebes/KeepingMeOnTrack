@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.keepingmeontrack.ForgotPassDialog;
 import com.example.user.keepingmeontrack.R;
 import com.example.user.keepingmeontrack.RegisterActivity;
 
@@ -32,6 +33,10 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class LoginFragment extends Fragment {
+
+    public LoginFragment(){
+
+    }
     DatabaseReference myRef;
     FirebaseDatabase database;
     EditText sinInUserName;
@@ -54,6 +59,7 @@ public class LoginFragment extends Fragment {
         //final EditText singInEmail = rootView.findViewById(R.id.signup_email);
         Button sinInBtn = rootView.findViewById(R.id.sing_in_btn);
         TextView singUpBtn = rootView.findViewById(R.id.register_btn);
+        TextView forgotB = rootView.findViewById(R.id.login_forget_click);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("users");
@@ -70,6 +76,13 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 LoginUser(sinInUserName.getText().toString(), sinUInPassword.getText().toString());
+            }
+        });
+
+        forgotB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showAddProductDialog();
             }
         });
         return rootView;
@@ -101,6 +114,7 @@ public class LoginFragment extends Fragment {
 
     }
 
+
     private boolean validateForm() {
         boolean valid = true;
 
@@ -121,6 +135,13 @@ public class LoginFragment extends Fragment {
         }
 
         return valid;
+    }
+
+
+    private void showAddProductDialog() {
+        ForgotPassDialog dialog = new ForgotPassDialog();
+        dialog.show(getActivity().getFragmentManager(), "example");
+
     }
 
 }
