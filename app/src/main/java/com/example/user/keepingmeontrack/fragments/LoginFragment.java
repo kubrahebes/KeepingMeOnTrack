@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.ForgotPassDialog;
+import com.example.user.keepingmeontrack.MainTabActivity;
 import com.example.user.keepingmeontrack.R;
 import com.example.user.keepingmeontrack.RegisterActivity;
 
@@ -105,6 +106,8 @@ public class LoginFragment extends Fragment {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(getContext(), MainTabActivity.class);
+                            startActivity(intent);
 
                         } else {
                             Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();

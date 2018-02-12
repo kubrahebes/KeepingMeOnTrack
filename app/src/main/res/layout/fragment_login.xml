@@ -10,10 +10,10 @@
         android:id="@+id/login_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/ic_logo"
-        />
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_logo" />
 
     <EditText
         android:inputType="textEmailAddress"
@@ -25,7 +25,7 @@
         android:layout_below="@id/login_logo"
         android:padding="10dp"
         android:hint="Username"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         />
     <EditText
         android:padding="10dp"
@@ -63,7 +63,7 @@
         android:layout_alignLeft="@+id/sing_in_btn"
         android:layout_alignStart="@+id/sing_in_btn"
         android:layout_below="@+id/sing_in_btn"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="22dp"
         android:clickable="true"
         android:text="Forgot password?" />
 
@@ -88,7 +88,7 @@
         android:layout_below="@+id/login_forgot"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="22dp"
         android:text="No account?" />
     <TextView
         android:id="@+id/register_btn"

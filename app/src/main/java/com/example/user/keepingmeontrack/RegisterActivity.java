@@ -1,6 +1,7 @@
 package com.example.user.keepingmeontrack;
 
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import android.support.v4.app.FragmentTransaction;
@@ -75,11 +76,16 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
                                         FirebaseUser user = mAuth.getCurrentUser();
+/*
                                         LoginFragment fragment = new LoginFragment();
                                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                                         transaction.replace(R.id.frame_layout, fragment);
                                         transaction.commit();
-                                        finish();
+
+
+                                        finish();*/
+                                        Intent intent=new Intent(RegisterActivity.this,MainTabActivity.class);
+                                        startActivity(intent);
                                       //  updateUI(user);
                                     } else {
 
