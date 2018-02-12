@@ -1,6 +1,5 @@
 package com.example.user.keepingmeontrack;
 
-import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.example.user.keepingmeontrack.fragments.FinancialFragment;
-import com.example.user.keepingmeontrack.fragments.FitnessFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
 
 public class MainTabActivity extends AppCompatActivity {

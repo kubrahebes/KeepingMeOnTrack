@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/intro_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/description"
+            android:layout_width="191dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="70dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:maxEms="18"
+            android:shadowColor="@color/colorAccent"
+            android:src="@drawable/fitness_intro_image"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title2"
+            android:textSize="41.4sp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FITNESS"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="350dp"
+            />
+
+        <TextView
+
+            android:id="@+id/desc_text"
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Always followup with your financials"
+            android:layout_marginTop="430dp"
+            android:textSize="25sp"
+            android:padding="20dp"
+            android:gravity="center"
+
+
+            />
+
+    </FrameLayout>
+
+</FrameLayout>
