@@ -1,5 +1,7 @@
 package com.example.user.keepingmeontrack;
 
+import android.graphics.Color;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,49 +12,48 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.example.user.keepingmeontrack.fragments.FinancialFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessFragment;
+import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
 
 public class MainTabActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-
+    AppBarLayout appBarLayout;
+    private int[] tabIcons = {
+            R.drawable.fitness_icon_2,
+            R.drawable.finance_icon
+    };
+    TabLayout tabLayout;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        appBarLayout = findViewById(R.id.appbar);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        setupTabIcons();
+     //   appBarLayout.setBackgroundColor(Color.DKGRAY);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_tab, menu);
-        return true;
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -64,11 +65,14 @@ public class MainTabActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    FitnessFragment fitness_fragment = new FitnessFragment();
+
+                    // appBarLayout.setBackgroundColor(Color.RED);
+                    FitnessMainFragment fitness_fragment = new FitnessMainFragment();
                     return fitness_fragment;
 
                 case 1:
-                    FinancialFragment financial_fragment = new FinancialFragment();
+
+                    FitnessMainFragment financial_fragment = new FitnessMainFragment();
                     return financial_fragment;
 
                 default:
@@ -80,5 +84,6 @@ public class MainTabActivity extends AppCompatActivity {
         public int getCount() {
             return 2;
         }
-    }}
+    }
+}
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ef268f</color>
+    <color name="colorPrimary">#ffb829</color>
     <color name="colorPrimaryDark">#ef268f</color>
     <color name="colorAccent">#ef268f</color>
+    <color name="colorFinancial">#ffb829</color>
     <color name="bluebutton">#1c97d7</color>
 </resources>
