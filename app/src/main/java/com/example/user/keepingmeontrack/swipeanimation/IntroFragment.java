@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.ForgotPassDialog;
+import com.example.user.keepingmeontrack.MainTabActivity;
 import com.example.user.keepingmeontrack.R;
 import com.example.user.keepingmeontrack.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,15 +22,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Created by Mahmoud on 2/05/2018.
+ */
+
 public class IntroFragment extends Fragment {
 
-    private static final String BACKGROUND_COLOR = "backgroundColor";
     private static final String PAGE = "page";
     private static final String IMAGE = "image";
     EditText sinInUserName;
     EditText sinUInPassword;
     private FirebaseAuth mAuth;
-    private int mBackgroundColor, mPage, IMAGE2;
+    private int mPage, IMAGE2;
 
     public static IntroFragment newInstance(int page, int image3) {
         IntroFragment frag = new IntroFragment();
@@ -126,13 +130,13 @@ public class IntroFragment extends Fragment {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
-
+                            Intent intent = new Intent(getContext(), MainTabActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
     }
 
 

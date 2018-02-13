@@ -6,6 +6,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.user.keepingmeontrack.R;
 
+/**
+ * Created by Mahmoud on 2/05/2018.
+ */
+
 public class IntroAdapter extends FragmentPagerAdapter {
 
 
