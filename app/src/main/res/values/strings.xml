@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Keeping Me On Tract</string>
+    <string name="app_name">Keeping Me On Track</string>
     <string name="tab_fitness">FITNESS</string>
     <string name="title_activity_swape__tab">Swape_Tab</string>
     <string name="action_settings">Settings</string>

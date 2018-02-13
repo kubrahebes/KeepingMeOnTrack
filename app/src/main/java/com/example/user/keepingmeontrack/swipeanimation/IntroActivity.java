@@ -3,8 +3,13 @@ package com.example.user.keepingmeontrack.swipeanimation;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
 import com.example.user.keepingmeontrack.R;
+
+
+/**
+ * Created by Mahmoud on 2/05/2018.
+ */
+
 
 public class IntroActivity extends AppCompatActivity {
 
