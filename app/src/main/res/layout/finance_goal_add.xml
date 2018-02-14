@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/shadow"
+        card_view:cardCornerRadius="4dp">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:id="@+id/imgGoalName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/target_orange_icon"
+                android:layout_margin="7dp"
+                android:layout_centerVertical="true"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Goal Name"
+                android:layout_toRightOf="@+id/imgGoalName"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/relative1"
+            >
+
+            <ImageView
+                android:id="@+id/imgHowMuch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/how_much_icon"
+                android:layout_margin="7dp"
+                android:layout_centerVertical="true"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="How Much "
+                android:layout_toRightOf="@+id/imgHowMuch"/>
+        </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/relative3"
+               android:layout_width="match_parent"
+               android:layout_height="70dp"
+               android:layout_below="@+id/relative2"
+               >
+
+               <ImageView
+                   android:id="@+id/imgDailyAllowance"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/harclik_icon"
+                   android:layout_margin="7dp"
+                   android:layout_centerVertical="true"/>
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:hint="Daily Allowance"
+                   android:layout_toRightOf="@+id/imgDailyAllowance"/>
+           </RelativeLayout>
+           <LinearLayout
+               android:id="@+id/relative4"
+               android:layout_width="match_parent"
+               android:layout_height="70dp"
+               android:layout_below="@+id/relative3"
+               >
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+               <ImageView
+                   android:id="@+id/imgStartDate"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/calendar_day"
+                   android:layout_margin="7dp"
+                   android:layout_centerVertical="true"
+                   />
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:hint="Start Date"
+                   android:layout_toRightOf="@+id/imgStartDate"/>
+
+               <ImageView
+                   android:id="@+id/imgFinishDate"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/calendar_week"
+                   android:layout_centerHorizontal="true"
+                   android:layout_margin="7dp"
+                   android:layout_centerVertical="true"
+                   />
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:hint="Finish Date"
+                   android:layout_toRightOf="@+id/imgFinishDate"/>
+               </RelativeLayout>
+
+           </LinearLayout>
+           <RelativeLayout
+               android:id="@+id/relative5"
+               android:layout_width="match_parent"
+               android:layout_height="70dp"
+               android:layout_below="@+id/relative4"
+               >
+
+               <ImageView
+                   android:id="@+id/imgReminding"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/alarm_icon"
+                   android:layout_margin="7dp"
+                   android:layout_centerVertical="true"/>
+               <EditText
+                   android:layout_toRightOf="@+id/imgReminding"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:hint="Reminding"/>
+           </RelativeLayout>
+
+
+
+       </RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="5dp"
+            android:id="@+id/fab"
+            android:src="@drawable/layer_554"
+            />
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
