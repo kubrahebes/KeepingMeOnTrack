@@ -9,8 +9,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainTabActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -20,13 +23,14 @@ public class MainTabActivity extends AppCompatActivity {
             R.drawable.fitness_icon_2,
             R.drawable.finance_icon
     };
+    private FirebaseAuth mAuth;
     TabLayout tabLayout;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
-
+        mAuth = FirebaseAuth.getInstance();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -79,6 +83,27 @@ public class MainTabActivity extends AppCompatActivity {
         public int getCount() {
             return 2;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_tab, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+               logout();
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void logout(){
+
     }
 }
 
