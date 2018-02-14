@@ -23,15 +23,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Created by Mahmoud on 2/05/2018.
+ */
+
 public class IntroFragment extends Fragment {
 
-    private static final String BACKGROUND_COLOR = "backgroundColor";
     private static final String PAGE = "page";
     private static final String IMAGE = "image";
     EditText sinInUserName;
     EditText sinUInPassword;
     private FirebaseAuth mAuth;
-    private int mBackgroundColor, mPage, IMAGE2;
+    private int mPage, IMAGE2;
 
     public static IntroFragment newInstance(int page, int image3) {
         IntroFragment frag = new IntroFragment();
@@ -139,6 +142,7 @@ public class IntroFragment extends Fragment {
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
+                          
                             clearEditext();
                             Intent intent = new Intent(getContext(), MainTabActivity.class);
                             startActivity(intent);
@@ -152,7 +156,6 @@ public class IntroFragment extends Fragment {
                         }
                     }
                 });
-
     }
 
     public void clearEditext() {

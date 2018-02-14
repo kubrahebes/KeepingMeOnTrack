@@ -5,6 +5,10 @@ import android.view.View;
 
 import com.example.user.keepingmeontrack.R;
 
+/**
+ * Created by Mahmoud on 2/05/2018.
+ */
+
 public class IntroPageTransformer implements ViewPager.PageTransformer {
 
     @Override

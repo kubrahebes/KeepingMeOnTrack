@@ -72,8 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    }
-
     public void getusers() {
         mAuth.createUserWithEmailAndPassword(singUPEmail.getText().toString(), sinUpPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
