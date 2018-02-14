@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Signup Success!", Toast.LENGTH_SHORT).show();
                                         FirebaseUser user = mAuth.getCurrentUser();
 /*
                                         LoginFragment fragment = new LoginFragment();
