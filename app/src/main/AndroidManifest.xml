@@ -17,18 +17,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SwipeActivity"
-            android:label="@string/title_activity_swape__tab"
+            android:name=".swipeanimation.IntroActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/SplashTheme" />
-
         <activity
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
             android:theme="@style/AppTheme"></activity>
-
+        <activity android:name=".FinanceGoalAdd"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

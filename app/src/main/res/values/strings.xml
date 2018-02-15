@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Keeping Me On Tract</string>
+    <string name="app_name">Keeping Me On Track</string>
     <string name="tab_fitness">FITNESS</string>
     <string name="title_activity_swape__tab">Swape_Tab</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Log Out</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <string name="title_activity_main_tab">MainTabActivity</string>
@@ -12,5 +12,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="finance_goal_tab_title">New Goal</string>
 
 </resources>

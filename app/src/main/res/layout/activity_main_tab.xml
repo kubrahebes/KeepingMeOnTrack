@@ -5,14 +5,13 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.user.keepingmeontrack.MainTabActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffb829"
+        android:background="#FFB829"
         android:paddingTop="@dimen/appbar_padding_top">
 
         <android.support.v7.widget.Toolbar
@@ -20,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-app:titleTextColor="#fff"
-            app:title="@string/app_name">
+            app:title="@string/app_name"
+            app:titleTextColor="#fff">
 
         </android.support.v7.widget.Toolbar>
 
@@ -35,15 +34,17 @@ app:titleTextColor="#fff"
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/tab_text_1"
 
-                android:text="@string/tab_text_1" />
+                />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
+                android:text="@string/tab_text_2"
+
+                />
 
 
         </android.support.design.widget.TabLayout>
