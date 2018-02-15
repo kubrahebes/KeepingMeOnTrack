@@ -38,18 +38,6 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         },3000);
-   /*
-        ImageView icon=findViewById(R.id.icon);
-        icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if ( pref.getBoolean("IS_LOGIN", false)){
-                    startActivity(new Intent(SplashActivity.this, MainTabActivity.class));
-                }else {
-                    startActivity(new Intent(SplashActivity.this, IntroActivity.class));
-                }
 
-            }
-        });*/
     }
 }
