@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
+    }
 
     public void getusers() {
         mAuth.createUserWithEmailAndPassword(singUPEmail.getText().toString(), sinUpPassword.getText().toString())
