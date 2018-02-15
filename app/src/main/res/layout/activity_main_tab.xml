@@ -11,7 +11,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#009688"
+        android:background="#FFB829"
         android:paddingTop="@dimen/appbar_padding_top">
 
         <android.support.v7.widget.Toolbar
@@ -19,10 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:titleTextColor="#fff"
             app:title="@string/app_name"
-
-            >
+            app:titleTextColor="#fff">
 
         </android.support.v7.widget.Toolbar>
 

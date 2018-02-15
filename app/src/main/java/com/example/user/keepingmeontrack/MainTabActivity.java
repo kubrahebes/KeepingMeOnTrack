@@ -1,8 +1,11 @@
 package com.example.user.keepingmeontrack;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,27 +14,40 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
+import com.example.user.keepingmeontrack.fragments.LoginFragment;
+import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainTabActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
     AppBarLayout appBarLayout;
     private int[] tabIcons = {
             R.drawable.fitness_icon_2,
             R.drawable.finance_icon
     };
+    private FirebaseAuth mAuth;
     TabLayout tabLayout;
     Toolbar toolbar;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
-
+        mAuth = FirebaseAuth.getInstance();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        pref = MainTabActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
+        editor = pref.edit();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -40,6 +56,15 @@ public class MainTabActivity extends AppCompatActivity {
         appBarLayout = findViewById(R.id.appbar);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
+        FloatingActionButton addNewGoal=findViewById(R.id.fab);
+
+        addNewGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainTabActivity.this,FinanceGoalAdd.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -95,12 +120,13 @@ public class MainTabActivity extends AppCompatActivity {
             switch (position) {
 
                 case 0:
-                    FitnessMainFragment fitness_fragment = new FitnessMainFragment();
-                    return fitness_fragment;
-
-                case 1:
                     FinancialMainFragment financial_fragment = new FinancialMainFragment();
                     return financial_fragment;
+
+
+                case 1:
+                    FitnessMainFragment fitness_fragment = new FitnessMainFragment();
+                    return fitness_fragment;
                 default:
                     return null;
             }
@@ -110,6 +136,31 @@ public class MainTabActivity extends AppCompatActivity {
         public int getCount() {
             return 2;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_tab, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+               logout();
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void logout(){
+        editor.putBoolean("IS_LOGIN", false);
+        editor.commit();
+        mAuth.signOut();
+        startActivity(new Intent(MainTabActivity.this, IntroActivity.class));
+        finish();
     }
 }
 

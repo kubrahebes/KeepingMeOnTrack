@@ -6,13 +6,13 @@ package com.example.user.keepingmeontrack.models;
 
 public class Users {
     private String userName;
-    private String userPassWord;
     private String userEmail;
+    private String uid;
 
-    public Users(String userName, String userPassWord, String userEmail) {
+    public Users(String userName, String userEmail, String uid) {
         this.userName = userName;
-        this.userPassWord = userPassWord;
         this.userEmail = userEmail;
+        this.uid = uid;
     }
 
     public Users() {
@@ -26,19 +26,19 @@ public class Users {
         this.userName = userName;
     }
 
-    public String getUserPassWord() {
-        return userPassWord;
-    }
-
-    public void setUserPassWord(String userPassWord) {
-        this.userPassWord = userPassWord;
-    }
-
     public String getUserEmail() {
         return userEmail;
     }
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

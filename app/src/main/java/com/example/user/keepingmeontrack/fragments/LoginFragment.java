@@ -97,7 +97,7 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getContext(), "Login Succsess!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Changed!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getContext(), MainTabActivity.class);
                             startActivity(intent);
 

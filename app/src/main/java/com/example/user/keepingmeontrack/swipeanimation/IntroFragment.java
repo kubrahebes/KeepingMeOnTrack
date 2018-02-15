@@ -1,6 +1,9 @@
 package com.example.user.keepingmeontrack.swipeanimation;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,6 +11,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +39,7 @@ public class IntroFragment extends Fragment {
     EditText sinUInPassword;
     private FirebaseAuth mAuth;
     private int mPage, IMAGE2;
+    private ProgressDialog mProgress;
 
     public static IntroFragment newInstance(int page, int image3) {
         IntroFragment frag = new IntroFragment();
@@ -44,9 +50,25 @@ public class IntroFragment extends Fragment {
         return frag;
     }
 
+    // create the sheredPreference for user
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        mProgress = new ProgressDialog(getContext());
+        mProgress.setTitle("Logging In...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
+
+
+
+        pref = getActivity().getSharedPreferences("MyPref", 0); // 0 - for private mode
+    editor = pref.edit();
 
         mAuth = FirebaseAuth.getInstance();
         if (!getArguments().containsKey(PAGE))
@@ -94,13 +116,15 @@ public class IntroFragment extends Fragment {
                 }
             });
 
-            signIn.setOnClickListener(new View.OnClickListener(){
+            signIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    mProgress.show();
                     LoginUser(sinInUserName.getText().toString(), sinUInPassword.getText().toString());
                 }
             });
-            forgotPwd.setOnClickListener(new View.OnClickListener(){
+            forgotPwd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showAddProductDialog();
@@ -128,17 +152,34 @@ public class IntroFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            //set the shered Preference for user who can login
+
+
+                            editor.putBoolean("IS_LOGIN", true);
+                            editor.commit();
+
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
+                            mProgress.dismiss();
+
+                            clearEditext();
                             Intent intent = new Intent(getContext(), MainTabActivity.class);
                             startActivity(intent);
+
                         } else {
+                            //set the shered Preference for user who cann't login
+
+                            editor.putBoolean("IS_LOGIN", false);
+                            editor.commit();
                             Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
+    public void clearEditext() {
+        sinInUserName.setText(" ");
+        sinUInPassword.setText(" ");
+    }
 
     private boolean validateForm() {
         boolean valid = true;
