@@ -25,11 +25,15 @@ android {
         }
     }
 }
-
+repositories {
+    maven { url "https://jitpack.io" }
+}
 dependencies {
     //cardview library for target add finance
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-auth:11.8.0'
