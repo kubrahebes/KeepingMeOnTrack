@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 
 /**
  * Created by User on 06.02.2018.
@@ -32,8 +39,27 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginFragment extends Fragment {
 
-    public LoginFragment() {
-    }
+    @BindView(R.id.login_logo)
+    ImageView loginLogo;
+    @BindView(R.id.user_name_edt)
+    EditText userNameEdt;
+    @BindView(R.id.password_edt)
+    EditText passwordEdt;
+    @BindView(R.id.sing_in_btn)
+    Button singInBtn;
+    @BindView(R.id.login_forgot)
+    TextView loginForgot;
+    @BindView(R.id.login_forget_click)
+    TextView loginForgetClick;
+    @BindView(R.id.noaccount)
+    TextView noaccount;
+    @BindView(R.id.register_btn)
+    TextView registerBtn;
+    @BindView(R.id.intro_background)
+    RelativeLayout introBackground;
+    Unbinder unbinder;
+
+
     DatabaseReference myRef;
     FirebaseDatabase database;
     EditText sinInUserName;
@@ -43,52 +69,28 @@ public class LoginFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
     }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-        sinInUserName = rootView.findViewById(R.id.user_name_edt);
-        sinUInPassword = rootView.findViewById(R.id.password_edt);
-        //final EditText singInEmail = rootView.findViewById(R.id.signup_email);
-        Button sinInBtn = rootView.findViewById(R.id.sing_in_btn);
-        TextView singUpBtn = rootView.findViewById(R.id.register_btn);
-        TextView forgotB = rootView.findViewById(R.id.login_forget_click);
+        unbinder = ButterKnife.bind(this, rootView);
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users");
-        mAuth = FirebaseAuth.getInstance();
 
-        singUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        sinInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginUser(sinInUserName.getText().toString(), sinUInPassword.getText().toString());
-            }
-        });
-
-        forgotB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAddProductDialog();
-            }
-        });
         return rootView;
     }
 
-    private void LoginUser(String mail, final String password) {
+    /**
+     * get user ont he firebas for login
+     *
+     * @param mail
+     * @param password
+     */
 
+    private void LoginUser(String mail, final String password) {
         if (!validateForm()) {
             return;
         }
-        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(mail, password)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
 
@@ -107,6 +109,12 @@ public class LoginFragment extends Fragment {
                     }
                 });
     }
+
+    /**
+     * Validate control for the email and password EditText
+     *
+     * @return
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -126,9 +134,36 @@ public class LoginFragment extends Fragment {
         }
         return valid;
     }
+
+    /**
+     * Dialog for  Forget password
+     */
+
     private void showAddProductDialog() {
         ForgotPassDialog dialog = new ForgotPassDialog();
         dialog.show(getActivity().getFragmentManager(), "example");
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.sing_in_btn, R.id.login_forget_click, R.id.register_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.sing_in_btn:
+                LoginUser(sinInUserName.getText().toString(), sinUInPassword.getText().toString());
+                break;
+            case R.id.login_forget_click:
+                showAddProductDialog();
+                break;
+            case R.id.register_btn:
+                Intent intent = new Intent(getContext(), RegisterActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

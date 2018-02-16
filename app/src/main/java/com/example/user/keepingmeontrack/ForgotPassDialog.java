@@ -4,22 +4,38 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.keepingmeontrack.fragments.LoginFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 public class ForgotPassDialog extends DialogFragment {
+
+    @BindView(R.id.forgot_logo)
+    ImageView forgotLogo;
+    @BindView(R.id.forgot_text)
+    TextView forgotText;
+    @BindView(R.id.forgot_username)
+    EditText forgotUsername;
+    @BindView(R.id.forgot_button)
+    Button forgotButton;
+    Unbinder unbinder;
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -83,5 +99,23 @@ public class ForgotPassDialog extends DialogFragment {
         });
 
         return addDialog;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick(R.id.forgot_button)
+    public void onViewClicked() {
     }
 }

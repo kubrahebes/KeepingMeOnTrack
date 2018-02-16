@@ -1,48 +1,62 @@
 package com.example.user.keepingmeontrack;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
-import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainTabActivity extends AppCompatActivity {
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    AppBarLayout appBarLayout;
+public class MainTabActivity extends AppCompatActivity {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.tabs)
+    TabLayout tabs;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
+    @BindView(R.id.container)
+    ViewPager container;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.main_content)
+    CoordinatorLayout mainContent;
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
     private int[] tabIcons = {
             R.drawable.fitness_icon_2,
             R.drawable.finance_icon
     };
     private FirebaseAuth mAuth;
-    TabLayout tabLayout;
-    Toolbar toolbar;
+
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
+        ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         pref = MainTabActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
@@ -50,24 +64,9 @@ public class MainTabActivity extends AppCompatActivity {
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        appBarLayout = findViewById(R.id.appbar);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        container.setAdapter(mSectionsPagerAdapter);
 
-        FloatingActionButton addNewGoal=findViewById(R.id.fab);
-
-        addNewGoal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainTabActivity.this,FinanceGoalAdd.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        container.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -77,11 +76,11 @@ public class MainTabActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        appBarLayout.setBackgroundColor(Color.parseColor("#FFB829"));
+                        appbar.setBackgroundColor(Color.parseColor("#FFB829"));
                         toolbar.setTitle("Finance");
                         break;
                     case 1:
-                        appBarLayout.setBackgroundColor(Color.parseColor("#D6376B"));
+                        appbar.setBackgroundColor(Color.parseColor("#D6376B"));
                         toolbar.setTitle("Fitness");
                         break;
                 }
@@ -92,20 +91,26 @@ public class MainTabActivity extends AppCompatActivity {
 
             }
         });
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(container));
         setupTabIcons();
 
 
     }
 
 
-
     private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        tabs.getTabAt(0).setIcon(tabIcons[1]);
+        tabs.getTabAt(1).setIcon(tabIcons[0]);
 
     }
 
+
+
+    @OnClick(R.id.fab)
+    public void onViewClicked() {
+        Intent intent = new Intent(MainTabActivity.this, FinanceGoalAdd.class);
+        startActivity(intent);
+    }
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -147,14 +152,15 @@ public class MainTabActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-               logout();
+                logout();
                 return true;
 
 
         }
         return super.onOptionsItemSelected(item);
     }
-    public void logout(){
+
+    public void logout() {
         editor.putBoolean("IS_LOGIN", false);
         editor.commit();
         mAuth.signOut();
