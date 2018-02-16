@@ -81,8 +81,6 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
 
         toolbar.setTitle(R.string.finance_goal_tab_title);
-
-
         pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         uID = pref.getString("uID", null);
