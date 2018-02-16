@@ -10,7 +10,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by Mahmoud on 2/05/2018.
@@ -49,8 +57,6 @@ public class IntroFragment extends Fragment {
         return frag;
     }
 
-    // create the sheredPreference for user
-
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     @Override
@@ -63,8 +69,11 @@ public class IntroFragment extends Fragment {
         mProgress.setCancelable(false);
         mProgress.setIndeterminate(true);
 
-      pref = getActivity().getSharedPreferences("MyPref", 0); // 0 - for private mode
-    editor = pref.edit();
+
+        pref = getActivity().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        editor = pref.edit();
+
+    
 
         mAuth = FirebaseAuth.getInstance();
         if (!getArguments().containsKey(PAGE))
@@ -154,7 +163,7 @@ public class IntroFragment extends Fragment {
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             //Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
-                          
+
                             clearEditext();
                             Intent intent = new Intent(getContext(), MainTabActivity.class);
                             startActivity(intent);

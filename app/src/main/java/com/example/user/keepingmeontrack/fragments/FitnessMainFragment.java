@@ -17,8 +17,9 @@ public class FitnessMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_main_fitness , container, false);
-       // ((SwipeActivity)getActivity()).updateStatusBarColor("#ffb829");
 
 
-        return rootView;}
+
+        return rootView;
+    }
 }
