@@ -1,29 +1,38 @@
 package com.example.user.keepingmeontrack;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton.LayoutParams;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainTabActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
@@ -35,8 +44,6 @@ public class MainTabActivity extends AppCompatActivity {
     AppBarLayout appbar;
     @BindView(R.id.container)
     ViewPager container;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
     @BindView(R.id.main_content)
     CoordinatorLayout mainContent;
 
@@ -55,6 +62,94 @@ public class MainTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
+
+
+
+
+                  //** Here is Circled Floating Action Button code **///
+
+        //I removed the butterknife method for old floatingbutton because the whole code now uses only Java.//
+
+        final ImageView fabIconNew = new ImageView(this);
+        // Setting the icon in the center of the Floating Action Button
+        fabIconNew.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.plus));
+
+        final FloatingActionButton rightLowerButton = new FloatingActionButton.Builder(this)
+                .setContentView(fabIconNew)
+                .setPosition(FloatingActionButton.POSITION_BOTTOM_RIGHT)
+                .build();
+        //Here I set the position to bottom of right.
+
+        // Created menu items which are also Floating Action Buttons
+        SubActionButton.Builder rLSubBuilder = new SubActionButton.Builder(this);
+        LayoutParams params = new LayoutParams(190, 190);
+        rLSubBuilder.setLayoutParams(params);
+        //Here I set the icons sizes 190-190.
+
+
+        // Created an image view for each menu item
+        ImageView subMenuDebit = new ImageView(this);
+        ImageView subMenuAddGoal = new ImageView(this);
+        // Set the icon for each menu item
+        subMenuDebit.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.debit));
+        subMenuAddGoal.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.goal));
+
+
+        final FloatingActionMenu rightLowerMenu = new FloatingActionMenu.Builder(this)
+                .setStartAngle(260)
+                .setEndAngle(200)
+                .addSubActionView(rLSubBuilder.setContentView(subMenuDebit).build())
+                .addSubActionView(rLSubBuilder.setContentView(subMenuAddGoal).build())
+                .attachTo(rightLowerButton)
+                .build();
+
+        //Here is the Floating button menu builder
+
+
+        // This will listen for menu open and close events to animate the button content view
+        rightLowerMenu.setStateChangeListener(new FloatingActionMenu.MenuStateChangeListener() {
+            @Override
+            public void onMenuOpened(FloatingActionMenu menu) {
+                // Rotate the icon of rightLowerButton 45 degrees clockwise
+                fabIconNew.setRotation(0);
+                PropertyValuesHolder pvhR = PropertyValuesHolder.ofFloat(View.ROTATION, 45);
+                ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(fabIconNew, pvhR);
+                animation.start();
+
+            }
+
+            @Override
+            public void onMenuClosed(FloatingActionMenu menu) {
+                // Rotate the icon of rightLowerButton 45 degrees counter-clockwise
+                fabIconNew.setRotation(45);
+                PropertyValuesHolder pvhR = PropertyValuesHolder.ofFloat(View.ROTATION, 0);
+                ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(fabIconNew, pvhR);
+                animation.start();
+            }
+        });
+
+        // OnClickListeners for each menu item button
+        subMenuDebit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "I am working :D", Toast.LENGTH_SHORT).show();
+                // Here we need to start debit fragment or activity when It finished I will add it.
+            }
+        });
+
+
+        subMenuAddGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainTabActivity.this, FinanceGoalAdd.class);
+                startActivity(intent);
+                //Here I started FinanceGoalAdd activity.
+            }
+        });
+
+        //** END OF Floating Action Button code **///
+
+
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
@@ -103,15 +198,6 @@ public class MainTabActivity extends AppCompatActivity {
         tabs.getTabAt(1).setIcon(tabIcons[0]);
 
     }
-
-
-
-    @OnClick(R.id.fab)
-    public void onViewClicked() {
-        Intent intent = new Intent(MainTabActivity.this, FinanceGoalAdd.class);
-        startActivity(intent);
-    }
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
