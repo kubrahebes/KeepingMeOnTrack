@@ -69,8 +69,11 @@ public class IntroFragment extends Fragment {
         mProgress.setCancelable(false);
         mProgress.setIndeterminate(true);
 
+
         pref = getActivity().getSharedPreferences("MyPref", 0); // 0 - for private mode
         editor = pref.edit();
+
+    
 
         mAuth = FirebaseAuth.getInstance();
         if (!getArguments().containsKey(PAGE))
