@@ -1,18 +1,18 @@
 package com.example.user.keepingmeontrack;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-import static butterknife.ButterKnife.findById;
 
 import com.example.user.keepingmeontrack.models.Goal;
 import com.google.firebase.database.DatabaseReference;
@@ -26,12 +26,7 @@ import butterknife.ButterKnife;
  */
 
 public class FinanceGoalAdd extends AppCompatActivity {
-    EditText addGoalName,
-            addTotalMoney,
-            addDailyAllowance,
-            addStartDate,
-            addEndDate,
-            addreminding;
+
     FirebaseDatabase database;
     DatabaseReference myRef;
     String uID;
@@ -39,6 +34,45 @@ public class FinanceGoalAdd extends AppCompatActivity {
     SharedPreferences.Editor editor;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.fab1)
+    FloatingActionButton fab1;
+    @BindView(R.id.imgGoalName)
+    ImageView imgGoalName;
+    @BindView(R.id.goalName)
+    EditText goalName;
+    @BindView(R.id.relative1)
+    RelativeLayout relative1;
+    @BindView(R.id.imgHowMuch)
+    ImageView imgHowMuch;
+    @BindView(R.id.totalMoney)
+    EditText totalMoney;
+    @BindView(R.id.relative2)
+    RelativeLayout relative2;
+    @BindView(R.id.imgDailyAllowance)
+    ImageView imgDailyAllowance;
+    @BindView(R.id.dailyAllowance)
+    EditText dailyAllowance;
+    @BindView(R.id.relative3)
+    RelativeLayout relative3;
+    @BindView(R.id.imgStartDate)
+    ImageView imgStartDate;
+    @BindView(R.id.startDate)
+    EditText startDate;
+    @BindView(R.id.imgFinishDate)
+    ImageView imgFinishDate;
+    @BindView(R.id.finishDate)
+    EditText finishDate;
+    @BindView(R.id.relative4)
+    LinearLayout relative4;
+    @BindView(R.id.imgReminding)
+    ImageView imgReminding;
+    @BindView(R.id.reminding)
+    EditText reminding;
+    @BindView(R.id.relative5)
+    RelativeLayout relative5;
+    @BindView(R.id.card_view)
+    CardView cardView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +80,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-       toolbar.setTitle(R.string.finance_goal_tab_title);
-
-        addGoalName = findViewById(R.id.goalName);
-        addTotalMoney = findViewById(R.id.totalMoney);
-        addDailyAllowance = findViewById(R.id.dailyAllowance);
-        addStartDate = findViewById(R.id.startDate);
-        addEndDate = findViewById(R.id.finishDate);
-        addreminding = findViewById(R.id.reminding);
-
-
+        toolbar.setTitle(R.string.finance_goal_tab_title);
 
 
         pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
@@ -65,14 +90,14 @@ public class FinanceGoalAdd extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab1);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+
+        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (validateControl()) {
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
-                    Goal newGoal = new Goal(uID, addGoalName.getText().toString(), addTotalMoney.getText().toString(), addDailyAllowance.getText().toString(),
-                            addStartDate.getText().toString(), addEndDate.getText().toString(), addreminding.getText().toString(), 1);
+                    Goal newGoal = new Goal(uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
+                            startDate.getText().toString(), finishDate.getText().toString(), reminding.getText().toString(), 1);
                     myRef.child("finance").push().setValue(newGoal);
 
 
@@ -87,7 +112,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
     public boolean validateControl() {
 
-        if (addGoalName.getText().toString().equals("") || addTotalMoney.getText().toString().equals("") || addDailyAllowance.getText().toString().equals("") || addreminding.getText().toString().equals(" ")) {
+        if (goalName.getText().toString().equals("") || totalMoney.getText().toString().equals("") || dailyAllowance.getText().toString().equals("") || reminding.getText().toString().equals(" ")) {
 
             return false;
         } else {

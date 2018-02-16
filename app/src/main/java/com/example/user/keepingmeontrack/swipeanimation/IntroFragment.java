@@ -47,7 +47,6 @@ public class IntroFragment extends Fragment {
     private ProgressDialog mProgress;
 
 
-
     public static IntroFragment newInstance(int page, int image3) {
         IntroFragment frag = new IntroFragment();
         Bundle b = new Bundle();
@@ -59,6 +58,7 @@ public class IntroFragment extends Fragment {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,12 +156,14 @@ public class IntroFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
                             //set the shered Preference for user who can login
-
+                            editor.putString("uID", user.getUid());
                             editor.putBoolean("IS_LOGIN", true);
+
                             editor.commit();
 
-                            FirebaseUser user = mAuth.getCurrentUser();
+
                             //Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
 
                             clearEditext();
