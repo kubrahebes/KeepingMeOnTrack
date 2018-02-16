@@ -2,35 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shadow"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardPreventCornerOverlap = "false"
-        card_view:cardElevation="6dp"
+        android:layout_height="180dp"
+        card_view:cardCornerRadius="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        card_view:cardElevation="18dp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:id="@+id/rl3"
+                card_view:cardCornerRadius="8dp"
+                app:cardBackgroundColor="#52b2d7"
+                android:layout_width="15dp"
+                android:layout_height="180dp"></android.support.v7.widget.CardView>
             <ImageView
                 android:id="@+id/goal_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/goalicon"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="25dp"
                 />
             <TextView
+                android:layout_toRightOf="@id/rl3"
                 android:id="@+id/tv_goal_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_toRightOf="@id/goal_image"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="30dp"
                 android:text="Bag"
                 android:textColor="#de3c3b3b"
                 android:textSize="22sp"
@@ -40,7 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_goal_name"
-                android:layout_toRightOf="@id/goal_image"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/rl3"
                 android:text="20.2.2018"
                 android:textColor="#de000000"
                 android:textSize="18sp" />
@@ -50,8 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/first_day"
                 android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginBottom="25dp"
-                android:layout_toRightOf="@id/goal_image"
+                android:layout_toRightOf="@id/rl3"
                 android:text="20.6.2018"
                 android:textColor="#de000000"
                 android:textSize="18sp" />
@@ -60,48 +71,50 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/finish_day"
-                android:layout_toRightOf="@id/goal_image">
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@id/rl3">
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="1.5dp"
+                    android:background="#191919"
                     />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tv_goal_name"
-                android:layout_alignStart="@+id/tv_goal_name"
-                android:layout_below="@+id/finish_day"
-                android:layout_marginLeft="23dp"
-                android:layout_marginStart="23dp">
+                android:layout_below="@id/rl"
+                android:layout_centerHorizontal="true"
+
+
+                >
                 <TextView
                     android:id="@+id/goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-
+                    android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="GoaL"
                     android:textAllCaps="true"
                     android:textColor="#52b2d7"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     />
                 <TextView
                     android:id="@+id/days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="22dp"
+                    android:layout_toRightOf="@id/goal"
+                    android:layout_marginLeft="32dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="EVERY DAY"
                     android:textAllCaps="true"
                     android:textColor="#ffb829"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     />
             </RelativeLayout>
