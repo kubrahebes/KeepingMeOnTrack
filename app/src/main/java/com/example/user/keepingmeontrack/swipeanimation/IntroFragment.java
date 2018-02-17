@@ -60,10 +60,12 @@ public class IntroFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        //Progress dialog for logging screen. Shows the user a progress while he is logging.
         mProgress = new ProgressDialog(getContext());
         mProgress.setTitle("Processing...");
         mProgress.setMessage("Please wait...");
-        mProgress.setCancelable(false);
+        mProgress.setCancelable(true);
         mProgress.setIndeterminate(true);
 
 
@@ -154,7 +156,7 @@ public class IntroFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //set the shered Preference for user who can login
+                            //set the shared Preference for user who can login
                             editor.putString("uID", user.getUid());
                             editor.putBoolean("IS_LOGIN", true);
 
@@ -162,7 +164,7 @@ public class IntroFragment extends Fragment {
 
 
                             //Toast.makeText(getContext(), "succsess", Toast.LENGTH_SHORT).show();
-
+                            mProgress.dismiss();
                             clearEditext();
                             Intent intent = new Intent(getContext(), MainTabActivity.class);
                             startActivity(intent);
