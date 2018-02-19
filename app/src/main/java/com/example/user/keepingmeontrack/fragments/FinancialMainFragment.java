@@ -1,16 +1,20 @@
 package com.example.user.keepingmeontrack.fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.FinanceGoalAdd;
+import com.example.user.keepingmeontrack.FinanceGoalDetail;
 import com.example.user.keepingmeontrack.R;
 import com.example.user.keepingmeontrack.adapters.GoalAdapter;
 import com.example.user.keepingmeontrack.models.Goal;
@@ -39,17 +43,27 @@ public class FinancialMainFragment extends Fragment {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     String uID;
+    Goal value;
+    private ProgressDialog mProgress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_main_finance, container, false);
         ButterKnife.bind(this, rootView);
 
+        mProgress = new ProgressDialog(getContext());
+        mProgress.setTitle("Processing...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
+        mProgress.show();
+
         /**
          *Firebase connection
          */
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase").child("finance");
+
         getdata();
 
         /**
@@ -72,9 +86,13 @@ public class FinancialMainFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Goal> financeGoalList = new ArrayList<>();
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
-
-                    Goal value = verigetir.getValue(Goal.class);
+                    mProgress.cancel();
+                    value = verigetir.getValue(Goal.class);
+                    if (value.getUid().equals(uID)) {
                         financeGoalList.add(value);
+                    } else {
+                        // Toast.makeText(getContext(), "Veri Yok", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 setdata(financeGoalList);
             }
@@ -92,10 +110,19 @@ public class FinancialMainFragment extends Fragment {
     /**
      * Set Adapter
      */
-    public void setdata(ArrayList<Goal> list) {
+    public void setdata(final ArrayList<Goal> list) {
 
         GoalAdapter adapte = new GoalAdapter(getContext(), list);
         financeGoalListview.setAdapter(adapte);
+        financeGoalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), FinanceGoalDetail.class);
+                intent.putExtra("selectId", list.get(i).getId());
+                // Toast.makeText(getContext(), list.get(i).getId(), Toast.LENGTH_SHORT).show();
 
+                startActivity(intent);
+            }
+        });
     }
 }

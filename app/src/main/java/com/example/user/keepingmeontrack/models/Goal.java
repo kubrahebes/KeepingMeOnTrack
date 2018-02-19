@@ -5,6 +5,7 @@ package com.example.user.keepingmeontrack.models;
  */
 
 public class Goal {
+    private String id;
     private String uid;
     private String Name;
     private String totalMoney;
@@ -65,7 +66,7 @@ public class Goal {
         this.dailyAllowance = dailyAllowance;
     }
 
-    public Goal(String uid, String name, String totalMoney, String dailyAllowance, String startDate, String endDate, String reminding, int type) {
+    public Goal(String id, String uid, String name, String totalMoney, String dailyAllowance, String startDate, String endDate, String reminding, int type) {
         this.uid = uid;
         Name = name;
         this.totalMoney = totalMoney;
@@ -74,6 +75,7 @@ public class Goal {
         this.endDate = endDate;
         this.reminding = reminding;
         this.type = type;
+        this.id = id;
 
     }
 
@@ -99,6 +101,14 @@ public class Goal {
 
     public void setReminding(String reminding) {
         this.reminding = reminding;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 

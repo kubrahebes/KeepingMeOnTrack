@@ -1,61 +1,184 @@
 package com.example.user.keepingmeontrack;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.user.keepingmeontrack.models.Goal;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by elifasli on 16.02.2018.
  */
 
 public class FinanceGoalDetail extends AppCompatActivity {
-    PieChart pieChart;
+
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    Goal value;
+    String selectedItem;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.totalMoney)
+    TextView totalMoney;
+    @BindView(R.id.piechart)
+    PieChart piechart;
+    @BindView(R.id.daily)
+    ImageView daily;
+    @BindView(R.id.date)
+    TextView date;
+    @BindView(R.id.startDate)
+    TextView startDate;
+    @BindView(R.id.finishDate)
+    TextView finishDate;
+    @BindView(R.id.separator)
+    View separator;
+    @BindView(R.id.relative2)
+    RelativeLayout relative2;
+    @BindView(R.id.allowance)
+    ImageView allowance;
+    @BindView(R.id.dailyallowance)
+    TextView dailyallowance;
+    @BindView(R.id.totalmoney)
+    TextView totalmoney;
+    @BindView(R.id.relative3)
+    RelativeLayout relative3;
+    @BindView(R.id.card_view)
+    CardView cardView;
+    @BindView(R.id.totalSaving)
+    TextView totalSaving;
+    @BindView(R.id.totalGoal)
+    TextView totalGoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.finance_goal_detail);
+        ButterKnife.bind(this);
 
-        pieChart = (PieChart) findViewById(R.id.piechart);
-        pieChart.setUsePercentValues(true);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setExtraOffsets(0,0,0,0);
+        Intent intent = getIntent();
+        selectedItem = intent.getStringExtra("selectId");
 
-        pieChart.setDragDecelerationFrictionCoef(0.95f);
+
+        /**
+         *Firebase connection
+         */
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("datbase").child("finance");
+        getdata();
+        setGraph();
+
+    }
+
+
+    /**
+     * get data from the firebase
+     */
+    public void getdata() {
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
+
+                    value = verigetir.getValue(Goal.class);
+
+                    if (selectedItem.equals(value.getId())) {
+                        setdata(value);
+                    }
+                    //  Toast.makeText(FinanceGoalDetail.this, ""+value.getId().equals(selectedItem), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(FinanceGoalDetail.this, "Error", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
+    /**
+     * Set Adapter
+     */
+    public void setdata(Goal obje) {
+        title.setText(obje.getName());
+        totalMoney.setText(obje.getTotalMoney() + " $");
+        startDate.setText(obje.getStartDate());
+        finishDate.setText(obje.getEndDate());
+        totalGoal.setText(obje.getTotalMoney() + " $");
+        totalSaving.setText(obje.getDailyAllowance() + "  $");
+      //  calculateDate(obje.getStartDate(),obje.getEndDate());
+
+
+
+    }
+/*
+    public void calculateDate(String startDate, String finishDate){
+        int startDateInt=Integer.parseInt(startDate);
+        int finishDateInt=Integer.parseInt(finishDate);
+        Toast.makeText(this,  "" +   finishDateInt, Toast.LENGTH_SHORT).show();
+
+
+    }*/
+    public void setGraph() {
+
+        piechart.setUsePercentValues(true);
+        piechart.getDescription().setEnabled(false);
+        piechart.setExtraOffsets(0, 0, 0, 0);
+
+        piechart.setDragDecelerationFrictionCoef(0.95f);
 
         //içi dolu istersen hole false yap
-        pieChart.setDrawHoleEnabled(false);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
+        piechart.setDrawHoleEnabled(false);
+        piechart.setHoleColor(Color.WHITE);
+        piechart.setTransparentCircleRadius(61f);
         //şeffaflık kalksın diye transparanı 30f yap.
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
-        yValues.add(new PieEntry(34f,"Hire"));
-        yValues.add(new PieEntry(36f,"Foods"));
-        yValues.add(new PieEntry(30f,"Technology"));
+        yValues.add(new PieEntry(34f, "Hire"));
+        yValues.add(new PieEntry(36f, "Foods"));
+        yValues.add(new PieEntry(30f, "Technology"));
 
-        pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
+        piechart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
 
-        PieDataSet dataSet = new PieDataSet(yValues,"Finance");
+        PieDataSet dataSet = new PieDataSet(yValues, "Finance");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
 
-        PieData data =new PieData((dataSet));
+        PieData data = new PieData((dataSet));
         data.setValueTextSize(10f);
         data.setValueTextColor(Color.YELLOW);
 
-        pieChart.setData(data);
+        piechart.setData(data);
 
 
     }

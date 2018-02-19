@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
+import com.example.user.keepingmeontrack.fragments.LoginFragment;
 import com.example.user.keepingmeontrack.models.Goal;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -102,9 +105,18 @@ public class FinanceGoalAdd extends AppCompatActivity {
             public void onClick(View view) {
                 if (validateControl()) {
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
-                    Goal newGoal = new Goal(uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
+                    String key =  myRef.child("finance").push().getKey();
+                    Goal newGoal = new Goal(key, uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
                             startDate.getText().toString(), finishDate.getText().toString(), reminding.getText().toString(), 1);
-                    myRef.child("finance").push().setValue(newGoal);
+
+                    myRef.child("finance").child(key).setValue(newGoal);
+
+
+                    FinancialMainFragment fragment = new FinancialMainFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame, fragment);
+                    transaction.commit();
+                    finish();
 
 
                 } else {
