@@ -58,7 +58,7 @@ public class GoalAdapter extends ArrayAdapter<Goal> {
                 goalName.setText(obje.getName());
                 startDate.setText(obje.getStartDate());
                 endDate.setText(obje.getEndDate());
-                Toast.makeText(getContext(), obje.getName(), Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(getContext(), obje.getName(), Toast.LENGTH_SHORT).show();
                 if (obje.getType() == 1) {
                     type.setText("GOAL");
                     icon.setBackgroundResource(R.drawable.goalicon);
