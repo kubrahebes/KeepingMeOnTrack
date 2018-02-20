@@ -1,8 +1,11 @@
 package com.example.user.keepingmeontrack.swipeanimation;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -123,7 +126,8 @@ public class IntroFragment extends Fragment {
             signIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mProgress.show();
+                    mProgress.show(); //Shows the progress dialog.
+                    isOnline(); //Checking if the user is online or not.
                     LoginUser(sinInUserName.getText().toString(), sinUInPassword.getText().toString());
                 }
             });
@@ -221,5 +225,15 @@ public class IntroFragment extends Fragment {
         ForgotPassDialog dialog = new ForgotPassDialog();
         dialog.show(getActivity().getFragmentManager(), "example");
 
+    }
+
+    public void isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            mProgress.hide();
+            Toast.makeText(getContext(), "No Internet connection!", Toast.LENGTH_LONG).show();
+        }
     }
 }
