@@ -1,10 +1,6 @@
 package com.example.user.keepingmeontrack;
 
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
@@ -47,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.frame_layout)
     FrameLayout frameLayout;
     private FirebaseAuth mAuth;
-    private ProgressDialog mProgress;
 
 
     @Override
@@ -73,12 +68,6 @@ public class RegisterActivity extends AppCompatActivity {
         myRef = database.getReference("datbase");
         mAuth = FirebaseAuth.getInstance();
 
-        //Progress dialog for logging screen. Shows the user a progress while he is logging.
-        mProgress = new ProgressDialog(this);
-        mProgress.setTitle("Processing...");
-        mProgress.setMessage("Please wait...");
-        mProgress.setCancelable(true);
-        mProgress.setIndeterminate(true);
 
 
     }
@@ -123,20 +112,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.sing_up_btn)
     public void onViewClicked() {
-        isOnline();//Checking if the user is online or not.
-        mProgress.show();  //Shows the progress dialog.
         getusers();
-    }
-
-
-    //Method for checking if there is an internet or not.
-    public void isOnline() {
-        ConnectivityManager conMgr = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
-
-        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
-            mProgress.hide();
-            Toast.makeText(this, "No Internet connection!", Toast.LENGTH_LONG).show();
-        }
     }
 }

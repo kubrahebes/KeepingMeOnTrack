@@ -170,17 +170,6 @@ public class MainTabActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-
-                if (position == 0) {
-                    rightLowerButton.setVisibility(FloatingActionButton.VISIBLE);
-                }
-                else if (position == 1 ) {
-                    rightLowerButton.setVisibility(FloatingActionButton.INVISIBLE);
-                }
-                else {
-                    rightLowerButton.setVisibility(View.GONE);
-                }
-
                 switch (position) {
                     case 0:
                         appbar.setBackgroundColor(Color.parseColor("#FFB829"));
