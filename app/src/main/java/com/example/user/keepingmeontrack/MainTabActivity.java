@@ -132,7 +132,8 @@ public class MainTabActivity extends AppCompatActivity {
         subMenuDebit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "I am working :D", Toast.LENGTH_SHORT).show();
+           Intent intent =new Intent(MainTabActivity.this,FinanceDebitAdd.class);
+           startActivity(intent);
                 // Here we need to start debit fragment or activity when It finished I will add it.
             }
         });
