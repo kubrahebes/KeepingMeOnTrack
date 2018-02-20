@@ -75,8 +75,7 @@ public class FinanceGoalDetail extends AppCompatActivity {
     TextView totalSaving;
     @BindView(R.id.totalGoal)
     TextView totalGoal;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
