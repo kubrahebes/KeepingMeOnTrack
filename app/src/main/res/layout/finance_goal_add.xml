@@ -104,49 +104,39 @@
                     android:hint="Daily Allowance" />
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/relative4"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/relative3">
 
                 <RelativeLayout
+                    android:id="@+id/relative4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/relative3">
 
                     <ImageView
-                        android:id="@+id/imgStartDate"
+                        android:id="@+id/imgReminding"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_margin="7dp"
-                        android:src="@drawable/calendar_day" />
+                        android:src="@drawable/alarm_icon"
+                        />
 
-                    <EditText
-                        android:id="@+id/startDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/imgStartDate"
-                        android:hint="Start Date" />
-
-                    <ImageView
-                        android:id="@+id/imgFinishDate"
+                    <Spinner
+                        android:id="@+id/spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="7dp"
-                        android:src="@drawable/calendar_week" />
+                        android:layout_toRightOf="@+id/imgReminding"
+                        android:layout_marginTop="20dp">
 
-                    <EditText
-                        android:id="@+id/finishDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/imgFinishDate"
-                        android:hint="Finish Date" />
+
+                    </Spinner>
+
+
+
+
+
                 </RelativeLayout>
 
-            </LinearLayout>
+
 
             <RelativeLayout
                 android:id="@+id/relative5"
@@ -154,23 +144,16 @@
                 android:layout_height="70dp"
                 android:layout_below="@+id/relative4">
 
-                <ImageView
-                    android:id="@+id/imgReminding"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="7dp"
-                    android:src="@drawable/alarm_icon" />
 
-                <EditText
-                    android:id="@+id/reminding"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/imgReminding"
-                    android:hint="Reminding" />
+
             </RelativeLayout>
 
         </RelativeLayout>
 
+
     </android.support.v7.widget.CardView>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame"></FrameLayout>
 </LinearLayout>

@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/bag"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -18,10 +18,10 @@
         android:text="Bag" />
 
     <TextView
-        android:id="@+id/money"
+        android:id="@+id/totalMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bag"
+        android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:textColor="#de000000"
@@ -31,7 +31,7 @@
     <com.github.mikephil.charting.charts.PieChart
         android:layout_width="360dp"
         android:layout_height="170dp"
-        android:layout_below="@+id/money"
+        android:layout_below="@+id/totalMoney"
         android:id="@+id/piechart"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -84,7 +84,7 @@
                         android:layout_toRightOf="@+id/daily"
                         />
                     <TextView
-                        android:id="@+id/date1"
+                        android:id="@+id/startDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
@@ -98,9 +98,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
+                        android:id="@+id/finishDate"
                         android:textColor="#8a000000"
                         android:text="14.12.2019"
-                        android:layout_below="@+id/date1"
+                        android:layout_below="@+id/startDate"
                         android:layout_toRightOf="@+id/date"
                         android:layout_marginLeft="20dp"
                         />
@@ -140,7 +141,7 @@
                         android:layout_marginTop="10dp"
                         />
                     <TextView
-                        android:id="@+id/zero"
+                        android:id="@+id/totalSaving"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
@@ -155,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:layout_below="@+id/zero"
+                        android:layout_below="@+id/totalSaving"
                         android:textColor="#de000000"
                         android:text="Total Money"
                         android:layout_toRightOf="@+id/allowance"
@@ -167,6 +168,7 @@
                         android:textSize="14sp"
                         android:textColor="#8a000000"
                         android:text="1000 Dollar"
+                        android:id="@+id/totalGoal"
                         android:layout_below="@+id/totalmoney"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="10dp"
