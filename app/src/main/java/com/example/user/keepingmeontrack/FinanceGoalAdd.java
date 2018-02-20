@@ -11,14 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
-import com.example.user.keepingmeontrack.fragments.LoginFragment;
 import com.example.user.keepingmeontrack.models.Goal;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -67,6 +66,10 @@ public class FinanceGoalAdd extends AppCompatActivity {
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
+    @BindView(R.id.spinner)
+    Spinner spinner;
+    @BindView(R.id.frame)
+    FrameLayout frame;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
         setContentView(R.layout.finance_goal_add);
         ButterKnife.bind(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,7 +100,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
                     String key = myRef.child("finance").push().getKey();
                     Goal newGoal = new Goal(key, uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
-                           "subat", "mart", "Every Day", 1);
+                            "subat", "mart", spinner.getSelectedItem().toString(), 1);
 
                     myRef.child("finance").child(key).setValue(newGoal);
 
@@ -120,7 +123,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
     public boolean validateControl() {
 
-        if (goalName.getText().toString().equals("") || totalMoney.getText().toString().equals("") || dailyAllowance.getText().toString().equals("") ) {
+        if (goalName.getText().toString().equals("") || totalMoney.getText().toString().equals("") || dailyAllowance.getText().toString().equals("")) {
 
             return false;
         } else {

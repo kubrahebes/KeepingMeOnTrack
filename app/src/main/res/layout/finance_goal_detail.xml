@@ -7,15 +7,18 @@
     tools:context="com.example.user.keepingmeontrack.FinanceGoalDetail">
 
 
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:text="Bag"
         android:textColor="#3c3b3b"
-        android:textSize="24sp"
-        android:text="Bag" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/totalMoney"
@@ -24,19 +27,17 @@
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:text="500 Dollar"
         android:textColor="#de000000"
-        android:textSize="16sp"
-        android:text="500 Dollar" />
+        android:textSize="16sp" />
 
     <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
         android:layout_width="360dp"
         android:layout_height="170dp"
         android:layout_below="@+id/totalMoney"
-        android:id="@+id/piechart"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        >
-    </com.github.mikephil.charting.charts.PieChart>
+        android:layout_marginTop="10dp"></com.github.mikephil.charting.charts.PieChart>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -51,11 +52,10 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/shadow"
-            >
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shadow">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -73,38 +73,38 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="7dp"
                         android:src="@drawable/layer_627" />
+
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:layout_marginTop="25dp"
-                        android:textColor="#000000"
-                        android:text="Starting Date"
                         android:layout_toRightOf="@+id/daily"
-                        />
+                        android:text="Starting Date"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/startDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#8a000000"
-                        android:text="14.12.2018"
-                        android:layout_toRightOf="@+id/date"
-                        android:layout_marginTop="17dp"
                         android:layout_marginLeft="20dp"
-                        />
+                        android:layout_marginTop="17dp"
+                        android:layout_toRightOf="@+id/date"
+                        android:text="14.12.2018"
+                        android:textColor="#8a000000"
+                        android:textSize="14sp" />
+
                     <TextView
+                        android:id="@+id/finishDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:id="@+id/finishDate"
-                        android:textColor="#8a000000"
-                        android:text="14.12.2019"
                         android:layout_below="@+id/startDate"
-                        android:layout_toRightOf="@+id/date"
                         android:layout_marginLeft="20dp"
-                        />
+                        android:layout_toRightOf="@+id/date"
+                        android:text="14.12.2019"
+                        android:textColor="#8a000000"
+                        android:textSize="14sp" />
 
                     <View
                         android:id="@+id/separator"
@@ -128,52 +128,51 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="7dp"
-                        android:src="@drawable/layer_622"
-                        />
+                        android:src="@drawable/layer_622" />
+
                     <TextView
                         android:id="@+id/dailyallowance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="#de000000"
-                        android:text="Daily Allowance"
-                        android:layout_toRightOf="@+id/allowance"
                         android:layout_marginTop="10dp"
-                        />
+                        android:layout_toRightOf="@+id/allowance"
+                        android:text="Daily Allowance"
+                        android:textColor="#de000000"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/totalSaving"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#8a000000"
-                        android:text="0 Dollar"
                         android:layout_below="@+id/dailyallowance"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="10dp"
-                        />
+                        android:text="0 Dollar"
+                        android:textColor="#8a000000"
+                        android:textSize="14sp" />
+
                     <TextView
                         android:id="@+id/totalmoney"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:layout_below="@+id/totalSaving"
-                        android:textColor="#de000000"
-                        android:text="Total Money"
-                        android:layout_toRightOf="@+id/allowance"
                         android:layout_marginTop="10dp"
-                        />
+                        android:layout_toRightOf="@+id/allowance"
+                        android:text="Total Money"
+                        android:textColor="#de000000"
+                        android:textSize="16sp" />
+
                     <TextView
+                        android:id="@+id/totalGoal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#8a000000"
-                        android:text="1000 Dollar"
-                        android:id="@+id/totalGoal"
                         android:layout_below="@+id/totalmoney"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="8dp"
-                        />
+                        android:text="1000 Dollar"
+                        android:textColor="#8a000000"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 

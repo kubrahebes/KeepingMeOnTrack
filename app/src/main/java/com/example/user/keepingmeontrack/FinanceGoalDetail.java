@@ -5,6 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -72,6 +75,8 @@ public class FinanceGoalDetail extends AppCompatActivity {
     TextView totalSaving;
     @BindView(R.id.totalGoal)
     TextView totalGoal;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,19 +140,19 @@ public class FinanceGoalDetail extends AppCompatActivity {
         finishDate.setText(obje.getEndDate());
         totalGoal.setText(obje.getTotalMoney() + " $");
         totalSaving.setText(obje.getDailyAllowance() + "  $");
-      //  calculateDate(obje.getStartDate(),obje.getEndDate());
-
+        //  calculateDate(obje.getStartDate(),obje.getEndDate());
 
 
     }
-/*
-    public void calculateDate(String startDate, String finishDate){
-        int startDateInt=Integer.parseInt(startDate);
-        int finishDateInt=Integer.parseInt(finishDate);
-        Toast.makeText(this,  "" +   finishDateInt, Toast.LENGTH_SHORT).show();
+
+    /*
+        public void calculateDate(String startDate, String finishDate){
+            int startDateInt=Integer.parseInt(startDate);
+            int finishDateInt=Integer.parseInt(finishDate);
+            Toast.makeText(this,  "" +   finishDateInt, Toast.LENGTH_SHORT).show();
 
 
-    }*/
+        }*/
     public void setGraph() {
 
         piechart.setUsePercentValues(true);
@@ -181,5 +186,40 @@ public class FinanceGoalDetail extends AppCompatActivity {
         piechart.setData(data);
 
 
+    }
+
+
+    /**
+     * Menu
+     */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        getMenuInflater().inflate(R.menu.menu_goal_detail, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_share) {
+
+
+        } else if (id == R.id.action_delete) {
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
