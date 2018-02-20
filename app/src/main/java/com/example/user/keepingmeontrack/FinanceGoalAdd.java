@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -68,6 +69,8 @@ public class FinanceGoalAdd extends AppCompatActivity {
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
+    @BindView(R.id.ratingBar)
+    RatingBar ratingbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,12 +78,18 @@ public class FinanceGoalAdd extends AppCompatActivity {
         setContentView(R.layout.finance_goal_add);
         ButterKnife.bind(this);
 
+        ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar rtBar, float rating,boolean fromUser) {
+                rating = (int) rating;
+                Toast.makeText(FinanceGoalAdd.this, "Rating:"+String.valueOf(rating), Toast.LENGTH_LONG).show();
+            }
+        });
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
 
         toolbar.setTitle(R.string.finance_goal_tab_title);
         pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
@@ -89,7 +98,6 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
-
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,10 +125,6 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
         });
 
-        RatingBar rate = (RatingBar)findViewById(R.id.ratingBar);
-
-
-        float rating = rate.getRating();
     }
 
     public boolean validateControl() {
