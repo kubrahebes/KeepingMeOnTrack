@@ -9,4 +9,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/lightGrey</item>
+        <item name="colorControlActivated">@color/duskYellow</item>
+
+    </style>
+    <style name="DebitStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
 </resources>

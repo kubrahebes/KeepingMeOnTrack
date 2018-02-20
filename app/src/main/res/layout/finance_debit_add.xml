@@ -2,16 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-       >
 
-    </android.support.v7.widget.Toolbar>
+
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -32,32 +27,35 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="5dp"
             android:id="@+id/fab1"
-            android:src="@drawable/layer_554"
+            android:background="#fa917f"
+
             />
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
                 android:id="@+id/relative1"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
                 <ImageView
-                    android:id="@+id/imgGoalName"
+                    android:id="@+id/imgDebitName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
-                    android:src="@drawable/target_orange_icon" />
+                    android:src="@drawable/debit_icon" />
 
                 <EditText
-                    android:id="@+id/goalName"
+                    android:id="@+id/debitName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/imgGoalName"
-                    android:hint="Goal Name" />
+                    android:layout_toRightOf="@+id/imgDebitName"
+                    android:hint="Debit Name" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -72,14 +70,14 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
-                    android:src="@drawable/how_much_icon" />
+                    android:src="@drawable/debit_coins" />
 
                 <EditText
-                    android:id="@+id/totalMoney"
+                    android:id="@+id/debitTotalMoney"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgHowMuch"
-                    android:hint="How Much " />
+                    android:hint="How Many $ Can You  Need ? " />
             </RelativeLayout>
 
             <RelativeLayout
@@ -94,81 +92,72 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
-                    android:src="@drawable/harclik_icon" />
+                    android:src="@drawable/debit_coin" />
 
                 <EditText
-                    android:id="@+id/dailyAllowance"
+                    android:id="@+id/debitDailyAllowance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgDailyAllowance"
-                    android:hint="Daily Allowance" />
+                    android:hint="Weekly Allowance" />
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/relative4"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/relative3">
+
 
                 <RelativeLayout
+                    android:id="@+id/relative4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/relative3">
 
                     <ImageView
-                        android:id="@+id/imgStartDate"
+                        android:id="@+id/imgReminding"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_margin="7dp"
-                        android:src="@drawable/calendar_day" />
-
-                    <EditText
-                        android:id="@+id/startDate"
+                        android:src="@drawable/debit_alarm" />
+                    <Spinner
+                        android:id="@+id/spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/imgStartDate"
-                        android:hint="Start Date" />
-
-                    <ImageView
-                        android:id="@+id/imgFinishDate"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="7dp"
-                        android:src="@drawable/calendar_week" />
-
-                    <EditText
-                        android:id="@+id/finishDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/imgFinishDate"
-                        android:hint="Finish Date" />
+                        android:layout_toRightOf="@id/imgReminding"
+                        android:layout_marginRight="7dp"
+                        android:layout_centerVertical="true"></Spinner>
                 </RelativeLayout>
 
-            </LinearLayout>
+
 
             <RelativeLayout
                 android:id="@+id/relative5"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/relative4">
-
-                <ImageView
-                    android:id="@+id/imgReminding"
+                <TextView
+                    android:id="@+id/tvRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="7dp"
-                    android:src="@drawable/alarm_icon" />
+                    android:text="Rate This Debit"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="14sp"
+                   />
 
-                <EditText
-                    android:id="@+id/reminding"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/imgReminding"
-                    android:hint="Reminding" />
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    android:theme="@style/RatingBar"
+                   android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="RatinBarClass"
+                    android:layout_below="@id/tvRate"
+                    />
+
             </RelativeLayout>
+
 
         </RelativeLayout>
 

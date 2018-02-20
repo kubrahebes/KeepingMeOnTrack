@@ -14,4 +14,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="finance_goal_tab_title">New Goal</string>
 
+    <!-- TODO: Select spiner item -->
+    <string-array name="reminding_array">
+        <item>No One</item>
+        <item>Every Day</item>
+        <item>Every Week</item>
+        <item>Every Month</item>
+    </string-array>
 </resources>
