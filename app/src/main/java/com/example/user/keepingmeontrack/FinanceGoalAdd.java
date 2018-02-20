@@ -8,13 +8,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -73,6 +71,8 @@ public class FinanceGoalAdd extends AppCompatActivity {
     FrameLayout frame;
     @BindView(R.id.ratingBar)
     RatingBar ratingbar;
+    @BindView(R.id.spinner)
+    Spinner spinner;
 
 
     @Override
@@ -83,16 +83,15 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
 
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar rtBar, float rating,boolean fromUser) {
+            public void onRatingChanged(RatingBar rtBar, float rating, boolean fromUser) {
                 rating = (int) rating;
-                Toast.makeText(FinanceGoalAdd.this, "Rating:"+String.valueOf(rating), Toast.LENGTH_LONG).show();
+                Toast.makeText(FinanceGoalAdd.this, "Rating:" + String.valueOf(rating), Toast.LENGTH_LONG).show();
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.planets_array, android.R.layout.simple_spinner_item);
+                R.array.reminding_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
