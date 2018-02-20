@@ -51,6 +51,7 @@ public class FinancialMainFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_main_finance, container, false);
         ButterKnife.bind(this, rootView);
 
+
         mProgress = new ProgressDialog(getContext());
         mProgress.setTitle("Processing...");
         mProgress.setMessage("Please wait...");
