@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -116,6 +117,10 @@ public class FinanceGoalAdd extends AppCompatActivity {
 
         });
 
+        RatingBar rate = (RatingBar)findViewById(R.id.ratingBar);
+
+
+        float rating = rate.getRating();
     }
 
     public boolean validateControl() {

@@ -11,17 +11,19 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0.0px"
         card_view:cardElevation="18dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
+
         android:layout_marginRight="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.CardView
                 android:id="@+id/rl3"
-                card_view:cardCornerRadius="8dp"
+                card_view:cardCornerRadius="5dp"
                 app:cardBackgroundColor="#52b2d7"
-                android:layout_width="15dp"
+                android:layout_width="12dp"
                 android:layout_height="180dp"></android.support.v7.widget.CardView>
             <ImageView
                 android:id="@+id/goal_image"
