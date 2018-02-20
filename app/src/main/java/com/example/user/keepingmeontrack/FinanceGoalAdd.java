@@ -124,6 +124,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
             }
 
         });
+
     }
 
     public boolean validateControl() {
