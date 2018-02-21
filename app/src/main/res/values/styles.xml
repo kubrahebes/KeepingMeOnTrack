@@ -19,7 +19,8 @@
 
     </style>
 
-    <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar"></style>
+    <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
 
 
 </resources>

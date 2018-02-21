@@ -182,6 +182,9 @@ public class MainTabActivity extends AppCompatActivity {
 
             }
         });
+
+
+
         tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(container));
         setupTabIcons();
 
