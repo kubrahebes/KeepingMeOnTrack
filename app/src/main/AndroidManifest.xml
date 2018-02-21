@@ -27,6 +27,7 @@
         <activity
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
+
             android:theme="@style/AppTheme"></activity>
 
         <activity
@@ -39,6 +40,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FinanceGoalDetail"
+
             android:theme="@style/GoalDetail">
 
         </activity>
