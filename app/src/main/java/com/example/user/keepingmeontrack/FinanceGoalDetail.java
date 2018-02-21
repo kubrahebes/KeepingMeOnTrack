@@ -109,11 +109,20 @@ public class FinanceGoalDetail extends AppCompatActivity {
 
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
 
-                    value = verigetir.getValue(Goal.class);
+                    try {
+                        value = verigetir.getValue(Goal.class);
 
-                    if (selectedItem.equals(value.getId())) {
-                        setdata(value);
+                        if (selectedItem.equals(value.getId())) {
+                            setdata(value);
+                        }
+
                     }
+                    catch (Exception e) {
+                        // This will catch any exception, because they are all descended from Exception
+                        System.out.println("Error " + e.getMessage());
+                    }
+
+
                     //  Toast.makeText(FinanceGoalDetail.this, ""+value.getId().equals(selectedItem), Toast.LENGTH_SHORT).show();
                 }
 
