@@ -62,12 +62,7 @@ public class MainTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
-
-
-
-
                   //** Here is Circled Floating Action Button code **///
-
         //I removed the butterknife method for old floatingbutton because the whole code now uses only Java.//
 
         final ImageView fabIconNew = new ImageView(this);
