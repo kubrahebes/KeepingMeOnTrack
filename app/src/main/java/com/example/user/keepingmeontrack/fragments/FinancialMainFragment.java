@@ -57,7 +57,7 @@ public class FinancialMainFragment extends Fragment {
         mProgress.setMessage("Please wait...");
         mProgress.setCancelable(false);
         mProgress.setIndeterminate(true);
-        mProgress.show();
+     //   mProgress.show();
 
         /**
          *Firebase connection
@@ -87,7 +87,7 @@ public class FinancialMainFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Goal> financeGoalList = new ArrayList<>();
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
-                    mProgress.cancel();
+                  //  mProgress.cancel();
                     value = verigetir.getValue(Goal.class);
                     if (value.getUid().equals(uID)) {
                         financeGoalList.add(value);

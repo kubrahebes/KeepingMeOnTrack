@@ -38,8 +38,7 @@ public class FinanceGoalAdd extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+
     @BindView(R.id.fab1)
     FloatingActionButton fab1;
     @BindView(R.id.imgGoalName)
@@ -95,7 +94,6 @@ public class FinanceGoalAdd extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        toolbar.setTitle(R.string.finance_goal_tab_title);
         pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         uID = pref.getString("uID", null);

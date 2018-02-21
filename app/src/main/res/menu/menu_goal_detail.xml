@@ -10,8 +10,10 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_trash_can"
         android:orderInCategory="100"
+
         ></item>
     <item
+
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share"
         android:title="Search"
