@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
@@ -32,6 +31,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity {
+    public boolean flag=false;
 
     DatabaseReference myRef;
     FirebaseDatabase database;
@@ -66,9 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-
-
-
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
@@ -106,14 +103,17 @@ public class RegisterActivity extends AppCompatActivity {
                             transaction.commit();
                             finish();
                         }
-                        else {
+                        else if(!task.isSuccessful() && flag )
+                        {
                             mProgress.dismiss();
                             Toast.makeText(RegisterActivity.this, "Email address wrong or your password is too easy please change your password.", Toast.LENGTH_SHORT).show();}
+
+
                     }
+
                 });
 
     }
-
     @OnClick(R.id.sing_up_btn)
     public void onViewClicked() {
         mProgress.show();  //Shows the progress dialog.
@@ -123,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     //Method for checking if there is an internet or not.
     public void isOnline() {
+
         ConnectivityManager conMgr = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
@@ -142,7 +143,9 @@ public class RegisterActivity extends AppCompatActivity {
             alert.show();
 
         }
+        else {
+            flag=true;
+        }
 
     }
-
 }

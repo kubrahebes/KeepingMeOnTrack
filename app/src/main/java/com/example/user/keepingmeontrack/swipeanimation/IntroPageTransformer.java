@@ -1,9 +1,12 @@
 package com.example.user.keepingmeontrack.swipeanimation;
 
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.R;
+import com.example.user.keepingmeontrack.RegisterActivity;
 
 /**
  * Created by Mahmoud on 2/05/2018.
