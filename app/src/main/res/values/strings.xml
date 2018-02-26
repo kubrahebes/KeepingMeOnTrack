@@ -3,6 +3,7 @@
     <string name="tab_fitness">FITNESS</string>
     <string name="title_activity_swape__tab">Swape_Tab</string>
     <string name="action_settings">Log Out</string>
+    <string name="action_networking">My Network</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <string name="title_activity_main_tab">MainTabActivity</string>

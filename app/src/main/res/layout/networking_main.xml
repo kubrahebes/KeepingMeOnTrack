@@ -1,0 +1,97 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainTabActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_marginTop="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="My Network"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_centerVertical="true"
+                android:textColor="#041d06"
+
+                />
+
+        </RelativeLayout>
+
+
+        <com.wenchao.cardstack.CardStack
+            android:id="@+id/card_stack"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:padding="3dp"
+            app:card_enable_loop="false"
+            app:card_enable_rotation="true"
+            app:card_gravity="top"
+            app:card_margin="3dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="80dp"
+            app:card_stack_size="4"
+            />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/card_stack"
+    android:layout_marginTop="30dp"
+    >
+
+
+        <ImageView
+            android:id="@+id/btn_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_chat" />
+
+        <ImageView
+            android:id="@+id/btn_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/ic_like" />
+
+        <ImageView
+            android:id="@+id/btn_dislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn_chat"
+            android:layout_marginLeft="42dp"
+            android:layout_marginStart="42dp"
+            android:layout_toEndOf="@+id/btn_chat"
+            android:layout_toRightOf="@+id/btn_chat"
+            android:src="@drawable/ic_dislike" />
+
+</RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
