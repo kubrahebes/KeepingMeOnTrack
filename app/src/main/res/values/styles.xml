@@ -18,6 +18,12 @@
         <item name="colorControlActivated">@color/duskYellow</item>
 
     </style>
+    <style name="RatingBar2" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/lightGrey</item>
+        <item name="colorControlActivated">@color/duskRed</item>
+
+    </style>
+
 
     <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar">
     </style>
