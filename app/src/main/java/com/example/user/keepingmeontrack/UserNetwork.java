@@ -46,8 +46,45 @@ public class UserNetwork extends Activity {
         mCardStack = (CardStack) findViewById(R.id.card_stack);
 
         mCardStack.setContentResource(R.layout.networking_card_content);
-//        mCardStack.setStackMargin(20);
 
+        mCardStack.setListener(new CardStack.CardEventListener() {
+            @Override
+            public boolean swipeEnd(int direction, float distance) {
+                Log.d("direction", String.valueOf(direction));
+                Log.d("distance", String.valueOf(distance));
+                if (distance > 100) {
+                    if (direction == 0 || direction == 2) {
+                        Toast.makeText(UserNetwork.this,
+                                "Swiped left", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(UserNetwork.this,
+                                "Swiped right", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean swipeStart(int i, float v) {
+                return false;
+            }
+
+            @Override
+            public boolean swipeContinue(int i, float v, float v1) {
+                return false;
+            }
+
+            @Override
+            public void discarded(int i, int i1) {
+
+            }
+
+            @Override
+            public void topCardTapped() {
+
+            }
+        });
 
         ArrayList<Item> goals = new ArrayList<>();
 
