@@ -28,6 +28,17 @@ android {
 repositories {
     maven { url "https://jitpack.io" }
 }
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile(name:'android-card-stack-0.1.6', ext:'aar')}
+
+
 dependencies {
     //cardview library for target add finance
     implementation 'com.android.support:cardview-v7:26.1.0'
