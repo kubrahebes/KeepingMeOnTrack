@@ -1,9 +1,11 @@
 package com.example.user.keepingmeontrack;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ public class UserNetwork extends Activity {
     ImageView btnLike;
     @BindView(R.id.btn_dislike)
     ImageView btnDislike;
+    @BindView(R.id.back)
+    ImageButton back;
     private CardStack mCardStack;
     private CardsDataAdapter mCardAdapter;
 
@@ -62,7 +66,6 @@ public class UserNetwork extends Activity {
             Log.i("MyActivity", "Card Stack size: " + mCardStack.getAdapter().getCount());
         }
 
-
     }
 
     @OnClick({R.id.btn_chat, R.id.btn_like, R.id.btn_dislike})
@@ -82,4 +85,13 @@ public class UserNetwork extends Activity {
                 break;
         }
     }
+
+    @OnClick(R.id.back)
+    public void onViewClicked() {
+        Intent intent=new Intent(UserNetwork.this,MainTabActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
+
 }
