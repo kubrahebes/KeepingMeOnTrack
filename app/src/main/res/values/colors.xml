@@ -6,6 +6,7 @@
     <color name="colorFinancial">#ffb829</color>
     <color name="bluebutton">#1c97d7</color>
     <color name="duskYellow">#F3AB35</color>
+    <color name="duskRed">#D90D2F</color>
 
     <color name="lightGrey">#adadad</color>
 </resources>

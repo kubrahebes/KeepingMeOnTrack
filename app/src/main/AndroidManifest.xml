@@ -37,9 +37,11 @@
 
         <activity
             android:name=".FinanceDebitAdd"
+
             android:label="Add Debit"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
+
         </activity>
 
         <activity
