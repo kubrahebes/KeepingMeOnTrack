@@ -162,6 +162,7 @@ public class IntroFragment extends Fragment {
                             //set the shared Preference for user who can login
                             editor.putBoolean("IS_LOGIN", true);
                             editor.putString("uID",user.getUid());
+                           // Toast.makeText(getContext(), user.getUid(), Toast.LENGTH_SHORT).show();
 
                             editor.commit();
 
