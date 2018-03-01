@@ -81,6 +81,12 @@ public class FinanceGoalAdd extends BaseActivity {
         setContentView(R.layout.finance_goal_add);
         ButterKnife.bind(this);
 
+        Toolbar toolbar = findViewById(R.id.toolbar_finance_goal_add);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar rtBar, float rating, boolean fromUser) {
@@ -101,6 +107,7 @@ public class FinanceGoalAdd extends BaseActivity {
         Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
+
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +135,12 @@ public class FinanceGoalAdd extends BaseActivity {
 
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public boolean validateControl() {

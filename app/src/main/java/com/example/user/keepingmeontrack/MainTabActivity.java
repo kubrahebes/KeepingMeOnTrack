@@ -181,6 +181,7 @@ public class MainTabActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+
         });
 
 

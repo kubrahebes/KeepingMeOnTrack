@@ -1,9 +1,12 @@
 package com.example.user.keepingmeontrack;
 
 import android.app.Activity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,6 +38,10 @@ public class UserNetwork extends Activity {
     ImageView btnDislike;
     @BindView(R.id.card_stack)
     CardStack cardStack;
+    @BindView(R.id.back)
+    ImageButton back;
+
+
     private CardStack mCardStack;
     private CardsDataAdapter mCardAdapter;
     FirebaseDatabase database;
@@ -77,6 +84,7 @@ public class UserNetwork extends Activity {
                 break;
         }
     }
+
 
     /**
      * get data from the firebase
@@ -171,6 +179,17 @@ public class UserNetwork extends Activity {
 
             }
         });
+
+    }
+
+
+
+
+    @OnClick(R.id.back)
+    public void onViewClicked() {
+        Intent intent=new Intent(UserNetwork.this,MainTabActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 
