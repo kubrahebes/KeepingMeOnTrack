@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * Created by ReCodedMerve on 19/02/2018.
  */
 
-public class FinanceDebitAdd extends AppCompatActivity {
+public class FinanceDebitAdd extends BaseActivity {
     @BindView(R.id.fab1)
     FloatingActionButton fab1;
     @BindView(R.id.imgDebitName)
@@ -76,7 +76,7 @@ public class FinanceDebitAdd extends AppCompatActivity {
 
         pref = FinanceDebitAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        uID = pref.getString("uID", null);
+        uID =getUser().getUid();
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
