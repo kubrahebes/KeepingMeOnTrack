@@ -163,6 +163,10 @@ public class IntroFragment extends Fragment {
                             editor.putString("uID", user.getUid());
                             editor.putBoolean("IS_LOGIN", true);
 
+                          
+                           // Toast.makeText(getContext(), user.getUid(), Toast.LENGTH_SHORT).show();
+
+
                             editor.commit();
 
 
