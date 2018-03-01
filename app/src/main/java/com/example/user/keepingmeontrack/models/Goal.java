@@ -13,6 +13,7 @@ public class Goal {
     private String startDate;
     private String endDate;
     private String reminding;
+
     private int type;
 
     public String getUid() {

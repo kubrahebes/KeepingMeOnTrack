@@ -160,8 +160,8 @@ public class IntroFragment extends Fragment {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //set the shared Preference for user who can login
-                            editor.putString("uID", user.getUid());
                             editor.putBoolean("IS_LOGIN", true);
+                            editor.putString("uID",user.getUid());
 
                             editor.commit();
 
