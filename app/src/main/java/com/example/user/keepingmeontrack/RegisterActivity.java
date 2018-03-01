@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -31,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends AppCompatActivity {
     public boolean flag=false;
 
     DatabaseReference myRef;
@@ -51,7 +50,7 @@ public class RegisterActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog mProgress;
     private Toast toast = null;
-    SharedPreferences preferences;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -95,7 +94,7 @@ public class RegisterActivity extends BaseActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Users newUser = new Users(signupUsername.getText().toString(), user.getEmail(), user.getUid());
                             myRef.child("users").child(user.getUid()).setValue(newUser);
-                            saveUser(newUser);
+
                             // come back to login screen
 
                             LoginFragment fragment = new LoginFragment();
@@ -118,12 +117,12 @@ public class RegisterActivity extends BaseActivity {
     @OnClick(R.id.sing_up_btn)
     public void onViewClicked() {
         mProgress.show();  //Shows the progress dialog.
-        isonline();//Checking if the user is online or not.
+        isOnline();//Checking if the user is online or not.
         getusers();
     }
 
     //Method for checking if there is an internet or not.
-    public void isonline() {
+    public void isOnline() {
 
         ConnectivityManager conMgr = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();

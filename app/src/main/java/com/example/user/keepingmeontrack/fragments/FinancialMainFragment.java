@@ -112,10 +112,8 @@ public class FinancialMainFragment extends Fragment {
      * Set Adapter
      */
     public void setdata(final ArrayList<Goal> list) {
-if (list.isEmpty()){
-    Toast.makeText(getActivity(), "Empty ListView", Toast.LENGTH_SHORT).show();
-}else {
-        GoalAdapter adapte = new GoalAdapter(getActivity(),list);
+
+        GoalAdapter adapte = new GoalAdapter(getContext(), list);
         financeGoalListview.setAdapter(adapte);
         financeGoalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -127,5 +125,5 @@ if (list.isEmpty()){
                 startActivity(intent);
             }
         });
-    }}
+    }
 }
