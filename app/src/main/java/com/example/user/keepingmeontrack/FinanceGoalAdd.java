@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.models.Goal;
+import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +31,7 @@ import butterknife.ButterKnife;
  * Created by elifasli on 12.02.2018.
  */
 
-public class FinanceGoalAdd extends AppCompatActivity {
+public class FinanceGoalAdd extends BaseActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -100,10 +101,10 @@ public class FinanceGoalAdd extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
-        editor = pref.edit();
-        uID = pref.getString("uID", null);
+        uID = getUser().getUid();
 
+        Users users = BaseActivity.getInstance().getUser();
+        Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
 

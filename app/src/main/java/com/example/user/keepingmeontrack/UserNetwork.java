@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.adapters.CardsDataAdapter;
-import com.example.user.keepingmeontrack.models.Item;
+import com.example.user.keepingmeontrack.models.Network;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.wenchao.cardstack.CardStack;
 
 import java.util.ArrayList;
@@ -31,11 +36,17 @@ public class UserNetwork extends Activity {
     ImageView btnLike;
     @BindView(R.id.btn_dislike)
     ImageView btnDislike;
+    @BindView(R.id.card_stack)
+    CardStack cardStack;
     @BindView(R.id.back)
     ImageButton back;
 
+
     private CardStack mCardStack;
     private CardsDataAdapter mCardAdapter;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    Network shareGoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,25 +59,10 @@ public class UserNetwork extends Activity {
         mCardStack.setContentResource(R.layout.networking_card_content);
 //        mCardStack.setStackMargin(20);
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("datbase").child("networking");
 
-        ArrayList<Item> goals = new ArrayList<>();
-
-        mCardAdapter = new CardsDataAdapter(this, goals);
-        mCardAdapter.add(new Item("Fitness Workout", "I will workout to shape my body.", "Mahmoud AlMuhammed"));
-        mCardAdapter.add(new Item("Chest Workout", "I grow my muscle in one month.", "Rewan Ali"));
-        mCardAdapter.add(new Item("Buy car ", "I will buy a Mercedes :D.", "Kubra Hebes"));
-        mCardAdapter.add(new Item("Buy new Macbook", "I need to save money to buy new Mac.", "Elif"));
-        mCardAdapter.add(new Item("Diet", "I will lose 3kg every week.", "Merve"));
-        mCardAdapter.add(new Item("Nothing", "I will not responde on your Emails :P", "John"));
-        mCardAdapter.add(new Item("Goal Name", "I wanna lose weight in two days.", "Someone"));
-
-        mCardStack.setAdapter(mCardAdapter);
-        mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
-
-
-        if (mCardStack.getAdapter() != null) {
-            Log.i("MyActivity", "Card Stack size: " + mCardStack.getAdapter().getCount());
-        }
+        getdata();
 
 
     }
@@ -90,6 +86,105 @@ public class UserNetwork extends Activity {
     }
 
 
+    /**
+     * get data from the firebase
+     */
+    public void getdata() {
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Network> financeGoalList = new ArrayList<>();
+                for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
+                    //  mProgress.cancel();
+                    shareGoal = verigetir.getValue(Network.class);
+
+                    financeGoalList.add(shareGoal);
+
+                }
+                setdata(financeGoalList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(UserNetwork.this, "Error", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
+    /**
+     * Set Adapter
+     */
+    public void setdata(final ArrayList<Network> list) {
+        ArrayList<Network> goal = new ArrayList<>();
+
+        mCardAdapter = new CardsDataAdapter(this, goal);
+        for (int i = 0; i < list.size(); i++) {
+            mCardAdapter.add(new Network(list.get(i).getGoalName(), list.get(i).getGoalDesc(), list.get(i).getUserName()));
+        }
+        mCardStack.setAdapter(mCardAdapter);
+        mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
+
+
+        if (mCardStack.getAdapter() != null) {
+            Log.i("MyActivity", "Card Stack size: " + mCardStack.getAdapter().getCount());
+        }
+
+        mCardStack.setListener(new CardStack.CardEventListener() {
+            @Override
+            public boolean swipeEnd(int direction, float distance) {
+                Log.d("direction", String.valueOf(direction));
+                Log.d("distance", String.valueOf(distance));
+
+                if (distance > 100) {
+                    if (direction == 0 || direction == 2) {
+
+                        int dislikeUpdate = list.get(mCardStack.getCurrIndex()).getDislike();
+                        dislikeUpdate++;
+                        myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("dislike")
+                                .setValue(dislikeUpdate);
+
+                    } else {
+                        int likeUpdate = list.get(mCardStack.getCurrIndex()).getLike();
+                        likeUpdate++;
+                        myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("like")
+                                .setValue(likeUpdate);
+
+                    }
+                }
+
+                return true;
+            }
+
+            @Override
+            public boolean swipeStart(int i, float v) {
+                return false;
+            }
+
+            @Override
+            public boolean swipeContinue(int i, float v, float v1) {
+                return false;
+            }
+
+            @Override
+            public void discarded(int i, int i1) {
+
+            }
+
+            @Override
+            public void topCardTapped() {
+
+            }
+        });
+
+    }
+
+
+
+
     @OnClick(R.id.back)
     public void onViewClicked() {
         Intent intent=new Intent(UserNetwork.this,MainTabActivity.class);
@@ -97,5 +192,6 @@ public class UserNetwork extends Activity {
         finish();
 
     }
+
 
 }
