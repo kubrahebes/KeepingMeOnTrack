@@ -181,6 +181,7 @@ public class MainTabActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+
         });
 
 
@@ -238,7 +239,6 @@ public class MainTabActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 logout();
-                break;
             case R.id.action_networking:
                 Intent i = new Intent(this, UserNetwork.class);
                 startActivity(i);

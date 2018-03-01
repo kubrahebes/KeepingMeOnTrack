@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,7 +29,7 @@ import butterknife.OnClick;
  * Created by ReCodedMerve on 19/02/2018.
  */
 
-public class FinanceDebitAdd extends BaseActivity {
+public class FinanceDebitAdd extends AppCompatActivity {
     @BindView(R.id.fab1)
     FloatingActionButton fab1;
     @BindView(R.id.imgDebitName)
@@ -74,9 +75,18 @@ public class FinanceDebitAdd extends BaseActivity {
         setContentView(R.layout.finance_debit_add);
         ButterKnife.bind(this);
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar_finance);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
         pref = FinanceDebitAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        uID =getUser().getUid();
+        uID = pref.getString("uID", null);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
@@ -104,6 +114,12 @@ public class FinanceDebitAdd extends BaseActivity {
 //use ratings within event listner code block
 
         float rating = rate.getRating();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @OnClick(R.id.fab1)

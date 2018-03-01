@@ -4,28 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainTabActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-
-
         <RelativeLayout
+            android:id="@+id/rl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#eaeaea">
 
-
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back1"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"/>
             <TextView
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="My Network"
-                android:textStyle="bold"
-                android:textSize="30sp"
+                android:text="Networking"
+                android:textSize="24sp"
                 android:layout_centerVertical="true"
                 android:textColor="#041d06"
 
@@ -38,57 +42,59 @@
             android:id="@+id/card_stack"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:layout_below="@id/rl"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:gravity="center"
-            android:padding="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="40dp"
             app:card_enable_loop="false"
             app:card_enable_rotation="true"
             app:card_gravity="top"
             app:card_margin="3dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="80dp"
             app:card_stack_size="4"
             />
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/card_stack"
-    android:layout_marginTop="30dp"
-    >
-
-
-        <ImageView
-            android:id="@+id/btn_chat"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_chat" />
+            android:layout_below="@id/card_stack"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            >
 
-        <ImageView
-            android:id="@+id/btn_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:src="@drawable/ic_like" />
+            <ImageView
+                android:id="@+id/btn_chat"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/yorum_1" />
 
-        <ImageView
-            android:id="@+id/btn_dislike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/btn_chat"
-            android:layout_marginLeft="42dp"
-            android:layout_marginStart="42dp"
-            android:layout_toEndOf="@+id/btn_chat"
-            android:layout_toRightOf="@+id/btn_chat"
-            android:src="@drawable/ic_dislike" />
+            <ImageView
+                android:id="@+id/btn_like"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/like_1" />
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/btn_dislike"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/dislike_1" />
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
+
 
 
 

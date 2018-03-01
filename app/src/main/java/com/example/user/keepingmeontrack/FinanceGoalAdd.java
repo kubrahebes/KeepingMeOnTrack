@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.models.Goal;
-import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,7 +30,7 @@ import butterknife.ButterKnife;
  * Created by elifasli on 12.02.2018.
  */
 
-public class FinanceGoalAdd extends BaseActivity {
+public class FinanceGoalAdd extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -81,6 +80,12 @@ public class FinanceGoalAdd extends BaseActivity {
         setContentView(R.layout.finance_goal_add);
         ButterKnife.bind(this);
 
+        Toolbar toolbar = findViewById(R.id.toolbar_finance_goal_add);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar rtBar, float rating, boolean fromUser) {
@@ -95,12 +100,13 @@ public class FinanceGoalAdd extends BaseActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        uID = getUser().getUid();
+        pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
+        editor = pref.edit();
+        uID = pref.getString("uID", null);
 
-        Users users = BaseActivity.getInstance().getUser();
-        Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
+
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +134,12 @@ public class FinanceGoalAdd extends BaseActivity {
 
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public boolean validateControl() {
