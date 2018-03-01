@@ -10,8 +10,8 @@
         card_view:cardCornerRadius="8dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="0.0px"
-        card_view:cardElevation="18dp"
-        android:layout_marginTop="15dp"
+        card_view:cardElevation="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
 

@@ -1,5 +1,6 @@
 package com.example.user.keepingmeontrack;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -137,7 +138,8 @@ public class FinanceDebitAdd extends BaseActivity {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, fragment);
             transaction.commit();
-            finish();
+            Intent i = new Intent(FinanceDebitAdd.this, MainTabActivity.class);
+            startActivity(i);
 
 
         } else {
