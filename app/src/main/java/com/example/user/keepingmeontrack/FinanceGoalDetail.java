@@ -1,11 +1,11 @@
 package com.example.user.keepingmeontrack;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.models.Goal;
-import com.example.user.keepingmeontrack.models.Network;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -37,14 +36,12 @@ import butterknife.ButterKnife;
  * Created by elifasli on 16.02.2018.
  */
 
-public class FinanceGoalDetail extends BaseActivity {
+public class FinanceGoalDetail extends AppCompatActivity {
 
 
     FirebaseDatabase database;
     DatabaseReference myRef;
-    DatabaseReference myRef2;
     Goal value;
-Goal value2;
     String selectedItem;
     @BindView(R.id.title)
     TextView title;
@@ -78,18 +75,14 @@ Goal value2;
     TextView totalSaving;
     @BindView(R.id.totalGoal)
     TextView totalGoal;
-    String userNAme;
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.finance_goal_detail);
         ButterKnife.bind(this);
-        pref = FinanceGoalDetail.this.getSharedPreferences("MyPref", 0);
-        editor = pref.edit();
-        userNAme=getUser().getUserName();
+
         Intent intent = getIntent();
         selectedItem = intent.getStringExtra("selectId");
 
@@ -99,7 +92,6 @@ Goal value2;
          */
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase").child("finance");
-        myRef2 = database.getReference("datbase");
         getdata();
         setGraph();
 
@@ -122,7 +114,6 @@ Goal value2;
 
                         if (selectedItem.equals(value.getId())) {
                             setdata(value);
-                            value2=value;
                         }
 
                     }
@@ -221,16 +212,15 @@ Goal value2;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
 
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_share) {
-            Toast.makeText(FinanceGoalDetail.this, "succsess", Toast.LENGTH_SHORT).show();
-            String key = myRef.child("networking").push().getKey();
-            Network newGoal = new Network(value2.getName(),"I will workout to shape my body",userNAme,0,0,key);
-            myRef2.child("networking").child(key).setValue(newGoal);
-
 
 
         } else if (id == R.id.action_delete) {
