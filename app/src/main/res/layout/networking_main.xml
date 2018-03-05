@@ -31,7 +31,7 @@
                 android:text="Networking"
                 android:textSize="24sp"
                 android:layout_centerVertical="true"
-                android:textColor="#041d06"
+                android:textColor="#750000"
 
                 />
 
@@ -41,14 +41,14 @@
         <com.wenchao.cardstack.CardStack
             android:id="@+id/card_stack"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="320dp"
             android:layout_below="@id/rl"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="40dp"
             app:card_enable_loop="false"
             app:card_enable_rotation="true"
@@ -61,21 +61,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/card_stack"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp"
             >
 
             <ImageView
                 android:id="@+id/btn_chat"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/yorum_1" />
 
             <ImageView
                 android:id="@+id/btn_like"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"
@@ -83,8 +83,8 @@
 
             <ImageView
                 android:id="@+id/btn_dislike"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentLeft="true"

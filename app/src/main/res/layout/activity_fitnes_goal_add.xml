@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view1"
+            android:layout_width="match_parent"
+            android:layout_height="389dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="18dp">
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:background="#fce2e4">
+
+                    <TextView
+                        android:id="@+id/question1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="1.QUESTION"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/question1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="How Active Are You ?"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/rl2">
+
+                    <RadioGroup
+                        android:id="@+id/group1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/radio1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/shape"
+                            android:text="Exercise All Time"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio1"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Sometimes Exercise"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio2"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="I Need Some Help"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+                    </RadioGroup>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="389dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="18dp">
+
+            <RelativeLayout
+                android:id="@+id/rl4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl5"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:background="#fce2e4">
+
+                    <TextView
+                        android:id="@+id/question2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="2.QUESTION"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/question2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="What is Your Fitness Goal ?"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/rl5">
+
+                    <RadioGroup
+                        android:id="@+id/group2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/radio4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/shape"
+                            android:text="Lose Weight"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio4"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Build Muscle"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio5"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Improve Muscle Tone"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio6"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Improve Flexibility"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio7"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Improve Cardio/Endurance "
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+                    </RadioGroup>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view3"
+            android:layout_width="match_parent"
+            android:layout_height="389dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="18dp">
+
+            <RelativeLayout
+                android:id="@+id/rl9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl7"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:background="#fce2e4">
+
+                    <TextView
+                        android:id="@+id/question3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="3.QUESTION"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/question3"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="I Want to Lose Weight in :"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rl7">
+
+                    <RadioGroup
+                        android:id="@+id/group3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/radio9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/shape"
+                            android:text="One Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio9"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Two Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio10"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Three Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio11"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Six Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio12"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Other"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+                    </RadioGroup>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view4"
+            android:layout_width="match_parent"
+            android:layout_height="389dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="18dp">
+
+            <RelativeLayout
+                android:id="@+id/rl10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl11"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:background="#fce2e4">
+
+                    <TextView
+                        android:id="@+id/question4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="4.QUESTION"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/question4"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="I Want to Build Muscle in :"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rl11">
+
+                    <RadioGroup
+                        android:id="@+id/group4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/radio14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/shape"
+                            android:text="One Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio14"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Two Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio15"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Three Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio16"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Six Month"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio17"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Other"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                    </RadioGroup>
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view5"
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="18dp">
+
+            <RelativeLayout
+                android:id="@+id/rl13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl14"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:background="#fce2e4">
+
+                    <TextView
+                        android:id="@+id/question5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="5.QUESTION"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/question5"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Type of Training I am Interested in :"
+                        android:textColor="#4b4747"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl15"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rl14">
+
+                    <RadioGroup
+                        android:id="@+id/group5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/radio19"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/shape"
+                            android:text="Strength"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio19"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Tone"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio20"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Bootcamp"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio22"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio21"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Weight Loss"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio23"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio22"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Aerobics"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio24"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio23"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Endurance"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio25"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio24"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Sport/Athletics"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio26"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio25"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="General Fitness"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio26"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Yoga"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio28"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio27"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Weights"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio29"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio28"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Pilates"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio30"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio29"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Cross Fit"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio31"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/radio30"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape"
+                            android:text="Interval"
+                            android:textColor="#4b4747"
+                            android:textSize="17sp" />
+                    </RadioGroup>
+                </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>
+

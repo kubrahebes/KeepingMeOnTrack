@@ -123,10 +123,10 @@ public class UserNetwork extends Activity {
 
         mCardAdapter = new CardsDataAdapter(this, goal);
         for (int i = 0; i < list.size(); i++) {
-            mCardAdapter.add(new Network(list.get(i).getGoalName(), list.get(i).getGoalDesc(), list.get(i).getUserName()));
+            mCardAdapter.add(new Network(list.get(i).getGoalName(), list.get(i).getGoalDesc(), list.get(i).getUserName(),list.get(i).getLike(),list.get(i).getDislike()));
         }
         mCardStack.setAdapter(mCardAdapter);
-        mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
+       // mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
 
 
         if (mCardStack.getAdapter() != null) {

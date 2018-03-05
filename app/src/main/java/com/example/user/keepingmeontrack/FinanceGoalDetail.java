@@ -17,7 +17,11 @@ import android.widget.Toast;
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Network;
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -44,14 +48,13 @@ public class FinanceGoalDetail extends BaseActivity {
     DatabaseReference myRef;
     DatabaseReference myRef2;
     Goal value;
-Goal value2;
+    Goal value2;
     String selectedItem;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.totalMoney)
     TextView totalMoney;
-    @BindView(R.id.piechart)
-    PieChart piechart;
+
     @BindView(R.id.daily)
     ImageView daily;
     @BindView(R.id.date)
@@ -78,6 +81,8 @@ Goal value2;
     TextView totalSaving;
     @BindView(R.id.totalGoal)
     TextView totalGoal;
+    @BindView(R.id.barchart)
+    BarChart barchart;
     String userNAme;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -86,10 +91,11 @@ Goal value2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.finance_goal_detail);
+
         ButterKnife.bind(this);
         pref = FinanceGoalDetail.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        userNAme=getUser().getUserName();
+        userNAme = getUser().getUserName();
         Intent intent = getIntent();
         selectedItem = intent.getStringExtra("selectId");
 
@@ -122,11 +128,10 @@ Goal value2;
 
                         if (selectedItem.equals(value.getId())) {
                             setdata(value);
-                            value2=value;
+                            value2 = value;
                         }
 
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         // This will catch any exception, because they are all descended from Exception
                         System.out.println("Error " + e.getMessage());
                     }
@@ -172,39 +177,30 @@ Goal value2;
         }*/
     public void setGraph() {
 
-        piechart.setUsePercentValues(true);
-        piechart.getDescription().setEnabled(false);
-        piechart.setExtraOffsets(0, 0, 0, 0);
-
-        piechart.setDragDecelerationFrictionCoef(0.95f);
-
-        //içi dolu istersen hole false yap
-        piechart.setDrawHoleEnabled(false);
-        piechart.setHoleColor(Color.WHITE);
-        piechart.setTransparentCircleRadius(61f);
-        //şeffaflık kalksın diye transparanı 30f yap.
-
-        ArrayList<PieEntry> yValues = new ArrayList<>();
-        yValues.add(new PieEntry(34f, "Hire"));
-        yValues.add(new PieEntry(36f, "Foods"));
-        yValues.add(new PieEntry(30f, "Technology"));
-
-        piechart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
-
-        PieDataSet dataSet = new PieDataSet(yValues, "Finance");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-
-        PieData data = new PieData((dataSet));
-        data.setValueTextSize(10f);
-        data.setValueTextColor(Color.YELLOW);
-
-        piechart.setData(data);
-
+        barchart.getDescription().setEnabled(false);
+        setData(3);
+        barchart.setFitBars(true);
 
     }
 
+    private void setData(int count) {
+        ArrayList<BarEntry> yvals = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            float value = (float) (Math.random() * 200);
+            yvals.add(new BarEntry(i, (int) value));
+        }
+        BarDataSet set = new BarDataSet(yvals, "Data Set ");
+        set.setColors(ColorTemplate.MATERIAL_COLORS);
+        set.setDrawValues(true);
+
+
+        BarData data = new BarData(set);
+        barchart.setData(data);
+        barchart.invalidate();
+        barchart.animateY(200);
+
+    }
 
     /**
      * Menu
@@ -228,9 +224,8 @@ Goal value2;
         if (id == R.id.action_share) {
             Toast.makeText(FinanceGoalDetail.this, "succsess", Toast.LENGTH_SHORT).show();
             String key = myRef.child("networking").push().getKey();
-            Network newGoal = new Network(value2.getName(),"I will workout to shape my body",userNAme,0,0,key);
+            Network newGoal = new Network(value2.getName(), "I will workout to shape my body", userNAme, 0, 0, key);
             myRef2.child("networking").child(key).setValue(newGoal);
-
 
 
         } else if (id == R.id.action_delete) {

@@ -36,7 +36,8 @@ repositories {
 }
 
 dependencies {
-    compile(name:'android-card-stack-0.1.6', ext:'aar')}
+    compile(name: 'android-card-stack-0.1.6', ext: 'aar')
+}
 
 
 dependencies {
@@ -64,4 +65,7 @@ dependencies {
 }
 
 
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
 apply plugin: 'com.google.gms.google-services'

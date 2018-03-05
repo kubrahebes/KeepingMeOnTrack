@@ -4,34 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appbar"
         android:theme="@style/AppTheme.AppBarOverlay">
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_finance"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#FA917F" />
-
     </android.support.design.widget.AppBarLayout>
-
-
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        android:layout_below="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
         android:layout_margin="25dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="0.0px"
         card_view:cardCornerRadius="8dp"
         card_view:cardElevation="18dp">
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab1"
             android:layout_width="50dp"
@@ -39,19 +33,15 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="5dp"
             android:background="#fa917f"
-
             />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 android:id="@+id/relative1"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp">
-
                 <ImageView
                     android:id="@+id/imgDebitName"
                     android:layout_width="wrap_content"
@@ -59,7 +49,6 @@
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
                     android:src="@drawable/debit_icon" />
-
                 <EditText
                     android:id="@+id/debitName"
                     android:layout_width="match_parent"
@@ -67,13 +56,11 @@
                     android:layout_toRightOf="@+id/imgDebitName"
                     android:hint="Debit Name" />
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/relative2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_below="@+id/relative1">
-
                 <ImageView
                     android:id="@+id/imgHowMuch"
                     android:layout_width="wrap_content"
@@ -81,7 +68,6 @@
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
                     android:src="@drawable/debit_coins" />
-
                 <EditText
                     android:id="@+id/debitTotalMoney"
                     android:layout_width="match_parent"
@@ -90,13 +76,11 @@
                     android:hint="How Many $ Can You  Need ? "
                     android:inputType="number" />
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/relative3"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_below="@+id/relative2">
-
                 <ImageView
                     android:id="@+id/imgDailyAllowance"
                     android:layout_width="wrap_content"
@@ -104,7 +88,6 @@
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
                     android:src="@drawable/debit_coin" />
-
                 <EditText
                     android:id="@+id/debitDailyAllowance"
                     android:layout_width="match_parent"
@@ -113,14 +96,31 @@
                     android:hint="Weekly Allowance"
                     android:inputType="number" />
             </RelativeLayout>
-
-
+            <RelativeLayout
+                android:id="@+id/relative6"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/relative3">
+                <ImageView
+                    android:id="@+id/imgFaiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="7dp"
+                    android:src="@drawable/inc" />
+                <EditText
+                    android:id="@+id/faizorani"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/imgFaiz"
+                    android:hint="Weekly Interest"
+                    android:inputType="numberDecimal" />
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relative4"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_below="@+id/relative3">
-
+                android:layout_below="@+id/relative6">
                 <ImageView
                     android:id="@+id/imgReminding"
                     android:layout_width="wrap_content"
@@ -128,7 +128,6 @@
                     android:layout_centerVertical="true"
                     android:layout_margin="7dp"
                     android:src="@drawable/debit_alarm" />
-
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
@@ -137,14 +136,11 @@
                     android:layout_marginRight="7dp"
                     android:layout_toRightOf="@id/imgReminding"></Spinner>
             </RelativeLayout>
-
-
             <RelativeLayout
                 android:id="@+id/relative5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative4">
-
                 <TextView
                     android:id="@+id/tvRate"
                     android:layout_width="wrap_content"
@@ -153,31 +149,18 @@
                     android:text="Rate This Debit"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-
                 <RatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvRate"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     android:numStars="5"
                     android:stepSize="1.0"
-                    android:theme="@style/RatingBar2"
-                   android:layout_centerVertical="true"
-
-                    android:layout_centerHorizontal="true"
-                   />
-
+                    android:theme="@style/RatingBar2" />
             </RelativeLayout>
-
-
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-      ></FrameLayout>
 </RelativeLayout>
-
