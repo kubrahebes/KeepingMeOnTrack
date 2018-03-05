@@ -170,8 +170,10 @@ public class FinanceDebitAdd extends BaseActivity {
 
             myRef.child("finance").child(key).setValue(newGoal);
 
+
           Intent intent =new Intent(FinanceDebitAdd.this,MainTabActivity.class);
           startActivity(intent);
+
 
 
         } else {

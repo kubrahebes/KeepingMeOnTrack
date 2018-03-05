@@ -126,8 +126,10 @@ public class FinanceGoalAdd extends BaseActivity {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame, fragment);
                     transaction.commit();
+
                     Intent intent=new Intent(FinanceGoalAdd.this,MainTabActivity.class);
                     startActivity(intent);
+
 
 
                 } else {
