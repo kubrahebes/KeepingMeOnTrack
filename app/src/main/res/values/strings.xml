@@ -26,6 +26,10 @@
 
     <!-- TODO: Select spinner items -->
 
-
-
+    <!-- No internet connection-->
+    <string name="noconnection_String">There Isn\'t Connection, Please Checkout Your Internet</string>
+    <string name="yes">Yes</string>
+    <string name="really_quit">The Connection is unavailable, Would you like to quit ?</string>
+    <string name="quit">Quit</string>
+    <string name="no">No</string>
 </resources>

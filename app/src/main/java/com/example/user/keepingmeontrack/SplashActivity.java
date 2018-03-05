@@ -26,19 +26,21 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-       pref = SplashActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
+        pref = SplashActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               if ( pref.getBoolean("IS_LOGIN", false)){
+                if (pref.getBoolean("IS_LOGIN", false)) {
                     startActivity(new Intent(SplashActivity.this, MainTabActivity.class));
-                }else {
+                    finish();
+                } else {
                     startActivity(new Intent(SplashActivity.this, IntroActivity.class));
+                    finish();
                 }
             }
-        },3000);
+        }, 3000);
 
     }
 }

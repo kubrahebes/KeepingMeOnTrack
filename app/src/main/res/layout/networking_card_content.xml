@@ -46,12 +46,42 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/goal_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="110dp"
             android:textColor="#948"
             android:textSize="15sp"
             android:textStyle="bold"
             tools:text="Mahmoud AlMuhammed" />
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/user_name"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="50dp"
+    android:text="10"
+    android:textSize="20sp"
+    android:id="@+id/dislike"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/comment"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/user_name"
+            android:layout_marginTop="30dp"
+            android:text="10"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/like"
+            android:layout_below="@+id/user_name"
+            android:layout_marginTop="30dp"
+            android:text="30"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            />
 
     </RelativeLayout>
 

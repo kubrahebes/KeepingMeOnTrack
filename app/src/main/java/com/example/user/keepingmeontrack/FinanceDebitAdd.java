@@ -1,5 +1,6 @@
 package com.example.user.keepingmeontrack;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -60,6 +61,8 @@ public class FinanceDebitAdd extends BaseActivity {
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
+    @BindView(R.id.faizorani)
+    EditText faizoranii;
 
 
     FirebaseDatabase database;
@@ -83,10 +86,9 @@ public class FinanceDebitAdd extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-
         pref = FinanceDebitAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        uID =getUser().getUid();
+        uID = getUser().getUid();
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
@@ -122,22 +124,54 @@ public class FinanceDebitAdd extends BaseActivity {
         return true;
     }
 
+    public void calculate() {
+
+        double day, totalWeek;
+        double week;
+        double faiz;
+        double faizorani;
+        double totalmoney;
+        double weekmoney;
+
+
+        totalmoney = Double.parseDouble(debitTotalMoney.getText().toString());
+        weekmoney = Double.parseDouble(debitDailyAllowance.getText().toString());
+        faizorani = Double.parseDouble(faizoranii.getText().toString());
+
+        if (totalmoney % weekmoney == 0) {
+            week = totalmoney / weekmoney;
+            day = week * 7;
+        } else {
+            week = (totalmoney / weekmoney);
+            day = (week * 7) + (totalmoney % weekmoney);
+        }
+        //Faiz = (Anapara x Faiz Oranı x Anaparanın Faizde Kaldığı Gün) / 36500
+        faiz = ((totalmoney * faizorani * day) / 36500) * 7;
+        totalmoney = totalmoney + faiz;
+        if (totalmoney % weekmoney == 0) {
+            totalWeek = totalmoney / weekmoney;
+
+        } else {
+            totalWeek = (totalmoney / weekmoney) + 1;
+
+        }
+        Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
+
+    }
+
     @OnClick(R.id.fab1)
     public void onViewClicked() {
         if (validateControl()) {
             Toast.makeText(FinanceDebitAdd.this, "succsess", Toast.LENGTH_SHORT).show();
+            calculate();
             String key = myRef.child("finance").push().getKey();
             Goal newGoal = new Goal(key, uID, debitName.getText().toString(), debitTotalMoney.getText().toString(), debitDailyAllowance.getText().toString(),
                     "subat", "mart", spinner.getSelectedItem().toString(), 2);
 
             myRef.child("finance").child(key).setValue(newGoal);
 
-
-            FinancialMainFragment fragment = new FinancialMainFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout, fragment);
-            transaction.commit();
-            finish();
+          Intent intent =new Intent(FinanceDebitAdd.this,MainTabActivity.class);
+          startActivity(intent);
 
 
         } else {
@@ -157,3 +191,4 @@ public class FinanceDebitAdd extends BaseActivity {
         }
     }
 }
+

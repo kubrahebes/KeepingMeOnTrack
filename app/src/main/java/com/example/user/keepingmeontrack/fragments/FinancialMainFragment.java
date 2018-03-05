@@ -1,9 +1,13 @@
 package com.example.user.keepingmeontrack.fragments;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.keepingmeontrack.FinanceGoalAdd;
 import com.example.user.keepingmeontrack.FinanceGoalDetail;
 import com.example.user.keepingmeontrack.R;
 import com.example.user.keepingmeontrack.adapters.GoalAdapter;
@@ -44,35 +48,57 @@ public class FinancialMainFragment extends Fragment {
     SharedPreferences.Editor editor;
     String uID;
     Goal value;
+    @BindView(R.id.not_connected_text)
+    TextView notConnectedText;
     private ProgressDialog mProgress;
+    GoalAdapter adapte;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_main_finance, container, false);
         ButterKnife.bind(this, rootView);
 
-
+        adapte = new GoalAdapter(getActivity(), new ArrayList<Goal>());
         mProgress = new ProgressDialog(getContext());
         mProgress.setTitle("Processing...");
         mProgress.setMessage("Please wait...");
-        mProgress.setCancelable(false);
+        mProgress.setCancelable(true);
         mProgress.setIndeterminate(true);
-     //   mProgress.show();
+        mProgress.show();
 
-        /**
-         *Firebase connection
-         */
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase").child("finance");
 
-        getdata();
-
-        /**
-         * SharedPreference for user id
-         */
         pref = getContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         uID = pref.getString("uID", null);
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()) {
+            getdata();
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setTitle(R.string.quit);
+            builder.setMessage(R.string.really_quit);
+            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    getActivity().finish();                         //Stop the activity
+                }
+
+            })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+            notConnectedText.setText(R.string.noconnection_String);
+        }
+
 
         return rootView;
     }
@@ -82,18 +108,15 @@ public class FinancialMainFragment extends Fragment {
      */
     public void getdata() {
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.orderByChild("uid").equalTo(uID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                mProgress.cancel();
                 ArrayList<Goal> financeGoalList = new ArrayList<>();
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
-                  //  mProgress.cancel();
                     value = verigetir.getValue(Goal.class);
-                    if (value.getUid().equals(uID)) {
-                        financeGoalList.add(value);
-                    } else {
-                        // Toast.makeText(getContext(), "Veri Yok", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getContext(), value.getUid(), Toast.LENGTH_SHORT).show();
+                    financeGoalList.add(value);
                 }
                 setdata(financeGoalList);
             }
@@ -112,20 +135,25 @@ public class FinancialMainFragment extends Fragment {
      * Set Adapter
      */
     public void setdata(final ArrayList<Goal> list) {
-if (list.isEmpty()){
-    Toast.makeText(getActivity(), "Empty ListView", Toast.LENGTH_SHORT).show();
-}else {
-        GoalAdapter adapte = new GoalAdapter(getActivity(),list);
-        financeGoalListview.setAdapter(adapte);
-        financeGoalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(), FinanceGoalDetail.class);
-                intent.putExtra("selectId", list.get(i).getId());
-                // Toast.makeText(getContext(), list.get(i).getId(), Toast.LENGTH_SHORT).show();
+        if (list.isEmpty()) {
+            Toast.makeText(getActivity(), "Empty ListView", Toast.LENGTH_SHORT).show();
+        } else {
+            adapte.clear();
+            adapte.addAll(list);
+            financeGoalListview.setAdapter(adapte);
+            financeGoalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(getContext(), FinanceGoalDetail.class);
+                    intent.putExtra("selectId", list.get(i).getId());
 
-                startActivity(intent);
-            }
-        });
-    }}
+                    startActivity(intent);
+                }
+            });
+        }
+    }
+
+    public void stopActivity(){
+
+    }
 }

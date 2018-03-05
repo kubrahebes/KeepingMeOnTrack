@@ -1,5 +1,6 @@
 package com.example.user.keepingmeontrack;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -125,7 +126,8 @@ public class FinanceGoalAdd extends BaseActivity {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame, fragment);
                     transaction.commit();
-                    finish();
+                    Intent intent=new Intent(FinanceGoalAdd.this,MainTabActivity.class);
+                    startActivity(intent);
 
 
                 } else {

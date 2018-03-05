@@ -62,9 +62,10 @@
                 <EditText
                     android:id="@+id/goalName"
                     android:layout_width="match_parent"
+                    android:textSize="15sp"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgGoalName"
-                    android:hint="Goal Name" />
+                    android:hint="What Would You Like to Call Your Savings Goal ?" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -86,8 +87,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="number"
+                    android:textSize="15sp"
                     android:layout_toRightOf="@+id/imgHowMuch"
-                    android:hint="How Many $ Can You Save ?" />
+                    android:hint="How Much Would You Like to Save ?" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -108,8 +110,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="number"
+                    android:textSize="15sp"
                     android:layout_toRightOf="@+id/imgDailyAllowance"
-                    android:hint="Weekly Allowance" />
+                    android:hint="How Frequently Do You Want to Save ?" />
             </RelativeLayout>
 
             <RelativeLayout
