@@ -64,14 +64,12 @@ public class FinanceGoalAdd extends BaseActivity {
     @BindView(R.id.imgReminding)
     ImageView imgReminding;
 
-    @BindView(R.id.relative5)
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
     @BindView(R.id.frame)
     FrameLayout frame;
-    @BindView(R.id.ratingBar)
-    RatingBar ratingbar;
+
     @BindView(R.id.spinner)
     Spinner spinner;
 
@@ -89,12 +87,6 @@ public class FinanceGoalAdd extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar rtBar, float rating, boolean fromUser) {
-                rating = (int) rating;
-                Toast.makeText(FinanceGoalAdd.this, "Rating:" + String.valueOf(rating), Toast.LENGTH_LONG).show();
-            }
-        });
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
