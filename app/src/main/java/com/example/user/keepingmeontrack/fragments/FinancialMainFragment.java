@@ -115,7 +115,7 @@ public class FinancialMainFragment extends Fragment {
                 ArrayList<Goal> financeGoalList = new ArrayList<>();
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
                     value = verigetir.getValue(Goal.class);
-                    Toast.makeText(getContext(), value.getUid(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), value.getUid(), Toast.LENGTH_SHORT).show();
                     financeGoalList.add(value);
                 }
                 setdata(financeGoalList);

@@ -22,6 +22,7 @@ import com.example.user.keepingmeontrack.models.Goal;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,8 +32,6 @@ import butterknife.OnClick;
  */
 
 public class FinanceDebitAdd extends BaseActivity {
-    @BindView(R.id.fab1)
-    FloatingActionButton fab1;
     @BindView(R.id.imgDebitName)
     ImageView imgDebitName;
     @BindView(R.id.debitName)
@@ -65,6 +64,8 @@ public class FinanceDebitAdd extends BaseActivity {
     String uID;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    @BindView(R.id.fab1)
+    CircleButton fab;
 
 
     @Override

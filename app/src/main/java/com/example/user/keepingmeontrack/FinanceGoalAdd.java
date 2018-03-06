@@ -25,6 +25,7 @@ import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,8 +42,6 @@ public class FinanceGoalAdd extends BaseActivity {
     SharedPreferences.Editor editor;
 
 
-    @BindView(R.id.fab1)
-    FloatingActionButton fab1;
     @BindView(R.id.imgGoalName)
     ImageView imgGoalName;
     @BindView(R.id.goalName)
@@ -72,6 +71,8 @@ public class FinanceGoalAdd extends BaseActivity {
 
     @BindView(R.id.spinner)
     Spinner spinner;
+    @BindView(R.id.fab1)
+    CircleButton fab1;
 
 
     @Override
@@ -100,6 +101,7 @@ public class FinanceGoalAdd extends BaseActivity {
         Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
+
 
 
         fab1.setOnClickListener(new View.OnClickListener() {
