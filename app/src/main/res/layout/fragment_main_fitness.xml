@@ -21,6 +21,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/addNweGoal"
+            android:background="@drawable/floatbtn_noshadow"
+            android:src="@drawable/plus"
             />
 
     </FrameLayout>

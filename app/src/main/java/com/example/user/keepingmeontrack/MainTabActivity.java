@@ -20,16 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton.LayoutParams;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton.LayoutParams;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,17 +60,19 @@ public class MainTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
-                  //** Here is Circled Floating Action Button code **///
+        //** Here is Circled Floating Action Button code **///
         //I removed the butterknife method for old floatingbutton because the whole code now uses only Java.//
 
         final ImageView fabIconNew = new ImageView(this);
         // Setting the icon in the center of the Floating Action Button
         fabIconNew.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.plus));
-
         final FloatingActionButton rightLowerButton = new FloatingActionButton.Builder(this)
                 .setContentView(fabIconNew)
                 .setPosition(FloatingActionButton.POSITION_BOTTOM_RIGHT)
+                .setBackgroundDrawable(R.drawable.floatbtn_noshadow)
                 .build();
+
+
         //Here I set the position to bottom of right.
 
         // Created menu items which are also Floating Action Buttons
@@ -83,7 +83,7 @@ public class MainTabActivity extends AppCompatActivity {
 
 
         // Created an image view for each menu item
-        ImageView subMenuDebit = new ImageView(this);
+        final ImageView subMenuDebit = new ImageView(this);
         ImageView subMenuAddGoal = new ImageView(this);
         // Set the icon for each menu item
         subMenuDebit.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.debit));
@@ -127,8 +127,8 @@ public class MainTabActivity extends AppCompatActivity {
         subMenuDebit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           Intent intent =new Intent(MainTabActivity.this,FinanceDebitAdd.class);
-           startActivity(intent);
+                Intent intent = new Intent(MainTabActivity.this, FinanceDebitAdd.class);
+                startActivity(intent);
                 // Here we need to start debit fragment or activity when It finished I will add it.
             }
         });
@@ -168,11 +168,15 @@ public class MainTabActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         appbar.setBackgroundColor(Color.parseColor("#FFB829"));
+                        rightLowerButton.setVisibility(View.VISIBLE);
                         toolbar.setTitle("Finance");
+
                         break;
                     case 1:
                         appbar.setBackgroundColor(Color.parseColor("#D6376B"));
                         toolbar.setTitle("Fitness");
+                        rightLowerButton.setVisibility(View.INVISIBLE);
+                        rightLowerMenu.close(true);
                         break;
                 }
             }
@@ -183,7 +187,6 @@ public class MainTabActivity extends AppCompatActivity {
             }
 
         });
-
 
 
         tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(container));
@@ -216,6 +219,7 @@ public class MainTabActivity extends AppCompatActivity {
 
                 case 1:
                     FitnessMainFragment fitness_fragment = new FitnessMainFragment();
+
                     return fitness_fragment;
                 default:
                     return null;
