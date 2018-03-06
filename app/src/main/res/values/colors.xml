@@ -10,7 +10,7 @@
     
     <color name="lightGrey">#adadad</color>
     <color name="financeToolbar">#ffb829</color>
-    <color name="drk_button">#fce2e4</color>
-    <color name="lgt_button">#fce2e4</color>
+    <color name="drk_button">#fddee8</color>
+    <color name="lgt_button">#fddee8</color>
 
 </resources>

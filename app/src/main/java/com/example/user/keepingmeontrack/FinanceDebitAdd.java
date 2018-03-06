@@ -48,15 +48,10 @@ public class FinanceDebitAdd extends BaseActivity {
     ImageView imgReminding;
     @BindView(R.id.spinner)
     Spinner spinner;
-    @BindView(R.id.tvRate)
-    TextView tvRate;
-    @BindView(R.id.ratingBar)
-    RatingBar ratingBar;
     @BindView(R.id.relative3)
     RelativeLayout relative3;
     @BindView(R.id.relative4)
     RelativeLayout relative4;
-    @BindView(R.id.relative5)
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
@@ -94,12 +89,6 @@ public class FinanceDebitAdd extends BaseActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar rtBar, float rating, boolean fromUser) {
-                rating = (int) rating;
-                Toast.makeText(FinanceDebitAdd.this, "Rating:" + String.valueOf(rating), Toast.LENGTH_LONG).show();
-            }
-        });
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -111,12 +100,7 @@ public class FinanceDebitAdd extends BaseActivity {
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        // rating bar ekleme ama basma
-        RatingBar rate = (RatingBar) findViewById(R.id.ratingBar);
 
-//use ratings within event listner code block
-
-        float rating = rate.getRating();
     }
 
     @Override

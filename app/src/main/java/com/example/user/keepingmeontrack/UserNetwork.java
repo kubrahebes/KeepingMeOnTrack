@@ -30,8 +30,7 @@ import butterknife.OnClick;
  */
 
 public class UserNetwork extends Activity {
-    @BindView(R.id.btn_chat)
-    ImageView btnChat;
+
     @BindView(R.id.btn_like)
     ImageView btnLike;
     @BindView(R.id.btn_dislike)
@@ -67,13 +66,10 @@ public class UserNetwork extends Activity {
 
     }
 
-    @OnClick({R.id.btn_chat, R.id.btn_like, R.id.btn_dislike})
+    @OnClick({ R.id.btn_like, R.id.btn_dislike})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_chat:
-                Toast.makeText(UserNetwork.this,
-                        "I am chat!", Toast.LENGTH_LONG).show();
-                break;
+
             case R.id.btn_like:
                 Toast.makeText(UserNetwork.this,
                         "I Like that!", Toast.LENGTH_LONG).show();

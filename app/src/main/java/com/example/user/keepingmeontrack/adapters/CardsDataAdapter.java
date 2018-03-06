@@ -58,8 +58,6 @@ public class CardsDataAdapter extends ArrayAdapter<Network> {
         TextView userName;
         @BindView(R.id.dislike)
         TextView dislike;
-        @BindView(R.id.comment)
-        TextView comment;
         @BindView(R.id.like)
         TextView like;
 
