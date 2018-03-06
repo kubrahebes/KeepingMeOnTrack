@@ -1,6 +1,8 @@
 package com.example.user.keepingmeontrack.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +25,13 @@ import butterknife.ButterKnife;
 public class GoalAdapter extends ArrayAdapter<Goal> {
     ArrayList<Goal> arrayList;
 
-    public GoalAdapter(Activity context, ArrayList <Goal> arrayList) {
-        super(context, 0,arrayList);
+    public GoalAdapter(Activity context, ArrayList<Goal> arrayList) {
+        super(context, 0, arrayList);
 
         //addAll(CacheHelper.getInstance(getContext()).getStoreInfo().branches);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         ViewHolder holder;
@@ -50,12 +53,13 @@ public class GoalAdapter extends ArrayAdapter<Goal> {
         } else {
             holder.goalTextView.setText("DEBT");
             holder.goalImage.setBackgroundResource(R.drawable.debiticon);
+            holder.rl3.setCardBackgroundColor(R.color.cardview);
         }
         return view;
     }
 
 
-    class ViewHolder {
+    static class ViewHolder {
         @BindView(R.id.goal_image)
         ImageView goalImage;
         @BindView(R.id.tv_goal_name)
@@ -68,10 +72,14 @@ public class GoalAdapter extends ArrayAdapter<Goal> {
         TextView goalTextView;
         @BindView(R.id.days)
         TextView days;
-
+        @BindView(R.id.rl3)
+        CardView rl3;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
+
+
 }
 
