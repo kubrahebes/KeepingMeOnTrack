@@ -28,8 +28,6 @@ public class FitnesGoalAddActivity extends BaseActivity {
     RadioGroup group2;
     @BindView(R.id.group3)
     RadioGroup group3;
-    @BindView(R.id.group4)
-    RadioGroup group4;
     @BindView(R.id.group5)
     RadioGroup group5;
     @BindView(R.id.fab1)
@@ -40,12 +38,10 @@ public class FitnesGoalAddActivity extends BaseActivity {
     String uID;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+
     RadioButton question1;
     RadioButton question2;
     RadioButton question3;
-    RadioButton question4;
     RadioButton question5;
 
     @Override
@@ -74,13 +70,7 @@ public class FitnesGoalAddActivity extends BaseActivity {
                int id3 = group3.getCheckedRadioButtonId();
                question3 = findViewById(id3); }
        });
-       group4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(RadioGroup radioGroup, int i) {
-               int id4 = group4.getCheckedRadioButtonId();
-               question4 = findViewById(id4);
-           }
-       });
+
       group5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
           @Override
           public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -98,10 +88,10 @@ public class FitnesGoalAddActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.fab1)
     public void onViewClicked() {
         String key = myRef.child("fitness").push().getKey();
-        FitnessGoal newGoal = new FitnessGoal( question1.getText().toString(), question2.getText().toString(), question3.getText().toString(), question4.getText().toString(), question5.getText().toString(),key,uID);
+        FitnessGoal newGoal = new FitnessGoal( question1.getText().toString(), question2.getText().toString(), question3.getText().toString(), question5.getText().toString(),key,uID);
 
         myRef.child("fitness").child(key).setValue(newGoal);
         Intent intent=new Intent(FitnesGoalAddActivity.this,MainTabActivity.class);
