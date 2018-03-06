@@ -29,12 +29,12 @@
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".FinanceDebitAdd"
             android:label="Add Debit"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".FinanceGoalAdd"
             android:label="Add Finance Goal"
@@ -43,12 +43,15 @@
         <activity
             android:name=".FinanceGoalDetail"
             android:screenOrientation="portrait"
-            android:theme="@style/GoalDetail"></activity>
+            android:theme="@style/GoalDetail" />
         <activity
             android:name=".UserNetwork"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".FitnesGoalAddActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".FitnesGoalAddActivity"
+            android:theme="@style/GoalDetail" />
+        <activity android:name=".FitnessDetailActivity"
             android:theme="@style/GoalDetail"></activity>
     </application>
 
