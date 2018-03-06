@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -82,6 +83,8 @@ public class FitnesGoalAddActivity extends AppCompatActivity {
     RadioButton radio31;
     @BindView(R.id.group5)
     RadioGroup group5;
+    @BindView(R.id.fab1)
+    CircleButton fab1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
