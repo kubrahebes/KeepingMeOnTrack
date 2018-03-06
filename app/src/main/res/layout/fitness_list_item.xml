@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        card_view:cardCornerRadius="8dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0.0px"
-        card_view:cardElevation="18dp"
-        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        card_view:cardCornerRadius="8dp"
 
-        android:layout_marginRight="10dp">
+        card_view:cardElevation="5dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/rl3"
-                card_view:cardCornerRadius="5dp"
-                app:cardBackgroundColor="#62cfaf"
                 android:layout_width="12dp"
-                android:layout_height="180dp"></android.support.v7.widget.CardView>
+                android:layout_height="180dp"
+                app:cardBackgroundColor="#62cfaf"
+                card_view:cardCornerRadius="5dp">
+
+            </android.support.v7.widget.CardView>
 
             <ImageView
                 android:id="@+id/goal_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/sport"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="25dp"
-                />
+                android:background="@drawable/sport" />
+
             <TextView
-                android:layout_toRightOf="@id/rl3"
                 android:id="@+id/tv_goal_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="18dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/rl3"
                 android:text="Jogging"
                 android:textColor="#de3c3b3b"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/explanation"
                 android:layout_width="240dp"
@@ -64,16 +69,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/explanation"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/rl3">
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1.5dp"
-                    android:background="#191919"
-                    />
+                    android:background="#191919" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rl2"
                 android:layout_width="wrap_content"
@@ -83,19 +89,19 @@
 
 
                 >
+
                 <TextView
                     android:id="@+id/result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:text="Start the sport 3rd day."
                     android:textAllCaps="true"
                     android:textColor="#000000"
-                    android:textSize="17sp"
-                    />
+                    android:textSize="17sp" />
 
             </RelativeLayout>
         </RelativeLayout>
