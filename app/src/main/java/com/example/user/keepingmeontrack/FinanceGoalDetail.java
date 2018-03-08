@@ -1,10 +1,11 @@
 package com.example.user.keepingmeontrack;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,15 +17,10 @@ import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Network;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +50,6 @@ public class FinanceGoalDetail extends BaseActivity {
     TextView title;
     @BindView(R.id.totalMoney)
     TextView totalMoney;
-
     @BindView(R.id.daily)
     ImageView daily;
     @BindView(R.id.date)
@@ -222,13 +217,24 @@ public class FinanceGoalDetail extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_share) {
-            Toast.makeText(FinanceGoalDetail.this, "succsess", Toast.LENGTH_SHORT).show();
-            String key = myRef.child("networking").push().getKey();
-            Network newGoal = new Network(value2.getName(), "I will workout to shape my body", userNAme, 0, 0, key);
-            myRef2.child("networking").child(key).setValue(newGoal);
 
+            AlertDialog alert = new AlertDialog.Builder(this).create();
+            alert.setTitle("Attention");
+            alert.setMessage("Are you sure you want to share your goal with others?");
+            alert.setButton(Dialog.BUTTON_POSITIVE,"YES",new DialogInterface.OnClickListener(){
 
-        } else if (id == R.id.action_delete) {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(FinanceGoalDetail.this, "Success", Toast.LENGTH_SHORT).show();
+                    String key = myRef.child("networking").push().getKey();
+                    Network newGoal = new Network(value2.getName(), "", userNAme, 0, 0, key);
+                    myRef2.child("networking").child(key).setValue(newGoal);
+                }
+            });
+
+            alert.show();
+        }
+        else if (id == R.id.action_delete) {
 
         }
 
