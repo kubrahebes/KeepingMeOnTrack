@@ -3,30 +3,23 @@
     <!-- Base application theme. -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-<style name="GoalDetail" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="colorPrimary">#f4f4f4</item>
-    <item name="colorPrimaryDark">@color/colorPrimary</item>
 
-</style>
+    <style name="GoalDetail" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#f4f4f4</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+
+
+    </style>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/lightGrey</item>
-        <item name="colorControlActivated">@color/duskYellow</item>
-
-    </style>
-    <style name="RatingBar2" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/lightGrey</item>
-        <item name="colorControlActivated">@color/duskRed</item>
-
-    </style>
 
 
-    <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar">
-    </style>
+
+    <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
 
 </resources>

@@ -279,7 +279,8 @@ public class FinanceGoalDetail extends BaseActivity {
                 String key = myRef.child("networking").push().getKey();
                 Network newGoal = new Network(value2.getName(), subEditText.getText().toString(), userNAme, 0, 0, key);
                 myRef2.child("networking").child(key).setValue(newGoal);
-
+                Intent intent = new Intent(FinanceGoalDetail.this, MainTabActivity.class);
+                startActivity(intent);
             }
         });
 

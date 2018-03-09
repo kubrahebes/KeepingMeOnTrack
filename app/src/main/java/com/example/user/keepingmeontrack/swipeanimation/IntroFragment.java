@@ -278,4 +278,29 @@ public class IntroFragment extends Fragment {
             Toast.makeText(getContext(), "No Internet connection!", Toast.LENGTH_LONG).show();
         }
     }
+
+      /*================================ Important Section! ================================
+    We must override onPause(), onResume(), and onDestroy() to properly handle our
+    VideoView.
+     */
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Restart the video when resuming the Activity
+
+        if (videoBG != null && !videoBG.isPlaying()) {
+            videoBG.start();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // When the Activity is destroyed, release our MediaPlayer and set it to null.
+        mMediaPlayer.release();
+        mMediaPlayer = null;
+    }
+
 }

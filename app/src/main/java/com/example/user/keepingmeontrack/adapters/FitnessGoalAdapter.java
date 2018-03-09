@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.keepingmeontrack.R;
@@ -41,9 +42,21 @@ public class FitnessGoalAdapter extends ArrayAdapter<FitnessGoal> {
 
         FitnessGoal goalObje = getItem(position);
         holder.tvGoalName.setText(goalObje.getAnswer5());
-        holder.explanation.setText(goalObje.getAnswer1()+" "+ "for "+goalObje.getAnswer2());
+        holder.explanation.setText(goalObje.getAnswer1() + " " + "for " + goalObje.getAnswer2());
         holder.result.setText(goalObje.getAnswer3());
+        if (goalObje.getAnswer2().equals("Lose Weight")) {
+            holder.icon.setBackgroundResource(R.drawable.calculate);
 
+        } else if (goalObje.getAnswer2().equals("Build Muscle")) {
+            holder.icon.setBackgroundResource(R.drawable.muscle);
+
+        } else if (goalObje.getAnswer2().equals("Improve Muscle Tone")) {
+            holder.icon.setBackgroundResource(R.drawable.musclearm);
+
+        } else if (goalObje.getAnswer2().equals("Improve Flexibility")) {
+            holder.icon.setBackgroundResource(R.drawable.sport);
+
+        }
 
         return view;
     }
@@ -56,6 +69,8 @@ public class FitnessGoalAdapter extends ArrayAdapter<FitnessGoal> {
         TextView explanation;
         @BindView(R.id.result)
         TextView result;
+        @BindView(R.id.goal_image)
+        ImageView icon;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

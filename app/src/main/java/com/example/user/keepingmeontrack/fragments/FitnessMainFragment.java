@@ -76,7 +76,7 @@ public class FitnessMainFragment extends Fragment {
         pref = getContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         uID = pref.getString("uID", null);
-        Toast.makeText(getContext(), uID, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getContext(), uID, Toast.LENGTH_SHORT).show();
         getdata();
         return rootView;
     }
@@ -114,7 +114,7 @@ public class FitnessMainFragment extends Fragment {
      */
     public void setdata(final ArrayList<FitnessGoal> list) {
         if (list.isEmpty()) {
-            Toast.makeText(getActivity(), "Empty ListView", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(getActivity(), "Empty ListView", Toast.LENGTH_SHORT).show();
 
         } else {
             adapte.clear();
