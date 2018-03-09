@@ -1,15 +1,17 @@
 package com.example.user.keepingmeontrack;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -81,6 +83,8 @@ public class FinanceGoalDetail extends BaseActivity {
     String userNAme;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    Button btnOpenDialog;
+    TextView textInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,27 +222,49 @@ public class FinanceGoalDetail extends BaseActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_share) {
 
-            AlertDialog alert = new AlertDialog.Builder(this).create();
-            alert.setTitle("Attention");
-            alert.setMessage("Are you sure you want to share your goal with others?");
-            alert.setButton(Dialog.BUTTON_POSITIVE,"YES",new DialogInterface.OnClickListener(){
+            openDialog();
 
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(FinanceGoalDetail.this, "Success", Toast.LENGTH_SHORT).show();
-                    String key = myRef.child("networking").push().getKey();
-                    Network newGoal = new Network(value2.getName(), "", userNAme, 0, 0, key);
-                    myRef2.child("networking").child(key).setValue(newGoal);
-                }
-            });
 
-            alert.show();
-        }
-        else if (id == R.id.action_delete) {
+        } else if (id == R.id.action_delete) {
 
         }
 
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+    private void openDialog(){
+        LayoutInflater inflater = LayoutInflater.from(FinanceGoalDetail.this);
+        View subView = inflater.inflate(R.layout.share_pop, null);
+        final EditText subEditText = (EditText)subView.findViewById(R.id.dialogEditText);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Attention");
+        builder.setMessage("Please describe your Goal");
+        builder.setView(subView);
+        AlertDialog alertDialog = builder.create();
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String key = myRef.child("networking").push().getKey();
+                Network newGoal = new Network(value2.getName(), "", userNAme, 0, 0, key);
+                myRef2.child("networking").child(key).setValue(newGoal);
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(FinanceGoalDetail.this, "Cancel", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        builder.show();
+    }
+
 }

@@ -41,7 +41,7 @@ public class CardsDataAdapter extends ArrayAdapter<Network> {
 
 
        holder.goalName.setText(currentGoal.getGoalName());
-        holder.goalContent.setText(" "+ currentGoal.getGoalDesc());
+        holder.goalContent.setText(currentGoal.getGoalDesc());
        // holder.userName.setText(currentGoal.getUserName());
         holder.dislike.setText(" "+currentGoal.getDislike());
          holder.like.setText(" "+currentGoal.getLike());

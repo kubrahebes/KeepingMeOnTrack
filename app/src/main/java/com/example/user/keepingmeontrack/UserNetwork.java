@@ -52,6 +52,8 @@ public class UserNetwork extends Activity {
         ButterKnife.bind(this);
 
 
+
+
         mCardStack = findViewById(R.id.card_stack);
 
         mCardStack.setContentResource(R.layout.networking_card_content);
