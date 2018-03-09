@@ -1,7 +1,6 @@
 package com.example.user.keepingmeontrack;
 
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +39,6 @@ public class UserNetwork extends Activity {
     @BindView(R.id.back)
     ImageButton back;
 
-
     private CardStack mCardStack;
     private CardsDataAdapter mCardAdapter;
     FirebaseDatabase database;
@@ -53,20 +51,20 @@ public class UserNetwork extends Activity {
         setContentView(R.layout.networking_main);
         ButterKnife.bind(this);
 
-        mCardStack = (CardStack) findViewById(R.id.card_stack);
+
+
+
+        mCardStack = findViewById(R.id.card_stack);
 
         mCardStack.setContentResource(R.layout.networking_card_content);
 //        mCardStack.setStackMargin(20);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase").child("networking");
-
         getdata();
-
-
     }
 
-    @OnClick({ R.id.btn_like, R.id.btn_dislike})
+    @OnClick({R.id.btn_like, R.id.btn_dislike})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
@@ -86,7 +84,6 @@ public class UserNetwork extends Activity {
      * get data from the firebase
      */
     public void getdata() {
-
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -94,9 +91,7 @@ public class UserNetwork extends Activity {
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
                     //  mProgress.cancel();
                     shareGoal = verigetir.getValue(Network.class);
-
                     financeGoalList.add(shareGoal);
-
                 }
                 setdata(financeGoalList);
             }
@@ -104,11 +99,8 @@ public class UserNetwork extends Activity {
             @Override
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(UserNetwork.this, "Error", Toast.LENGTH_SHORT).show();
-
             }
         });
-
-
     }
 
     /**
@@ -119,10 +111,10 @@ public class UserNetwork extends Activity {
 
         mCardAdapter = new CardsDataAdapter(this, goal);
         for (int i = 0; i < list.size(); i++) {
-            mCardAdapter.add(new Network(list.get(i).getGoalName(), list.get(i).getGoalDesc(), list.get(i).getUserName(),list.get(i).getLike(),list.get(i).getDislike()));
+            mCardAdapter.add(new Network(list.get(i).getGoalName(), list.get(i).getGoalDesc(), list.get(i).getUserName(), list.get(i).getLike(), list.get(i).getDislike()));
         }
         mCardStack.setAdapter(mCardAdapter);
-       // mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
+        // mCardStack.setEnableLoop(!mCardStack.isEnableLoop());
 
 
         if (mCardStack.getAdapter() != null) {
@@ -134,24 +126,19 @@ public class UserNetwork extends Activity {
             public boolean swipeEnd(int direction, float distance) {
                 Log.d("direction", String.valueOf(direction));
                 Log.d("distance", String.valueOf(distance));
-
                 if (distance > 100) {
                     if (direction == 0 || direction == 2) {
-
                         int dislikeUpdate = list.get(mCardStack.getCurrIndex()).getDislike();
                         dislikeUpdate++;
                         myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("dislike")
                                 .setValue(dislikeUpdate);
-
                     } else {
                         int likeUpdate = list.get(mCardStack.getCurrIndex()).getLike();
                         likeUpdate++;
                         myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("like")
                                 .setValue(likeUpdate);
-
                     }
                 }
-
                 return true;
             }
 
@@ -172,22 +159,15 @@ public class UserNetwork extends Activity {
 
             @Override
             public void topCardTapped() {
-
             }
         });
 
     }
 
-
-
-
     @OnClick(R.id.back)
     public void onViewClicked() {
-        Intent intent=new Intent(UserNetwork.this,MainTabActivity.class);
+        Intent intent = new Intent(UserNetwork.this, MainTabActivity.class);
         startActivity(intent);
         finish();
-
     }
-
-
 }

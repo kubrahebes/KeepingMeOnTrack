@@ -1,14 +1,17 @@
 package com.example.user.keepingmeontrack;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,15 +19,10 @@ import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Network;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +52,6 @@ public class FinanceGoalDetail extends BaseActivity {
     TextView title;
     @BindView(R.id.totalMoney)
     TextView totalMoney;
-
     @BindView(R.id.daily)
     ImageView daily;
     @BindView(R.id.date)
@@ -86,6 +83,8 @@ public class FinanceGoalDetail extends BaseActivity {
     String userNAme;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    Button btnOpenDialog;
+    TextView textInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,10 +221,8 @@ public class FinanceGoalDetail extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_share) {
-            Toast.makeText(FinanceGoalDetail.this, "succsess", Toast.LENGTH_SHORT).show();
-            String key = myRef.child("networking").push().getKey();
-            Network newGoal = new Network(value2.getName(), "I will workout to shape my body", userNAme, 0, 0, key);
-            myRef2.child("networking").child(key).setValue(newGoal);
+
+            openDialog();
 
 
         } else if (id == R.id.action_delete) {
@@ -235,4 +232,39 @@ public class FinanceGoalDetail extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+    private void openDialog(){
+        LayoutInflater inflater = LayoutInflater.from(FinanceGoalDetail.this);
+        View subView = inflater.inflate(R.layout.share_pop, null);
+        final EditText subEditText = (EditText)subView.findViewById(R.id.dialogEditText);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Attention");
+        builder.setMessage("Please describe your Goal");
+        builder.setView(subView);
+        AlertDialog alertDialog = builder.create();
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String key = myRef.child("networking").push().getKey();
+                Network newGoal = new Network(value2.getName(), "", userNAme, 0, 0, key);
+                myRef2.child("networking").child(key).setValue(newGoal);
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(FinanceGoalDetail.this, "Cancel", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        builder.show();
+    }
+
 }
