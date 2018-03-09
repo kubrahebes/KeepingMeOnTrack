@@ -7,6 +7,36 @@
     tools:context="com.example.user.keepingmeontrack.FinanceGoalDetail">
 
 
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorFinancial"
+        >
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_left_arrow_1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"/>
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Detail"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_centerVertical="true"
+            android:textColor="#fff"
+
+            />
+
+    </RelativeLayout>
 
 
     <TextView
@@ -14,7 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rl"
         android:text="Bag"
         android:textColor="#3c3b3b"
         android:textSize="24sp" />
