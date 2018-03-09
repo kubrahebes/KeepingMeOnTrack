@@ -6,7 +6,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-<style name="GoalDetail" parent="Theme.AppCompat.Light.DarkActionBar">
+<style name="GoalDetail" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">#f4f4f4</item>
     <item name="colorPrimaryDark">@color/colorPrimary</item>
 

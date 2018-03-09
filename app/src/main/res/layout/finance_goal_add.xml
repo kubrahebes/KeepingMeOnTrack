@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_finance_goal_add"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FFD94B" />
+            android:background="#F3AA35" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -45,6 +45,7 @@
                 android:layout_width="64dip"
                 android:layout_height="64dip"
                 android:src="@drawable/tick"
+                android:layout_margin="14dp"
                 app:cb_color="#F3AA35"
                 android:layout_gravity="bottom|end"
                 app:cb_pressedRingWidth="8dip" />
@@ -57,7 +58,7 @@
 
             <RelativeLayout
                 android:id="@+id/relative1"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
@@ -126,10 +127,30 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relative4"
+                android:id="@+id/relative6"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_below="@+id/relative3">
+                <ImageView
+                    android:id="@+id/imgFaiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="7dp"
+                    android:src="@drawable/dec" />
+                <EditText
+                    android:id="@+id/faizorani"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/imgFaiz"
+                    android:hint="Weekly Interest"
+                    android:inputType="numberDecimal" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative4"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/relative6">
                 <ImageView
                     android:id="@+id/imgReminding"
                     android:layout_width="wrap_content"
