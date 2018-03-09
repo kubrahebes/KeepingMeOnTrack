@@ -73,6 +73,8 @@ public class FinanceGoalAdd extends BaseActivity {
     Spinner spinner;
     @BindView(R.id.fab1)
     CircleButton fab1;
+    @BindView(R.id.faizorani)
+    EditText faizoranii;
 
 
     @Override
@@ -139,6 +141,40 @@ public class FinanceGoalAdd extends BaseActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    public void calculate() {
+
+        double day, totalWeek;
+        double week;
+        double faiz;
+        double faizorani;
+        double totalmoney;
+        double weekmoney;
+
+
+        totalmoney = Double.parseDouble(totalMoney.getText().toString());
+        weekmoney = Double.parseDouble(dailyAllowance.getText().toString());
+        faizorani = Double.parseDouble(faizoranii.getText().toString());
+
+        if (totalmoney % weekmoney == 0) {
+            week = totalmoney / weekmoney;
+            day = week * 7;
+        } else {
+            week = (totalmoney / weekmoney);
+            day = (week * 7) + (totalmoney % weekmoney);
+        }
+        //Faiz = (Anapara x Faiz Oranı x Anaparanın Faizde Kaldığı Gün) / 36500
+        faiz = ((totalmoney * faizorani * day) / 36500) * 7;
+        totalmoney = totalmoney + faiz;
+        if (totalmoney % weekmoney == 0) {
+            totalWeek = totalmoney / weekmoney;
+
+        } else {
+            totalWeek = (totalmoney / weekmoney) + 1;
+
+        }
+        Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
+
     }
 
     public boolean validateControl() {

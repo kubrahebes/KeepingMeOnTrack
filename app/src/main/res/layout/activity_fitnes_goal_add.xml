@@ -11,11 +11,40 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            >
 
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_left_arrow_1"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"/>
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Fitness Goal Add"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_centerVertical="true"
+                android:textColor="#fff"
+
+                />
+
+        </RelativeLayout>
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view1"
             android:layout_width="match_parent"
-            android:layout_height="389dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -29,7 +58,8 @@
             <RelativeLayout
                 android:id="@+id/rl1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp">
 
                 <RelativeLayout
                     android:id="@+id/rl2"
@@ -40,14 +70,6 @@
                     android:layout_alignParentTop="true"
                     android:background="#fddee8">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/soru_isareti" />
 
                     <TextView
                         android:id="@+id/question1"
@@ -130,7 +152,7 @@
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view2"
             android:layout_width="match_parent"
-            android:layout_height="389dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -143,22 +165,15 @@
             <RelativeLayout
                 android:id="@+id/rl4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp">
 
                 <RelativeLayout
                     android:id="@+id/rl5"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
                     android:background="#fddee8">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/soru_isareti"
-                        android:background="@android:color/transparent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
-                        android:layout_centerVertical="true"
-                        />
+
 
                     <TextView
                         android:id="@+id/question2"
@@ -265,7 +280,7 @@
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view3"
             android:layout_width="match_parent"
-            android:layout_height="389dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -278,22 +293,15 @@
             <RelativeLayout
                 android:id="@+id/rl9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp">
 
                 <RelativeLayout
                     android:id="@+id/rl7"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
                     android:background="#fddee8">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/soru_isareti"
-                        android:background="@android:color/transparent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
-                        android:layout_centerVertical="true"
-                        />
+
 
                     <TextView
                         android:id="@+id/question3"
@@ -404,7 +412,7 @@
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view5"
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -434,22 +442,14 @@
             <RelativeLayout
                 android:id="@+id/rl13"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="60dp">
 
                 <RelativeLayout
                     android:id="@+id/rl14"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
                     android:background="#fddee8">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/soru_isareti"
-                        android:background="@android:color/transparent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
-                        android:layout_centerVertical="true"
-                        />
 
                     <TextView
                         android:id="@+id/question5"
@@ -659,4 +659,3 @@
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
-
