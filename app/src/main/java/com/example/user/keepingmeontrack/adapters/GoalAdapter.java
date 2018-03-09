@@ -2,6 +2,8 @@ package com.example.user.keepingmeontrack.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ public class GoalAdapter extends ArrayAdapter<Goal> {
         //addAll(CacheHelper.getInstance(getContext()).getStoreInfo().branches);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ResourceAsColor")
     @Override
     public View getView(int position, View view, ViewGroup parent) {
@@ -50,10 +53,12 @@ public class GoalAdapter extends ArrayAdapter<Goal> {
         if (goalObje.getType() == 1) {
             holder.goalTextView.setText("GOAL");
             holder.goalImage.setBackgroundResource(R.drawable.goalicon);
+            holder.rl3.getBackground().setTint(0xff52b2d7);
+
         } else {
             holder.goalTextView.setText("DEBT");
             holder.goalImage.setBackgroundResource(R.drawable.debiticon);
-            holder.rl3.setCardBackgroundColor(R.color.cardview);
+            holder.rl3.getBackground().setTint(0xfffa917f);
         }
         return view;
     }

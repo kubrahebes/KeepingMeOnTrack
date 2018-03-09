@@ -32,4 +32,6 @@
     <string name="really_quit">The Connection is unavailable, Would you like to quit ?</string>
     <string name="quit">Quit</string>
     <string name="no">No</string>
+    <string name="delete">Delete</string>
+    <string name="context">Are you sure to delete this goal ?</string>
 </resources>

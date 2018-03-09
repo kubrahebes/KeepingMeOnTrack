@@ -85,6 +85,7 @@ public class FinanceGoalDetail extends BaseActivity {
     SharedPreferences.Editor editor;
     Button btnOpenDialog;
     TextView textInfo;
+    String goalId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +162,7 @@ public class FinanceGoalDetail extends BaseActivity {
         finishDate.setText(obje.getEndDate());
         totalGoal.setText(obje.getTotalMoney() + " $");
         totalSaving.setText(obje.getDailyAllowance() + "  $");
+        goalId = obje.getId();
         //  calculateDate(obje.getStartDate(),obje.getEndDate());
 
 
@@ -227,6 +229,8 @@ public class FinanceGoalDetail extends BaseActivity {
 
         } else if (id == R.id.action_delete) {
 
+            delete();
+
         }
 
 
@@ -234,12 +238,34 @@ public class FinanceGoalDetail extends BaseActivity {
     }
 
 
+    public void delete() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(FinanceGoalDetail.this);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle(R.string.delete);
+        builder.setMessage(R.string.context);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                myRef.child(goalId).removeValue();
+                Toast.makeText(FinanceGoalDetail.this, "Your goal was Deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FinanceGoalDetail.this, MainTabActivity.class);
+                startActivity(intent);
+
+            }
+
+        })
+                .setNegativeButton(R.string.no, null)
+                .show();
+
+    }
 
 
-    private void openDialog(){
+    private void openDialog() {
         LayoutInflater inflater = LayoutInflater.from(FinanceGoalDetail.this);
         View subView = inflater.inflate(R.layout.share_pop, null);
-        final EditText subEditText = (EditText)subView.findViewById(R.id.dialogEditText);
+        final EditText subEditText = (EditText) subView.findViewById(R.id.dialogEditText);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Attention");
@@ -251,7 +277,7 @@ public class FinanceGoalDetail extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String key = myRef.child("networking").push().getKey();
-                Network newGoal = new Network(value2.getName(), "", userNAme, 0, 0, key);
+                Network newGoal = new Network(value2.getName(), subEditText.getText().toString(), userNAme, 0, 0, key);
                 myRef2.child("networking").child(key).setValue(newGoal);
 
             }
