@@ -125,7 +125,7 @@ public class IntroFragment extends Fragment {
             Uri uri = Uri.parse("android.resource://" // First start with this,
                     + getActivity().getPackageName() // then retrieve your package name,
                     + "/" // add a slash,
-                    + R.raw.sec_1); // and then finally add your video resource. Make sure it is stored
+                    + R.raw.sec_4); // and then finally add your video resource. Make sure it is stored
             // in the raw folder.
 
             // Set the new Uri to our VideoView

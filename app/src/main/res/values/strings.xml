@@ -18,7 +18,7 @@
 
     <!-- TODO: Select spiner item -->
     <string-array name="reminding_array">
-        <item>No One</item>
+        <item>Select when to remind you</item>
         <item>Every Day</item>
         <item>Every Week</item>
         <item>Every Month</item>

@@ -7,17 +7,20 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import com.example.user.keepingmeontrack.fragments.LoginFragment;
 import com.example.user.keepingmeontrack.models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -52,6 +56,10 @@ public class RegisterActivity extends BaseActivity {
     private ProgressDialog mProgress;
     private Toast toast = null;
     SharedPreferences preferences;
+    private VideoView videoBG;
+    MediaPlayer mMediaPlayer;
+    int mCurrentVideoPosition;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -67,6 +75,39 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+
+        // Hook up the VideoView to our UI.
+        videoBG = (VideoView) findViewById(R.id.videoView);
+
+        // Build your video Uri
+        Uri uri = Uri.parse("android.resource://" // First start with this,
+                + getPackageName() // then retrieve your package name,
+                + "/" // add a slash,
+                + R.raw.sec_4); // and then finally add your video resource. Make sure it is stored
+        // in the raw folder.
+
+        // Set the new Uri to our VideoView
+        videoBG.setVideoURI(uri);
+        // Start the VideoView
+        videoBG.start();
+
+        // Set an OnPreparedListener for our VideoView. For more information about VideoViews,
+        // check out the Android Docs: https://developer.android.com/reference/android/widget/VideoView.html
+        videoBG.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mMediaPlayer = mediaPlayer;
+                // We want our video to play over and over so we set looping to true.
+                mMediaPlayer.setLooping(true);
+                // We then seek to the current posistion if it has been set and play the video.
+                if (mCurrentVideoPosition != 0) {
+                    mMediaPlayer.seekTo(mCurrentVideoPosition);
+                    mMediaPlayer.start();
+                }
+            }
+        });
+
+
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
@@ -148,5 +189,31 @@ public class RegisterActivity extends BaseActivity {
             flag=true;
         }
 
+    }
+
+    // I override onPause(), onResume(), and onDestroy() to properly handle the video when the user get back to app when he exits.
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Capture the current video position and pause the video.
+        mCurrentVideoPosition = mMediaPlayer.getCurrentPosition();
+        videoBG.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Restart the video when resuming the Activity
+        videoBG.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // When the Activity is destroyed, release our MediaPlayer and set it to null.
+        mMediaPlayer.release();
+        mMediaPlayer = null;
     }
 }

@@ -21,7 +21,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#4D000000" />
+        android:background="#40000000" />
 
 
     <RelativeLayout
@@ -45,20 +45,25 @@
             android:layout_below="@id/login_logo"
             android:layout_centerInParent="true"
             android:layout_marginTop="35dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/transparent_bg"
             android:hint="Username"
             android:inputType="textEmailAddress"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+
+            />
 
         <EditText
             android:id="@+id/password_edt"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_below="@+id/user_name_edt"
-
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/transparent_bg"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp" />
@@ -71,7 +76,7 @@
             android:layout_alignRight="@+id/login_logo"
             android:layout_below="@+id/password_edt"
             android:layout_marginTop="23dp"
-            android:background="@drawable/login_buttons"
+            android:background="@drawable/transparent_bg"
             android:fontFamily="sans-serif-medium"
             android:text="login"
             android:textColor="#ffffff"
@@ -80,6 +85,7 @@
 
         <TextView
             android:id="@+id/login_forgot"
+            android:textColor="#fff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/sing_in_btn"
@@ -93,8 +99,7 @@
             android:id="@+id/login_forget_click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/login_forgot"
-            android:layout_alignBottom="@+id/login_forgot"
+            android:layout_above="@+id/noaccount"
             android:layout_toEndOf="@+id/login_forgot"
             android:layout_toRightOf="@+id/login_forgot"
             android:clickable="true"
@@ -103,6 +108,7 @@
             android:textColor="@color/bluebutton" />
 
         <TextView
+            android:textColor="#fff"
             android:id="@+id/noaccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

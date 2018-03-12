@@ -69,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgDebitName"
-                    android:hint="Debit Name" />
+                    android:hint="What Would You Like to Call Your Debit Goal?" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relative2"
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgHowMuch"
-                    android:hint="How Many $ Can You  Need ? "
+                    android:hint="How Much Your Debit?"
                     android:inputType="number" />
             </RelativeLayout>
             <RelativeLayout
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/imgDailyAllowance"
-                    android:hint="Weekly Allowance"
+                    android:hint="How Frequently You Want to Save?"
                     android:inputType="number" />
             </RelativeLayout>
             <RelativeLayout
