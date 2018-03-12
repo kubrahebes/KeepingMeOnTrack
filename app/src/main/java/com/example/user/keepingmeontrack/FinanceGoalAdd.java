@@ -22,12 +22,16 @@ import android.widget.Toast;
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Users;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.DataSet;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+
 
 /**
  * Created by elifasli on 12.02.2018.
@@ -74,21 +78,18 @@ public class FinanceGoalAdd extends BaseActivity {
     @BindView(R.id.fab1)
     CircleButton fab1;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.finance_goal_add);
         ButterKnife.bind(this);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar_finance_goal_add);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.reminding_array, android.R.layout.simple_spinner_item);
@@ -115,24 +116,20 @@ public class FinanceGoalAdd extends BaseActivity {
 
                     myRef.child("finance").child(key).setValue(newGoal);
 
-
                     FinancialMainFragment fragment = new FinancialMainFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame, fragment);
                     transaction.commit();
 
+
                     Intent intent=new Intent(FinanceGoalAdd.this,MainTabActivity.class);
                     startActivity(intent);
-
-
 
                 } else {
                     Toast.makeText(FinanceGoalAdd.this, "unsucsess", Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
-
     }
 
     @Override
@@ -150,4 +147,8 @@ public class FinanceGoalAdd extends BaseActivity {
             return true;
         }
     }
+
+
+
+
 }

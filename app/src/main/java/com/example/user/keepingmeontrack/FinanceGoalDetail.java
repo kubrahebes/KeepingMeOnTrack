@@ -2,9 +2,7 @@ package com.example.user.keepingmeontrack;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,18 +11,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Network;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +37,6 @@ import butterknife.ButterKnife;
  */
 
 public class FinanceGoalDetail extends BaseActivity {
-
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -86,6 +80,7 @@ public class FinanceGoalDetail extends BaseActivity {
     String userNAme;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,8 +158,6 @@ public class FinanceGoalDetail extends BaseActivity {
         totalGoal.setText(obje.getTotalMoney() + " $");
         totalSaving.setText(obje.getDailyAllowance() + "  $");
         //  calculateDate(obje.getStartDate(),obje.getEndDate());
-
-
     }
 
     /*
@@ -172,11 +165,8 @@ public class FinanceGoalDetail extends BaseActivity {
             int startDateInt=Integer.parseInt(startDate);
             int finishDateInt=Integer.parseInt(finishDate);
             Toast.makeText(this,  "" +   finishDateInt, Toast.LENGTH_SHORT).show();
-
-
         }*/
     public void setGraph() {
-
         barchart.getDescription().setEnabled(false);
         setData(3);
         barchart.setFitBars(true);
@@ -187,19 +177,18 @@ public class FinanceGoalDetail extends BaseActivity {
         ArrayList<BarEntry> yvals = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            float value = (float) (Math.random() * 200);
+            float value = (float) (Math.random() * 100);
             yvals.add(new BarEntry(i, (int) value));
         }
         BarDataSet set = new BarDataSet(yvals, "Data Set ");
         set.setColors(ColorTemplate.MATERIAL_COLORS);
         set.setDrawValues(true);
 
-
         BarData data = new BarData(set);
         barchart.setData(data);
         barchart.invalidate();
+        barchart.notifyDataSetChanged(); // let the chart know it's data changed
         barchart.animateY(200);
-
     }
 
     /**
@@ -219,20 +208,16 @@ public class FinanceGoalDetail extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_share) {
             Toast.makeText(FinanceGoalDetail.this, "succsess", Toast.LENGTH_SHORT).show();
             String key = myRef.child("networking").push().getKey();
             Network newGoal = new Network(value2.getName(), "I will workout to shape my body", userNAme, 0, 0, key);
             myRef2.child("networking").child(key).setValue(newGoal);
-
-
         } else if (id == R.id.action_delete) {
-
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }
+
+
