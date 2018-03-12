@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.user.keepingmeontrack.RegisterActivity">
+
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <ImageView
         android:id="@+id/signup_icon"
@@ -22,13 +44,15 @@
         android:layout_alignStart="@+id/signup_email"
         android:layout_below="@+id/signup_icon"
         android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/transparent_bg"
         android:hint="Your Name"
         android:padding="10dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         />
     <EditText
         android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/transparent_bg"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -36,11 +60,13 @@
         android:layout_marginTop="15dp"
         android:hint="Email"
         android:id="@+id/signup_email"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         />
 
     <EditText
         android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/transparent_bg"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -49,6 +75,8 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:id="@+id/signup_password"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         />
     <Button
         android:fontFamily="sans-serif-medium"
@@ -57,7 +85,7 @@
         android:textStyle="normal"
         android:textColor="#ffffff"
         android:text="sign up"
-        android:background="@drawable/login_buttons"
+        android:background="@drawable/transparent_bg"
         android:layout_width="161.5dp"
         android:layout_height="45.5dp"
         android:id="@+id/sing_up_btn"
@@ -65,8 +93,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         />
+
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/frame_layout"></FrameLayout>
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

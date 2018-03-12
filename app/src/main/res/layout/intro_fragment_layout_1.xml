@@ -37,7 +37,7 @@
         <TextView
 
             android:id="@+id/desc_text"
-            android:textColor="#28639C"
+            android:textColor="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
