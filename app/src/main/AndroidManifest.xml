@@ -11,7 +11,11 @@
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".swipeanimation.IntroActivity"
@@ -20,12 +24,9 @@
         <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme" />
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:theme="@style/SplashTheme"
+            />
+        .
         <activity
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
@@ -52,7 +53,8 @@
         <activity
             android:name=".FitnesGoalAddActivity"
             android:theme="@style/GoalDetail" />
-        <activity android:name=".FitnessDetailActivity"
+        <activity
+            android:name=".FitnessDetailActivity"
             android:theme="@style/GoalDetail"></activity>
     </application>
 

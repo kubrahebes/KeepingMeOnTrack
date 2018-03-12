@@ -11,14 +11,16 @@ public class Network {
    private int like;
     private int dislike;
     private String id;
+    private String userId;  //This is to get the user ID for networking part.
 
-    public Network(String goalName, String goalDesc, String userName, int like, int dislike, String id) {
+    public Network(String goalName, String goalDesc, String userName, int like, int dislike, String id,  String userId) {
         this.goalName = goalName;
         this.goalDesc = goalDesc;
         this.userName = userName;
         this.like = like;
         this.dislike = dislike;
         this.id = id;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -84,5 +86,13 @@ public class Network {
 
     public void setUserName(String goalDesc) {
         this.userName = goalDesc;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

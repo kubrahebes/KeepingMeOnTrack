@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -277,7 +278,7 @@ public class FinanceGoalDetail extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String key = myRef.child("networking").push().getKey();
-                Network newGoal = new Network(value2.getName(), subEditText.getText().toString(), userNAme, 0, 0, key);
+                Network newGoal = new Network(value2.getName(), subEditText.getText().toString(), userNAme, 0, 0, key, FirebaseAuth.getInstance().getCurrentUser().getUid());
                 myRef2.child("networking").child(key).setValue(newGoal);
                 Intent intent = new Intent(FinanceGoalDetail.this, MainTabActivity.class);
                 startActivity(intent);
