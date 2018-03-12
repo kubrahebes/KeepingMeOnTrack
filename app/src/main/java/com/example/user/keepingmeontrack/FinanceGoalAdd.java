@@ -96,8 +96,9 @@ public class FinanceGoalAdd extends BaseActivity {
                 R.array.reminding_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-        uID = getUser().getUid();
+        pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
+        editor = pref.edit();
+        uID = pref.getString("uID",null);
 
         Users users = BaseActivity.getInstance().getUser();
         Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
