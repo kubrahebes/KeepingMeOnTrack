@@ -25,6 +25,9 @@ import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+
 import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -111,18 +114,17 @@ public class FinanceGoalAdd extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (validateControl()) {
+                    LocalDate now = new LocalDate();
+                    LocalDate laterr =calculate(now);
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
                     String key = myRef.child("finance").push().getKey();
                     Goal newGoal = new Goal(key, uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
-                            "subat", "mart", spinner.getSelectedItem().toString(), 1);
+                            now.toString(), laterr.toString(), spinner.getSelectedItem().toString(), 1);
 
                     myRef.child("finance").child(key).setValue(newGoal);
 
 
-                    FinancialMainFragment fragment = new FinancialMainFragment();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame, fragment);
-                    transaction.commit();
+
 
                     Intent intent=new Intent(FinanceGoalAdd.this,MainTabActivity.class);
                     startActivity(intent);
@@ -143,14 +145,15 @@ public class FinanceGoalAdd extends BaseActivity {
         onBackPressed();
         return true;
     }
-    public void calculate() {
-
-        double day, totalWeek;
+    public LocalDate calculate(LocalDate timee) {
+        double totalWeek;
+        double day;
         double week;
         double faiz;
         double faizorani;
         double totalmoney;
         double weekmoney;
+
 
 
         totalmoney = Double.parseDouble(totalMoney.getText().toString());
@@ -175,7 +178,9 @@ public class FinanceGoalAdd extends BaseActivity {
 
         }
         Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
-
+        LocalDate later =timee.plusDays(7);
+        Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
+    return later;
     }
 
     public boolean validateControl() {
