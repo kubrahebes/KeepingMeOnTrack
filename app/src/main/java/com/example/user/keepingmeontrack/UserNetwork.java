@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.keepingmeontrack.adapters.CardsDataAdapter;
+import com.example.user.keepingmeontrack.models.CheckItem;
 import com.example.user.keepingmeontrack.models.Network;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +45,7 @@ public class UserNetwork extends Activity {
     private CardsDataAdapter mCardAdapter;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    DatabaseReference mainRef;
     Network shareGoal;
 
     @Override
@@ -52,8 +55,6 @@ public class UserNetwork extends Activity {
         ButterKnife.bind(this);
 
 
-
-
         mCardStack = findViewById(R.id.card_stack);
 
         mCardStack.setContentResource(R.layout.networking_card_content);
@@ -61,6 +62,7 @@ public class UserNetwork extends Activity {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase").child("networking");
+        mainRef = database.getReference("datbase");
         getdata();
     }
 
@@ -87,13 +89,31 @@ public class UserNetwork extends Activity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Network> financeGoalList = new ArrayList<>();
+                final ArrayList<Network> financeGoalList = new ArrayList<>();
                 for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
                     //  mProgress.cancel();
                     shareGoal = verigetir.getValue(Network.class);
                     financeGoalList.add(shareGoal);
                 }
-                setdata(financeGoalList);
+
+
+                //Append the financeGoalList and if cards is liked or not
+                mainRef.child("checkedcards").orderByChild("checker").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<CheckItem> checkItems = new ArrayList<>();
+                        for (DataSnapshot verigetir : dataSnapshot.getChildren()) {
+                            checkItems.add( verigetir.getValue(CheckItem.class));
+                        }
+
+                        findUncheckedNetworkCards (checkItems, financeGoalList);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
@@ -101,6 +121,26 @@ public class UserNetwork extends Activity {
                 Toast.makeText(UserNetwork.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //
+    }
+
+
+    //checking if the user liked or disliked that card before. If he didn't like then SHOW the card. If he liked then HIDE the card.
+    private void findUncheckedNetworkCards(ArrayList<CheckItem> checkItems, ArrayList<Network> financeGoalList) {
+        ArrayList<Network> finalGoalList = new ArrayList<>();
+        for (Network network : financeGoalList) {
+            boolean flag = true;
+            for (CheckItem item : checkItems) {
+                if (item.networkId.equals(network.getId())) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                finalGoalList.add(network);
+            }
+        }
+        setdata(finalGoalList);
     }
 
     /**
@@ -132,11 +172,13 @@ public class UserNetwork extends Activity {
                         dislikeUpdate++;
                         myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("dislike")
                                 .setValue(dislikeUpdate);
+                        mainRef.child("checkedcards").push().setValue(new CheckItem(FirebaseAuth.getInstance().getCurrentUser().getUid(), list.get(mCardStack.getCurrIndex()).getId()));
                     } else {
                         int likeUpdate = list.get(mCardStack.getCurrIndex()).getLike();
                         likeUpdate++;
                         myRef.child(list.get(mCardStack.getCurrIndex()).getId()).child("like")
                                 .setValue(likeUpdate);
+                        mainRef.child("checkedcards").push().setValue(new CheckItem(FirebaseAuth.getInstance().getCurrentUser().getUid(), list.get(mCardStack.getCurrIndex()).getId()));
                     }
                 }
                 return true;
