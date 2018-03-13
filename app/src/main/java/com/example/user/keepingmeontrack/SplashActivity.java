@@ -46,6 +46,7 @@ public class SplashActivity extends AppCompatActivity {
 
         img = (ImageView) findViewById(R.id.splash);
         anim = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
+
         img.setAnimation(anim);
 
         pref = SplashActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
