@@ -13,6 +13,28 @@ public class Goal {
     private String startDate;
     private String endDate;
     private String reminding;
+    private double hFaizliPara;
+
+    public Goal(String id, String uid, String name, String totalMoney, String dailyAllowance, String startDate, String endDate, String reminding, double hFaizliPara, int type) {
+        this.id = id;
+        this.uid = uid;
+        Name = name;
+        this.totalMoney = totalMoney;
+        this.dailyAllowance = dailyAllowance;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.reminding = reminding;
+        this.hFaizliPara = hFaizliPara;
+        this.type = type;
+    }
+
+    public double gethFaizliPara() {
+        return hFaizliPara;
+    }
+
+    public void sethFaizliPara(double hFaizliPara) {
+        this.hFaizliPara = hFaizliPara;
+    }
 
     private int type;
 

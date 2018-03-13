@@ -79,8 +79,9 @@ public class FitnesGoalAddActivity extends BaseActivity {
           }
       });
 
-        uID = getUser().getUid();
-
+        pref = FitnesGoalAddActivity.this.getSharedPreferences("MyPref", 0);
+        editor = pref.edit();
+        uID = pref.getString("uID",null);
        // Users users = BaseActivity.getInstance().getUser();
         //Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();

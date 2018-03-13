@@ -31,6 +31,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -108,7 +112,7 @@ public class FinanceGoalDetail extends BaseActivity {
         myRef = database.getReference("datbase").child("finance");
         myRef2 = database.getReference("datbase");
         getdata();
-        setGraph();
+
 
     }
 
@@ -165,8 +169,21 @@ public class FinanceGoalDetail extends BaseActivity {
         totalSaving.setText(obje.getDailyAllowance() + "  $");
         goalId = obje.getId();
         //  calculateDate(obje.getStartDate(),obje.getEndDate());
+        int toplamPara = Integer.parseInt(obje.getTotalMoney());
+        double haftalikPara = obje.gethFaizliPara();
+        LocalDate startDate = LocalDate.parse(obje.getStartDate());
+        LocalDate now = new LocalDate();
 
+        DateTime now_ = new DateTime();
+        DateTime startDate_ = new DateTime(obje.getStartDate());
 
+        Duration duration = new Duration(startDate_, now_);
+
+        int gecenSure = (int) duration.getStandardDays();
+        gecenSure=gecenSure/7;
+        int savingMoney=gecenSure*(int)haftalikPara;
+        int restMoney=toplamPara-savingMoney;
+        setGraph(toplamPara,savingMoney,restMoney);
     }
 
     /*
@@ -177,21 +194,27 @@ public class FinanceGoalDetail extends BaseActivity {
 
 
         }*/
-    public void setGraph() {
+    public void setGraph(int totalMoney,int savingMoneyy,int restMoneyy) {
 
         barchart.getDescription().setEnabled(false);
-        setData(3);
+        setData(totalMoney,savingMoneyy,restMoneyy);
         barchart.setFitBars(true);
 
     }
 
-    private void setData(int count) {
+    private void setData(int totallMoneyy,int savinggMoneyy,int resttMoneyy) {
         ArrayList<BarEntry> yvals = new ArrayList<>();
-
+/*
         for (int i = 0; i < count; i++) {
             float value = (float) (Math.random() * 200);
             yvals.add(new BarEntry(i, (int) value));
         }
+        */
+
+        yvals.add(new BarEntry(0,savinggMoneyy));
+        yvals.add(new BarEntry(1,resttMoneyy));
+        yvals.add(new BarEntry(2,totallMoneyy));
+
         BarDataSet set = new BarDataSet(yvals, "Data Set ");
         set.setColors(ColorTemplate.MATERIAL_COLORS);
         set.setDrawValues(true);
