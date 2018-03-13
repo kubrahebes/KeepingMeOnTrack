@@ -65,7 +65,8 @@ public class FinanceGoalAdd extends BaseActivity {
     RelativeLayout relative3;
     @BindView(R.id.imgReminding)
     ImageView imgReminding;
-
+          double totalmoney;
+          double totalWeek;
     RelativeLayout relative5;
     @BindView(R.id.card_view)
     CardView cardView;
@@ -119,7 +120,7 @@ public class FinanceGoalAdd extends BaseActivity {
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
                     String key = myRef.child("finance").push().getKey();
                     Goal newGoal = new Goal(key, uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
-                            now.toString(), laterr.toString(), spinner.getSelectedItem().toString(), 1);
+                            now.toString(), laterr.toString(), spinner.getSelectedItem().toString(),totalWeek,1);
 
                     myRef.child("finance").child(key).setValue(newGoal);
 
@@ -146,12 +147,12 @@ public class FinanceGoalAdd extends BaseActivity {
         return true;
     }
     public LocalDate calculate(LocalDate timee) {
-        double totalWeek;
+
         double day;
         double week;
         double faiz;
         double faizorani;
-        double totalmoney;
+
         double weekmoney;
 
 
@@ -177,8 +178,11 @@ public class FinanceGoalAdd extends BaseActivity {
             totalWeek = (totalmoney / weekmoney) + 1;
 
         }
+       // Toast.makeText(this, ""+totalmoney, Toast.LENGTH_SHORT).show();
+        int x= ((int) totalWeek);
+        x=x*7;
         Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
-        LocalDate later =timee.plusDays(7);
+        LocalDate later =timee.plusDays(x);
         Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
     return later;
     }

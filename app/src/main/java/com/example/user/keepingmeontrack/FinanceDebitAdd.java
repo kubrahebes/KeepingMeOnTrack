@@ -22,6 +22,8 @@ import com.example.user.keepingmeontrack.models.Goal;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.joda.time.LocalDate;
+
 import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,7 +60,7 @@ public class FinanceDebitAdd extends BaseActivity {
     @BindView(R.id.faizorani)
     EditText faizoranii;
 
-
+    double totalWeek;
     FirebaseDatabase database;
     DatabaseReference myRef;
     String uID;
@@ -84,7 +86,7 @@ public class FinanceDebitAdd extends BaseActivity {
 
         pref = FinanceDebitAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        uID = getUser().getUid();
+        uID = pref.getString("uID",null);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
@@ -109,9 +111,9 @@ public class FinanceDebitAdd extends BaseActivity {
         return true;
     }
 
-    public void calculate() {
+    public LocalDate calculate(LocalDate timee) {
 
-        double day, totalWeek;
+        double day;
         double week;
         double faiz;
         double faizorani;
@@ -130,6 +132,7 @@ public class FinanceDebitAdd extends BaseActivity {
             week = (totalmoney / weekmoney);
             day = (week * 7) + (totalmoney % weekmoney);
         }
+
         //Faiz = (Anapara x Faiz Oranı x Anaparanın Faizde Kaldığı Gün) / 36500
         faiz = ((totalmoney * faizorani * day) / 36500) * 7;
         totalmoney = totalmoney + faiz;
@@ -140,7 +143,12 @@ public class FinanceDebitAdd extends BaseActivity {
             totalWeek = (totalmoney / weekmoney) + 1;
 
         }
+        int x= ((int) totalWeek);
+        x=x*7;
         Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
+        LocalDate later =timee.plusDays(x);
+        Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
+        return later;
 
     }
 
@@ -148,10 +156,11 @@ public class FinanceDebitAdd extends BaseActivity {
     public void onViewClicked() {
         if (validateControl()) {
             Toast.makeText(FinanceDebitAdd.this, "succsess", Toast.LENGTH_SHORT).show();
-            calculate();
+            LocalDate now = new LocalDate();
+            LocalDate laterr =calculate(now);
             String key = myRef.child("finance").push().getKey();
             Goal newGoal = new Goal(key, uID, debitName.getText().toString(), debitTotalMoney.getText().toString(), debitDailyAllowance.getText().toString(),
-                    "subat", "mart", spinner.getSelectedItem().toString(), 2);
+                    now.toString(), laterr.toString(), spinner.getSelectedItem().toString(), totalWeek,2);
 
             myRef.child("finance").child(key).setValue(newGoal);
 
