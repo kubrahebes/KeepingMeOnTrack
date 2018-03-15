@@ -1,12 +1,12 @@
 package com.example.user.keepingmeontrack;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,18 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
+import com.example.user.keepingmeontrack.alarm.RemindActivity;
 import com.example.user.keepingmeontrack.models.Goal;
 import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import at.markushi.ui.CircleButton;
@@ -79,6 +77,7 @@ public class FinanceGoalAdd extends BaseActivity {
     CircleButton fab1;
     @BindView(R.id.faizorani)
     EditText faizoranii;
+    long millisecond;
 
 
     @Override
@@ -94,15 +93,13 @@ public class FinanceGoalAdd extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.reminding_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         pref = FinanceGoalAdd.this.getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-        uID = pref.getString("uID",null);
+        uID = pref.getString("uID", null);
 
         Users users = BaseActivity.getInstance().getUser();
         Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
@@ -110,26 +107,22 @@ public class FinanceGoalAdd extends BaseActivity {
         myRef = database.getReference("datbase");
 
 
-
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (validateControl()) {
                     LocalDate now = new LocalDate();
-                    LocalDate laterr =calculate(now);
+                    LocalDate laterr = calculate(now);
                     Toast.makeText(FinanceGoalAdd.this, "succsess", Toast.LENGTH_SHORT).show();
                     String key = myRef.child("finance").push().getKey();
                     Goal newGoal = new Goal(key, uID, goalName.getText().toString(), totalMoney.getText().toString(), dailyAllowance.getText().toString(),
-                            now.toString(), laterr.toString(), spinner.getSelectedItem().toString(),totalWeek,1);
+                            now.toString(), laterr.toString(), spinner.getSelectedItem().toString(), totalWeek, 1);
 
                     myRef.child("finance").child(key).setValue(newGoal);
 
-
-
-
-                    Intent intent=new Intent(FinanceGoalAdd.this,MainTabActivity.class);
+                    setReminding();
+                    Intent intent = new Intent(FinanceGoalAdd.this, MainTabActivity.class);
                     startActivity(intent);
-
 
 
                 } else {
@@ -140,6 +133,41 @@ public class FinanceGoalAdd extends BaseActivity {
         });
 
     }
+
+
+        private void setReminding() {
+
+
+            //getting the alarm manager
+            AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+
+            //creating a pending intent using the intent
+
+            Intent i = new Intent(this, RemindActivity.class);
+            PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+
+            //setting the repeating alarm that will be fired every day
+            //
+            //am.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis,millisecond, pi);
+            if (spinner.getSelectedItemPosition() == 1) {
+                millisecond = 1000 * 60;
+            } else if (spinner.getSelectedItemPosition() == 2) {
+                millisecond = 1000 * 60 * 60 * 24;
+                // selectedRemind = daily;
+            } else if (spinner.getSelectedItemPosition() == 3) {
+                millisecond = 1000 * 60 * 60 * 24 * 7;
+                // selectedRemind = weekly;
+            } else if (spinner.getSelectedItemPosition() == 4) {
+                millisecond = 1000 * 60 * 60 * 24 * 30;
+                //  selectedRemind = monthly;
+            }
+
+
+            am.setRepeating(AlarmManager.RTC, System.currentTimeMillis() + millisecond, millisecond, pi);
+
+
+        }
 
     @Override
     public boolean onSupportNavigateUp() {

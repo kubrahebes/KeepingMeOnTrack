@@ -32,6 +32,7 @@
 
         <TextView
             android:id="@+id/goal_content"
+            android:padding="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/goal_name"

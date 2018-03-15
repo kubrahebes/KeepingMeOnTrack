@@ -56,6 +56,12 @@
         <activity
             android:name=".FitnessDetailActivity"
             android:theme="@style/GoalDetail"></activity>
+
+        <!-- registering the receiver -->
+        <receiver
+            android:name=".alarm.RemindActivity"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
