@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Food"
+        android:textColor="#111"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/calori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="190 Calori"
+        android:textColor="#111"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/porsiyon"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/calori"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="20dp"
+        android:hint="Tane"
+        android:inputType="number"
+        android:textSize="15sp"/>
+
+    <Spinner
+        android:id="@+id/turPorsiyon"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/calori"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="20dp"></Spinner>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/turPorsiyon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="ekle" />
+</RelativeLayout>

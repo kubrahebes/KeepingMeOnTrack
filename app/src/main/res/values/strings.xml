@@ -9,6 +9,7 @@
     <string name="title_activity_main_tab">MainTabActivity</string>
     <string name="tab_text_1">FINANCE</string>
     <string name="tab_text_2">FITNESS</string>
+    <string name="tab_text_3">CALORI</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -24,6 +25,15 @@
         <item>Every Month</item>
     </string-array>
 
+
+    <!-- TODO: Select spiner item -->
+
+    <string-array name="porsiyon_tur">
+        <item>Choose your type of the food</item>
+        <item>Porsion</item>
+        <item>Tane</item>
+        <item>Yemek Kasik</item>
+    </string-array>
     <!-- TODO: Select spinner items -->
 
     <!-- No internet connection-->

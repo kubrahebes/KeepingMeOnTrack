@@ -25,8 +25,7 @@
         <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme"
-            />
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".MainTabActivity"
             android:label="@string/title_activity_main_tab"
@@ -55,7 +54,11 @@
             android:theme="@style/GoalDetail" />
         <activity
             android:name=".FitnessDetailActivity"
-            android:theme="@style/GoalDetail"></activity>
+            android:theme="@style/GoalDetail" />
+        <activity android:name=".FoodCaloriActivity"
+            android:theme="@style/foodCalori"/>
+        <activity android:name=".FitnessCaloriActivity"
+            android:theme="@style/foodCalori"></activity>
     </application>
 
 </manifest>
