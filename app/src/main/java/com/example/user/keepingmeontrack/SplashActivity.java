@@ -13,6 +13,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Mahmoud on 1/31/2018.
@@ -21,6 +23,9 @@ import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
 public class SplashActivity extends AppCompatActivity {
 
     // create the sheredPreference for user
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     public void onAttachedToWindow() {
@@ -44,12 +49,17 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
         //StartAnimations();
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("datbase");
+
         img = (ImageView) findViewById(R.id.splash);
         anim = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
         img.setAnimation(anim);
 
         pref = SplashActivity.this.getSharedPreferences("MyPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
+
+
 
 
         new Handler().postDelayed(new Runnable() {

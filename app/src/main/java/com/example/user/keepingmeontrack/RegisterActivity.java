@@ -40,8 +40,6 @@ public class RegisterActivity extends BaseActivity {
 
     DatabaseReference myRef;
     FirebaseDatabase database;
-    @BindView(R.id.signup_icon)
-    ImageView signupIcon;
     @BindView(R.id.signup_username)
     EditText signupUsername;
     @BindView(R.id.signup_email)
@@ -59,6 +57,15 @@ public class RegisterActivity extends BaseActivity {
     private VideoView videoBG;
     MediaPlayer mMediaPlayer;
     int mCurrentVideoPosition;
+
+    @BindView(R.id.age)
+    EditText age;
+    @BindView(R.id.weight)
+    EditText weight;
+    @BindView(R.id.height)
+    EditText height;
+    @BindView(R.id.gender)
+    EditText gender;
 
     @Override
     public void onStart() {
@@ -134,7 +141,7 @@ public class RegisterActivity extends BaseActivity {
                             //create a table in the firebase and add the new user information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Users newUser = new Users(signupUsername.getText().toString(), user.getEmail(), user.getUid());
+                            Users newUser = new Users(gender.getText().toString(),age.getText().toString(),weight.getText().toString(),height.getText().toString(),signupUsername.getText().toString(), user.getEmail(), user.getUid());
                             myRef.child("users").child(user.getUid()).setValue(newUser);
                             saveUser(newUser);
                             // come back to login screen
