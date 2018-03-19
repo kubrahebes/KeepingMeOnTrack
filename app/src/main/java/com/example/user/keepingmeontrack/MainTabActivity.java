@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.user.keepingmeontrack.fragments.CaloriCalculateFragment;
 import com.example.user.keepingmeontrack.fragments.FinancialMainFragment;
 import com.example.user.keepingmeontrack.fragments.FitnessMainFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,7 +50,8 @@ public class MainTabActivity extends AppCompatActivity {
 
     private int[] tabIcons = {
             R.drawable.fitness_icon_2,
-            R.drawable.finance_icon
+            R.drawable.finance_icon,
+            R.drawable.ic_restaurant_1
     };
     private FirebaseAuth mAuth;
 
@@ -178,6 +180,12 @@ public class MainTabActivity extends AppCompatActivity {
                         rightLowerButton.setVisibility(View.INVISIBLE);
                         rightLowerMenu.close(true);
                         break;
+                    case 2:
+                        appbar.setBackgroundColor(Color.parseColor("#8fc73e"));
+                        toolbar.setTitle("Calori Calculate");
+                        rightLowerButton.setVisibility(View.INVISIBLE);
+                        rightLowerMenu.close(true);
+                        break;
                 }
             }
 
@@ -199,6 +207,7 @@ public class MainTabActivity extends AppCompatActivity {
     private void setupTabIcons() {
         tabs.getTabAt(0).setIcon(tabIcons[1]);
         tabs.getTabAt(1).setIcon(tabIcons[0]);
+        tabs.getTabAt(2).setIcon(tabIcons[2]);
 
     }
 
@@ -219,8 +228,11 @@ public class MainTabActivity extends AppCompatActivity {
 
                 case 1:
                     FitnessMainFragment fitness_fragment = new FitnessMainFragment();
-
                     return fitness_fragment;
+
+                case 2:
+                    CaloriCalculateFragment caloriCalculateFragment=new CaloriCalculateFragment();
+                    return caloriCalculateFragment;
                 default:
                     return null;
             }
@@ -228,7 +240,7 @@ public class MainTabActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 
