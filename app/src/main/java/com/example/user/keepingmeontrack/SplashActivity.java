@@ -12,7 +12,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.user.keepingmeontrack.models.CaloriCalculate;
 import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Mahmoud on 1/31/2018.
@@ -32,6 +35,8 @@ public class SplashActivity extends AppCompatActivity {
     /**
      * Called when the activity is first created.
      */
+
+
     Thread splashTread;
     Animation anim;
     ImageView img;
@@ -42,7 +47,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
-        //StartAnimations();
+
+
+
 
         img = (ImageView) findViewById(R.id.splash);
         anim = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
