@@ -55,10 +55,6 @@
         <activity
             android:name=".FitnessDetailActivity"
             android:theme="@style/GoalDetail" />
-        <activity android:name=".FoodCaloriActivity"
-            android:theme="@style/foodCalori"/>
-        <activity android:name=".FitnessCaloriActivity"
-            android:theme="@style/foodCalori"></activity>
     </application>
 
 </manifest>
