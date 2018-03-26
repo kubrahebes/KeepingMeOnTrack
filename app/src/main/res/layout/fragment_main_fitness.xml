@@ -10,23 +10,21 @@
         android:headerDividersEnabled="true"
         android:layout_height="wrap_content"
         android:id="@+id/financeList"/>
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        android:id="@+id/frame_layout1">
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="12dp"
-            android:id="@+id/addNweGoal"
-            android:background="@drawable/floatbtn_noshadow"
+        <at.markushi.ui.CircleButton
+            android:id="@+id/fab1"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:layout_gravity="bottom|end"
             android:src="@drawable/plus"
-            />
+            app:cb_color="#CA1F58"
+            app:cb_pressedRingWidth="8dip" />
 
     </FrameLayout>
-
 
 </RelativeLayout>

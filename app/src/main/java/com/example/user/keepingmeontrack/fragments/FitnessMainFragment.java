@@ -41,8 +41,7 @@ import butterknife.Unbinder;
 public class FitnessMainFragment extends Fragment {
     @BindView(R.id.financeList)
     ListView financeList;
-    @BindView(R.id.addNweGoal)
-    FloatingActionButton addNweGoal;
+
     Unbinder unbinder;
 
     FitnessGoalAdapter adapte;
@@ -138,9 +137,11 @@ public class FitnessMainFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.addNweGoal)
+    @OnClick(R.id.fab1)
     public void onViewClicked() {
         Intent intent = new Intent(getContext(), FitnesGoalAddActivity.class);
         startActivity(intent);
     }
+
+
 }
