@@ -11,6 +11,35 @@ public class FitnessGoal {
     private String answer5;
     private String key;
     private String Uid;
+    private String startTime;
+    private String endDate;
+
+    public FitnessGoal(String answer1, String answer2, String answer3, String answer5, String key, String uid, String startTime, String endDate) {
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer5 = answer5;
+        this.key = key;
+        Uid = uid;
+        this.startTime = startTime;
+        this.endDate = endDate;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
     public FitnessGoal(String answer1, String answer2, String answer3, String answer5, String key, String uid) {
         this.answer1 = answer1;
