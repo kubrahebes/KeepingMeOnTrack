@@ -50,7 +50,7 @@ public class MainTabActivity extends AppCompatActivity {
     private int[] tabIcons = {
             R.drawable.fitness_icon_2,
             R.drawable.finance_icon,
-            R.drawable.ic_restaurant_1
+
     };
     private FirebaseAuth mAuth;
 

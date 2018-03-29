@@ -19,7 +19,13 @@
 <style name="foodCalori" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="colorPrimary">#8fc73e</item>
 </style>
+<style name="FitnessAdd" parent="Theme.AppCompat.Light.DarkActionBar">
 
+    <item name="colorPrimary">#f4f4f4</item>
+    <item name="colorPrimaryDark">@color/fitness_add</item>
+
+
+</style>
 
     <style name="GoalAdd" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 

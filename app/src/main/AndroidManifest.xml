@@ -51,7 +51,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FitnesGoalAddActivity"
-            android:theme="@style/GoalDetail" />
+            android:theme="@style/FitnessAdd" />
         <activity
             android:name=".FitnessDetailActivity"
             android:theme="@style/GoalDetail" />

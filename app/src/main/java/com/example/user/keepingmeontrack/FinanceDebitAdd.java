@@ -147,7 +147,7 @@ public class FinanceDebitAdd extends BaseActivity {
         x=x*7;
         Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
         LocalDate later =timee.plusDays(x);
-        Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
         return later;
 
     }

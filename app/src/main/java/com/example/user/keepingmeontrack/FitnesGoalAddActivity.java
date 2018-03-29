@@ -14,6 +14,8 @@ import com.example.user.keepingmeontrack.models.Users;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.joda.time.LocalDate;
+
 import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +45,7 @@ public class FitnesGoalAddActivity extends BaseActivity {
     RadioButton question2;
     RadioButton question3;
     RadioButton question5;
+    int dateCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,20 @@ public class FitnesGoalAddActivity extends BaseActivity {
            public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
                int id3 = group3.getCheckedRadioButtonId();
-               question3 = findViewById(id3); }
+               question3 = findViewById(id3);
+               if (question3.getText().equals("One Month")){
+                   dateCounter=30;
+               }else if (question3.getText().equals("Two Month")){
+                   dateCounter=60;
+               }else if (question3.getText().equals("Three Month")){
+                   dateCounter=90;
+               }else if (question3.getText().equals("Six Month")){
+                   dateCounter=180;
+               }
+               else {
+                   dateCounter=0;
+               }
+           }
        });
 
       group5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -91,8 +107,10 @@ public class FitnesGoalAddActivity extends BaseActivity {
 
     @OnClick(R.id.fab1)
     public void onViewClicked() {
+        LocalDate now = new LocalDate();
+        LocalDate later =now.plusDays(dateCounter);
         String key = myRef.child("fitness").push().getKey();
-        FitnessGoal newGoal = new FitnessGoal( question1.getText().toString(), question2.getText().toString(), question3.getText().toString(), question5.getText().toString(),key,uID);
+        FitnessGoal newGoal = new FitnessGoal( question1.getText().toString(), question2.getText().toString(), question3.getText().toString(), question5.getText().toString(),key,uID,now.toString(),later.toString());
 
         myRef.child("fitness").child(key).setValue(newGoal);
         Intent intent=new Intent(FitnesGoalAddActivity.this,MainTabActivity.class);
