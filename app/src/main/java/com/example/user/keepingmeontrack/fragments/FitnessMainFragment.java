@@ -123,7 +123,7 @@ public class FitnessMainFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getContext(), FitnessDetailActivity.class);
-                    //intent.putExtra("selectId", list.get(i).getId());
+                    intent.putExtra("selectId", list.get(i).getKey());
 
                     startActivity(intent);
                 }
