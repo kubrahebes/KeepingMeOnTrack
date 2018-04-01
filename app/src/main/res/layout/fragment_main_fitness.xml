@@ -17,6 +17,7 @@
         android:layout_height="match_parent">
 
         <at.markushi.ui.CircleButton
+            android:layout_margin="22dp"
             android:id="@+id/fab1"
             android:layout_width="64dip"
             android:layout_height="64dip"

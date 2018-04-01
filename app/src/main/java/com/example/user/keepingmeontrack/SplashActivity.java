@@ -12,10 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.user.keepingmeontrack.models.CaloriCalculate;
 import com.example.user.keepingmeontrack.swipeanimation.IntroActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Mahmoud on 1/31/2018.

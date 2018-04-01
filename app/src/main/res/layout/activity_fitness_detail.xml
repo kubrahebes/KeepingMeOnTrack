@@ -127,15 +127,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="7dp"
-                        android:src="@drawable/layer_622" />
+                        android:src="@drawable/sport" />
 
                     <TextView
                         android:id="@+id/dailyallowance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_alignTop="@+id/allowance"
+                        android:layout_toEndOf="@+id/allowance"
                         android:layout_toRightOf="@+id/allowance"
-                        android:text="Daily Allowance"
+                        android:text="How ofen you made exercise"
                         android:textColor="#de000000"
                         android:textSize="16sp" />
 
@@ -157,7 +158,7 @@
                         android:layout_below="@+id/totalSaving"
                         android:layout_marginTop="10dp"
                         android:layout_toRightOf="@+id/allowance"
-                        android:text="Total Money"
+                        android:text="Your Fitness Goal"
                         android:textColor="#de000000"
                         android:textSize="16sp" />
 
