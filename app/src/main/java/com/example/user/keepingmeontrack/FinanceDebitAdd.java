@@ -145,7 +145,7 @@ public class FinanceDebitAdd extends BaseActivity {
         }
         int x= ((int) totalWeek);
         x=x*7;
-        Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
         LocalDate later =timee.plusDays(x);
       //  Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
         return later;
@@ -164,7 +164,7 @@ public class FinanceDebitAdd extends BaseActivity {
 
             myRef.child("finance").child(key).setValue(newGoal);
 
-
+         
           Intent intent =new Intent(FinanceDebitAdd.this,MainTabActivity.class);
           startActivity(intent);
 

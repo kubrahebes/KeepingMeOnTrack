@@ -8,14 +8,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="GoalDetail" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#f4f4f4</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/lightGrey</item>
 
 
     </style>
     <style name="FitnesDetail" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#f4f4f4</item>
-        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorPrimary">@color/fitnes_detail</item>
+        <item name="colorPrimaryDark">@color/lightGrey</item>
         <item name="android:label">Fitness Detail</item>
     </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -24,9 +24,9 @@
     <item name="colorPrimary">#8fc73e</item>
 </style>
 <style name="FitnessAdd" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/fitness_add</item>
+    <item name="colorPrimaryDark">@color/lightGrey</item>
 
-    <item name="colorPrimary">#f4f4f4</item>
-    <item name="colorPrimaryDark">@color/fitness_add</item>
 
 
 </style>

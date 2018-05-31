@@ -66,7 +66,7 @@ public class MainTabActivity extends AppCompatActivity {
 
         final ImageView fabIconNew = new ImageView(this);
         // Setting the icon in the center of the Floating Action Button
-        fabIconNew.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.plus));
+        fabIconNew.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_add_button_with_plus_symbol_in_a_black_circle));
         final FloatingActionButton rightLowerButton = new FloatingActionButton.Builder(this)
                 .setContentView(fabIconNew)
                 .setPosition(FloatingActionButton.POSITION_BOTTOM_RIGHT)

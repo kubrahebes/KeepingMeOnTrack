@@ -33,7 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
-import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 
@@ -149,7 +148,7 @@ public class FitnessDetailActivity extends BaseActivity {
         finishDate.setText(obje.getEndDate());
         totalGoal.setText(obje.getAnswer2());
         totalSaving.setText(obje.getAnswer3());
-        goalId = obje.getUid();
+        goalId = obje.getKey();
         DateTime now_ = new DateTime();
         DateTime startDate_ = new DateTime(obje.getStartTime());
         DateTime endDate_ = new DateTime(obje.getEndDate());
@@ -181,16 +180,15 @@ public class FitnessDetailActivity extends BaseActivity {
         //şeffaflık kalksın diye transparanı 30f yap.
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
-        yValues.add(new PieEntry(gecenSure, ""));
         yValues.add(new PieEntry(kalanSure, ""));
-
+        yValues.add(new PieEntry(gecenSure, ""));
 
         pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
 
         PieDataSet dataSet = new PieDataSet(yValues, "Fitness");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        dataSet.setSliceSpace(2f);
+        dataSet.setSelectionShift(3f);
+        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 
         PieData data = new PieData((dataSet));
         data.setValueTextSize(10f);

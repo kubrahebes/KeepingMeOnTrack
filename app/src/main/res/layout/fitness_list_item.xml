@@ -15,7 +15,6 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0.0px"
         card_view:cardCornerRadius="8dp"
-
         card_view:cardElevation="5dp">
 
         <RelativeLayout

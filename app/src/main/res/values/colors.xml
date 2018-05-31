@@ -8,10 +8,11 @@
     <color name="duskYellow">#F3AB35</color>
     <color name="duskRed">#D90D2F</color>
     <color name="cardview">#fa917f</color>
-    <color name="lightGrey">#adadad</color>
+    <color name="lightGrey">#6D6D6D</color>
     <color name="financeToolbar">#ffb829</color>
     <color name="drk_button">#fddee8</color>
     <color name="lgt_button">#fddee8</color>
     <color name="fitness_add">#f7798f</color>
+    <color name="fitnes_detail">#D6376B</color>
 
 </resources>

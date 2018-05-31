@@ -105,7 +105,7 @@ public class FinanceGoalAdd extends BaseActivity {
         uID = pref.getString("uID",null);
 
         Users users = BaseActivity.getInstance().getUser();
-        Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, users.getUserName(), Toast.LENGTH_SHORT).show();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("datbase");
 
@@ -181,9 +181,9 @@ public class FinanceGoalAdd extends BaseActivity {
        // Toast.makeText(this, ""+totalmoney, Toast.LENGTH_SHORT).show();
         int x= ((int) totalWeek);
         x=x*7;
-        Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, " " + totalWeek, Toast.LENGTH_SHORT).show();
         LocalDate later =timee.plusDays(x);
-        Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, ""+later, Toast.LENGTH_SHORT).show();
     return later;
     }
 
